@@ -15,13 +15,14 @@ jobs:
     steps:
       - name: Check out 110
         uses: actions/checkout@v4
-      - name: Download the current 313 snapshot
+      - name: Download the current 313 website snapshot
         run: |
           curl -fL https://github.com/hossein405206/313/archive/refs/heads/main.zip -o /tmp/313-main.zip
           mkdir -p /tmp/source
           unzip -q /tmp/313-main.zip -d /tmp/source
-          rsync -a --delete --exclude='.git' --exclude='.github/workflows/import-313.yml' --exclude='.github/workflows/build-android.yml' /tmp/source/313-main/ ./
-      - name: Commit the mirrored project
+          rsync -a --delete --exclude='.git' --exclude='android/' --exclude='.github/workflows/import-313.yml' --exclude='.github/workflows/build-android.yml' /tmp/source/313-main/ ./
+          rm -rf ./android
+      - name: Commit the website snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
