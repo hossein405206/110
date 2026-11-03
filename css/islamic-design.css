@@ -1,0 +1,1039 @@
+/* ==========================================================================
+   313 — Persian / Islamic visual refresh
+   Presentation-only layer. Keep page logic and existing component behaviour.
+   ========================================================================== */
+
+:root {
+  --bg-page: #101a2a;
+  --bg-cream: #fbf7ed;
+  --bg-cream-soft: #f5eedf;
+  --bg-cream-deep: #e9ddc4;
+  --bg-card: #fffdf8;
+  --navy-300: #506887;
+  --navy-400: #344d6d;
+  --navy-500: #203957;
+  --navy-600: #172b45;
+  --navy-700: #0e1b2d;
+  --gold-50: #fff8e5;
+  --gold-100: #f4e5b8;
+  --gold-300: #dfc274;
+  --gold-500: #c49a3a;
+  --gold-600: #a67d28;
+  --gold-700: #795a1b;
+  --burgundy-300: #bd6a76;
+  --burgundy-500: #8c3547;
+  --burgundy-600: #702838;
+  --teal-300: #70aaa0;
+  --teal-500: #367d73;
+  --text-primary: #1b293a;
+  --text-secondary: #4b5969;
+  --text-muted: #778291;
+  --border-subtle: #eee5d4;
+  --border-soft: #e4d7bd;
+  --border-medium: #d3c19a;
+  --sh-xs: 0 2px 6px rgba(26, 42, 63, .045);
+  --sh-sm: 0 5px 14px rgba(26, 42, 63, .07);
+  --sh-md: 0 10px 28px rgba(26, 42, 63, .09);
+  --sh-lg: 0 18px 42px rgba(26, 42, 63, .12);
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 20px;
+  --r-xl: 26px;
+  --t-fast: 160ms;
+  --t-base: 220ms;
+  --ease-smooth: cubic-bezier(.2,.7,.2,1);
+}
+
+html {
+  scroll-padding-top: 84px;
+  scrollbar-color: #c6a45b #f5eedf;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(65, 91, 123, .32), transparent 34rem),
+    radial-gradient(circle at 88% 92%, rgba(140, 53, 71, .16), transparent 32rem),
+    #0d1726;
+  color: var(--text-primary);
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  line-height: 1.75;
+}
+
+.app-container {
+  background-color: var(--bg-cream);
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(196, 154, 58, .075), transparent 30%),
+    radial-gradient(circle at 0% 70%, rgba(32, 57, 87, .045), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(196, 154, 58, .018) 0 1px, transparent 1px 13px),
+    linear-gradient(180deg, #fcf8ef 0%, #f6efdf 100%);
+  box-shadow: 0 0 0 1px rgba(229, 210, 169, .2), 0 24px 80px rgba(0, 0, 0, .28);
+}
+
+.app-header {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(223, 194, 116, .13), transparent 45%),
+    repeating-linear-gradient(135deg, transparent 0 20px, rgba(255,255,255,.018) 20px 21px),
+    linear-gradient(145deg, #263f60 0%, #172b45 55%, #0e1b2d 100%);
+  border-bottom: 2px solid var(--gold-500);
+  box-shadow: 0 5px 18px rgba(10, 22, 38, .2);
+}
+
+.app-header::after {
+  width: 76px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #f0d58d, transparent);
+  box-shadow: 0 0 10px rgba(223, 194, 116, .25);
+}
+
+.header-brand__mark,
+.drawer-head > span,
+.footer-brand > span,
+.header-auth__avatar {
+  border: 1px solid rgba(223, 194, 116, .58);
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.045) 0 4px, transparent 4px 8px),
+    linear-gradient(145deg, #c9a34e, #8d6926);
+  color: #fff9e8;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 3px 9px rgba(0,0,0,.18);
+}
+
+.header-brand strong,
+.drawer-head strong {
+  letter-spacing: -.15px;
+}
+
+.header-brand small,
+.drawer-head small {
+  color: rgba(255, 250, 235, .7);
+}
+
+.header-menu,
+.header-auth {
+  transition: background var(--t-base) var(--ease-smooth), transform var(--t-fast) var(--ease-smooth);
+}
+
+.header-menu:hover,
+.header-auth:hover {
+  background-color: rgba(255,255,255,.1);
+}
+
+.page {
+  padding-top: 20px;
+  padding-bottom: 18px;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.section-title,
+.section-heading h2,
+.section-heading h3,
+.section-title h2 {
+  text-wrap: pretty;
+  letter-spacing: -.25px;
+}
+
+.page h1,
+.page > h1 {
+  color: var(--navy-600);
+}
+
+.page p {
+  text-wrap: pretty;
+}
+
+.eyebrow,
+.activity-eyebrow,
+.feature-badge,
+.prize-pill,
+.coach-role-badge {
+  border: 1px solid rgba(196, 154, 58, .28);
+  background: linear-gradient(135deg, #fff8e5, #f5e8c7);
+  color: #795a1b;
+}
+
+.section-heading,
+.event-head,
+.ranking-heading,
+.panel-head {
+  gap: 12px;
+}
+
+.section-heading h2,
+.event-head h2,
+.ranking-heading h2,
+.section-title {
+  color: var(--navy-600);
+}
+
+.section-heading h2::after,
+.section-title::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin-top: 7px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--gold-500), rgba(196,154,58,.12));
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(196, 154, 58, .62);
+  outline-offset: 3px;
+}
+
+.btn-submit,
+.hero-primary,
+.welcome-primary {
+  border: 1px solid rgba(255, 229, 160, .35);
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.12), transparent 45%),
+    linear-gradient(135deg, #9a3d4d, #702838);
+  color: #fffaf0;
+  box-shadow: 0 7px 16px rgba(112, 40, 56, .18), inset 0 1px 0 rgba(255,255,255,.13);
+  transition: transform var(--t-base) var(--ease-smooth), box-shadow var(--t-base) var(--ease-smooth), filter var(--t-base) var(--ease-smooth);
+}
+
+.btn-submit:hover,
+.hero-primary:hover,
+.welcome-primary:hover {
+  filter: brightness(1.045);
+  box-shadow: 0 10px 22px rgba(112, 40, 56, .22), inset 0 1px 0 rgba(255,255,255,.15);
+  transform: translateY(-1px);
+}
+
+.btn-submit:active,
+.hero-primary:active,
+.welcome-primary:active {
+  transform: translateY(1px) scale(.99);
+}
+
+.btn-secondary,
+.hero-secondary,
+.btn-text,
+.welcome-secondary {
+  border-color: var(--border-soft);
+  color: var(--navy-500);
+}
+
+.form-control,
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+textarea,
+select {
+  border-color: #dfd4bf;
+  border-radius: 13px;
+  background-color: rgba(255, 253, 248, .94);
+  box-shadow: inset 0 1px 2px rgba(31, 49, 72, .025);
+  transition: border-color var(--t-base), box-shadow var(--t-base), background-color var(--t-base);
+}
+
+.form-control:focus,
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+textarea:focus,
+select:focus {
+  border-color: #b99545;
+  background-color: #fffefa;
+  box-shadow: 0 0 0 3px rgba(196, 154, 58, .13);
+  outline: none;
+}
+
+.form-group label,
+label {
+  color: #34465c;
+}
+
+.att-summary,
+.att-stat,
+.coach-stats,
+.coach-panel,
+.coach-account-panel,
+.coach-login,
+.coach-lock,
+.profile-hero,
+.profile-info,
+.profile-stats,
+.pstat,
+.game-shell,
+.game-player-card,
+.ranking-hero,
+.podium,
+.ranking-list,
+.contact-hero,
+.contact-item,
+.feedback-hero,
+.auth-hero,
+.ali-wisdom,
+.official-gate,
+.role-gate,
+.sup-summary__box,
+.sup-form-card,
+.sup-history,
+.schedule-card,
+.activity-report-card,
+.activities-intro,
+.register-login-hint,
+.ring-register-intro,
+.ring-register-status,
+.ring-register-account,
+.prize-card,
+.report-box,
+.event-editor,
+.admin-list,
+.permission-grid,
+.feature-card,
+.service-card,
+.quick-item {
+  border-color: rgba(207, 190, 151, .6);
+  box-shadow: var(--sh-sm);
+}
+
+.att-summary,
+.coach-panel,
+.coach-account-panel,
+.profile-info,
+.game-shell,
+.ranking-list,
+.contact-hero,
+.contact-item,
+.feedback-hero,
+.auth-hero,
+.official-gate,
+.role-gate,
+.sup-form-card,
+.sup-history,
+.schedule-card,
+.activity-report-card,
+.register-login-hint,
+.ring-register-intro,
+.ring-register-status,
+.ring-register-account,
+.prize-card,
+.report-box,
+.event-editor,
+.admin-list,
+.permission-grid {
+  background-color: rgba(255, 253, 248, .91);
+  border-radius: var(--r-lg);
+}
+
+.att-stat,
+.pstat,
+.sup-summary__box,
+.role-gate,
+.contact-item,
+.schedule-card,
+.service-card,
+.quick-item {
+  transition: transform var(--t-base) var(--ease-smooth), box-shadow var(--t-base) var(--ease-smooth), border-color var(--t-base) var(--ease-smooth);
+}
+
+.att-stat:hover,
+.pstat:hover,
+.contact-item:hover,
+.schedule-card:hover,
+.service-card:hover,
+.quick-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(196, 154, 58, .6);
+  box-shadow: var(--sh-md);
+}
+
+.modal-content {
+  border: 1px solid rgba(207, 190, 151, .75);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(196,154,58,.08), transparent 35%),
+    #fffdf8;
+  box-shadow: 0 24px 70px rgba(10, 22, 38, .24);
+}
+
+.modal-header {
+  border-bottom-color: var(--border-subtle);
+}
+
+.bottom-nav {
+  border-top: 1px solid rgba(207, 190, 151, .7);
+  background: rgba(255, 253, 248, .95);
+  box-shadow: 0 -7px 24px rgba(25, 43, 64, .07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.bottom-nav .nav-item {
+  color: #7a8491;
+  transition: color var(--t-base), transform var(--t-fast), background var(--t-base);
+}
+
+.bottom-nav .nav-item.active {
+  color: var(--burgundy-500);
+}
+
+.bottom-nav .nav-item.active::before {
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.app-drawer {
+  background:
+    radial-gradient(220px 190px at 0% 0%, rgba(196,154,58,.14), transparent 72%),
+    repeating-linear-gradient(135deg, transparent 0 24px, rgba(255,255,255,.018) 24px 25px),
+    linear-gradient(160deg, #203957, #0d1a2b) !important;
+  border-left: 1px solid rgba(223, 194, 116, .25);
+  box-shadow: -18px 0 50px rgba(0,0,0,.22);
+}
+
+.drawer-head {
+  border-bottom: 1px solid rgba(223, 194, 116, .2);
+  padding-bottom: 18px;
+}
+
+.drawer-links {
+  gap: 6px;
+}
+
+.drawer-links a {
+  min-height: 46px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  transition: color var(--t-base), background var(--t-base), border-color var(--t-base), transform var(--t-fast);
+}
+
+.drawer-links a:hover,
+.drawer-links a:focus-visible {
+  background: rgba(255,255,255,.075);
+  border-color: rgba(223,194,116,.2);
+  color: #f3d98f;
+  transform: translateX(-2px);
+}
+
+.drawer-links a:first-child {
+  background: rgba(223,194,116,.1);
+  border-color: rgba(223,194,116,.22);
+}
+
+.drawer-links a:first-child,
+.drawer-links a:hover {
+  color: #f3d98f;
+}
+
+.drawer-links a:first-child {
+  border-right: 2px solid var(--gold-500);
+}
+
+.drawer-bottom {
+  color: rgba(255, 249, 230, .65);
+  border-top: 1px solid rgba(223,194,116,.18);
+  padding-top: 14px;
+}
+
+.drawer-backdrop {
+  background: rgba(8, 17, 29, .58);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.home-wisdom {
+  border: 1px solid rgba(207,190,151,.72);
+  box-shadow: var(--sh-sm);
+  background:
+    radial-gradient(160px 90px at 100% 0, rgba(196,154,58,.13), transparent 75%),
+    linear-gradient(145deg, #fffdf7, #f5eddd);
+}
+
+.hero-section {
+  overflow: hidden;
+  border: 1px solid rgba(223,194,116,.28);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(223,194,116,.18), transparent 30%),
+    repeating-linear-gradient(135deg, transparent 0 23px, rgba(255,255,255,.025) 23px 24px),
+    linear-gradient(145deg, #2a4566 0%, #172d49 56%, #0d1b2e 100%);
+  box-shadow: 0 16px 34px rgba(23,43,69,.2);
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(223,194,116,.18);
+  border-radius: 19px;
+  pointer-events: none;
+}
+
+.hero-title {
+  text-shadow: 0 2px 16px rgba(0,0,0,.18);
+}
+
+.hero-orbit {
+  border-color: rgba(223,194,116,.2);
+}
+
+.quick-strip {
+  border-color: rgba(207,190,151,.68);
+  background: rgba(255,253,248,.84);
+  box-shadow: var(--sh-xs);
+  backdrop-filter: blur(10px);
+}
+
+.quick-item {
+  background: linear-gradient(180deg, rgba(255,253,248,.98), rgba(246,239,223,.88));
+  border: 1px solid rgba(207,190,151,.48);
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+.quick-icon {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 3px 8px rgba(26,42,63,.08);
+}
+
+.feature-card {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fffdf8;
+}
+
+.feature-card:hover {
+  border-color: rgba(196,154,58,.65);
+}
+
+.feature-info {
+  background: linear-gradient(180deg, #fffdf8, #faf4e8);
+}
+
+.service-card {
+  border-radius: 16px;
+  background: rgba(255,253,248,.86);
+}
+
+.service-featured {
+  border-color: rgba(196,154,58,.55);
+  background: linear-gradient(100deg, rgba(255,248,229,.9), rgba(255,253,248,.95));
+}
+
+.service-number {
+  color: #b59a62;
+}
+
+.home-footer {
+  border-top: 1px solid rgba(207,190,151,.6);
+}
+
+.home-footer p,
+.footer-line {
+  color: #758091;
+}
+
+.welcome-card {
+  border: 1px solid rgba(207,190,151,.65);
+  box-shadow: 0 20px 55px rgba(26,42,63,.12);
+  background:
+    radial-gradient(circle at 100% 0, rgba(196,154,58,.11), transparent 40%),
+    #fffdf8;
+}
+
+.welcome-divider {
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.welcome-secondary {
+  border: 1px solid var(--border-soft);
+  background: #fffaf0;
+  border-radius: 12px;
+}
+
+.toast {
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 10px 30px rgba(10,22,38,.2);
+}
+
+@media (min-width: 600px) {
+  .app-container {
+    border-inline: 1px solid rgba(223, 210, 179, .18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/*
+ * Frontend release: 5.18.0
+ * When changing frontend assets, bump the v=5.18.0 cache marker in every HTML page
+ * so visitors receive the current CSS/JS without manually clearing their browser cache.
+ */
+
+/* A slightly rounder, more cohesive finish without changing the existing layout. */
+:root {
+  --r-sm: 12px;
+  --r-md: 17px;
+  --r-lg: 23px;
+  --r-xl: 28px;
+}
+
+.app-header {
+  border-radius: 0 0 22px 22px;
+}
+
+.card,
+.stat-card,
+.game-player-card,
+.sup-form-card,
+.schedule-card,
+.activity-report-card,
+.prize-card,
+.feature-card,
+.service-card,
+.quick-item,
+.contact-item,
+.modal-content,
+.panel,
+.profile-card,
+.welcome-card,
+.login-card,
+.register-card,
+.form-card {
+  border-radius: 22px;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,
+textarea {
+  border-radius: 15px;
+}
+
+button,
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-submit,
+a.button,
+input[type="submit"] {
+  border-radius: 15px;
+}
+
+.bottom-nav {
+  border-radius: 22px 22px 0 0;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding-inline: 0;
+  }
+
+  .page,
+  main.page {
+    padding-inline: 14px;
+  }
+
+  .card,
+  .stat-card,
+  .game-player-card,
+  .sup-form-card,
+  .schedule-card,
+  .activity-report-card,
+  .prize-card,
+  .feature-card,
+  .service-card,
+  .quick-item,
+  .contact-item,
+  .modal-content,
+  .panel,
+  .profile-card,
+  .welcome-card,
+  .login-card,
+  .register-card,
+  .form-card {
+    border-radius: 19px;
+  }
+}
+
+
+
+/* v5.19.0 — Local-first Persian typography and focused UI polish */
+:root{--font-persian-ui:"Noto Sans Arabic UI","Noto Sans Arabic","IRANSansX","IRANSans","Vazirmatn",Tahoma,Arial,sans-serif;--font-persian-display:"Noto Naskh Arabic UI","Noto Naskh Arabic","B Nazanin","Aref Ruqaa",Tahoma,serif}
+body,.form-control,.btn-submit,.btn-secondary,.quick-item,.service-card{font-family:var(--font-persian-ui)}
+.app-header h1,.section-title,.hero-title,.contact-hero h2,.feedback-hero h2,.game-hero h2,.form-section-title{font-family:var(--font-persian-display)}
+.ring-register-submit{background:linear-gradient(135deg,#0f766e,#0f9488)!important;box-shadow:0 8px 20px rgba(15,118,110,.22)!important}
+.ring-register-submit:hover{box-shadow:0 12px 25px rgba(15,118,110,.29)!important}
+.official-role-explanation{margin:18px 0 14px;padding:13px 15px;border:1px solid rgba(213,168,60,.21);border-radius:17px;background:rgba(255,255,255,.075);color:rgba(255,255,255,.88);font-size:.73rem;line-height:2;text-align:right}
+.contact-credit .media-credit-logo{width:124px;min-height:124px;margin:0 auto 10px;padding:17px 12px;border:1px solid #ddc57b;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:radial-gradient(circle at 50% 0,rgba(255,255,255,.9),transparent 55%),linear-gradient(145deg,#fff9e7,#ecd58a);color:#5f4510;box-shadow:0 8px 22px rgba(120,89,25,.11),inset 0 0 0 5px rgba(255,255,255,.55)}
+.media-credit-logo__ornament{font-size:1.15rem;color:#a57b24;line-height:1}
+.contact-credit .media-credit-logo strong{font-family:var(--font-persian-display);font-size:1.05rem;color:#5f4510}
+.contact-credit .media-credit-logo small{font-size:.58rem;font-weight:800;color:#8a6b27}
+.home-event-overlay p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-family:var(--font-persian-ui);font-size:.68rem!important;line-height:1.6!important;max-height:3.2em;margin-top:5px!important}
+.home-event-overlay h3{font-family:var(--font-persian-display);line-height:1.5;margin-block:3px 5px}
+.home-event-overlay{padding:15px 16px 14px!important}
+
+
+/* v5.22.0 — Self-hosted font files; no external font CDN required.
+   Estedad is distributed under SIL OFL 1.1 by Amin Abedi.
+   Aref Ruqaa is distributed under SIL OFL 1.1 by the Aref Ruqaa project.
+   License copies are in /fonts/OFL-Estedad.txt and /fonts/OFL-Aref-Ruqaa.txt. */
+@font-face{
+  font-family:"Estedad";
+  src:url("../fonts/Estedad-variable.woff2") format("woff2");
+  font-style:normal;font-weight:100 900;font-display:swap;
+}
+@font-face{
+  font-family:"Aref Ruqaa";
+  src:url("../fonts/ArefRuqaa-Bold.ttf") format("truetype");
+  font-style:normal;font-weight:700;font-display:swap;
+}
+:root{
+  --font-persian-ui:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif;
+  --font-persian-display:"Aref Ruqaa","Estedad","Vazirmatn",Tahoma,serif;
+}
+html,body,button,input,textarea,select,.form-control,.nav-item,.btn-submit,.btn-secondary,
+.form-group label,.form-hint,.form-help,.section-subtitle,.service-copy,.feature-info p,
+.official-role-explanation,.jalali-picker__choice,.jalali-picker__head button,.jalali-picker__foot button,.jalali-calendar-toggle small,.jalali-picker__days button,.jalali-picker__selected{
+  font-family:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+}
+.app-header h1,.section-title,.hero-title,.contact-hero h2,.feedback-hero h2,.game-hero h2,
+.home-event-overlay h3,.section-heading h2,.event-head h2,.auth-title,.form-section-title{
+  font-family:"Estedad","Vazirmatn",Tahoma,Arial,sans-serif!important;
+  font-weight:800;
+}
+.home-wisdom__arabic,.ali-wisdom__arabic,.game-hero h2{
+  font-family:"Aref Ruqaa","Estedad","Vazirmatn",Tahoma,serif!important;
+}
+
+
+/* Use the supplied brand image instead of a typographic stand-in. */
+.contact-credit .media-credit-logo--image{width:min(100%,260px);min-height:0;height:auto;aspect-ratio:auto;margin:0 auto 10px;padding:8px;border:1px solid #e5d7ac;border-radius:18px;display:flex;align-items:center;justify-content:center;background:#fffdf7;box-shadow:0 8px 22px rgba(120,89,25,.09)}
+.contact-credit .media-credit-logo--image img{display:block;width:100%;max-width:100%;max-height:160px;height:auto;object-fit:contain;border-radius:12px}
+
+/* v5.21.0 — Explicit static font-weight mapping and consistent Jalali picker typography. */
+.jalali-picker__years,.jalali-picker__months{scrollbar-width:thin;scrollbar-color:#b7d9ce #f0f7f4}
+.jalali-picker__years .jalali-picker__choice{min-height:42px;aspect-ratio:1.6}
+.jalali-picker__months .jalali-picker__choice{min-height:44px}
+
+
+/* v5.23.0 — Persian-first headline and hadith typography.
+   Hadith designs work best with distinct roles: readable Arabic quotation,
+   clear Persian meaning, and a restrained source line. No decorative Ruqaa
+   face is forced onto the quotation or major page headings. */
+:root{
+  --font-persian-ui:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif;
+  --font-persian-display:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif;
+}
+.app-header h1,.section-title,.hero-title,.contact-hero h2,.feedback-hero h2,
+.game-hero h2,.home-event-overlay h3,.section-heading h2,.event-head h2,
+.auth-title,.form-section-title,.contact-credit .media-credit-logo strong{
+  font-family:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+  font-weight:800;
+  letter-spacing:-.018em;
+}
+.home-wisdom__arabic,.ali-wisdom__arabic{
+  font-family:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+  font-weight:800;
+  font-size:1.22rem;
+  line-height:2.05;
+  letter-spacing:0;
+  font-feature-settings:"kern" 1,"liga" 1;
+  text-wrap:pretty;
+}
+.home-wisdom__meaning,.ali-wisdom__meaning{
+  font-family:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+  font-weight:500;
+  font-size:.83rem;
+  line-height:2;
+}
+.home-wisdom__source,.ali-wisdom__source{
+  font-family:"Estedad","Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+  font-size:.64rem;
+  font-weight:600;
+  line-height:1.8;
+}
+@media(max-width:360px){
+  .home-wisdom__arabic,.ali-wisdom__arabic{font-size:1.08rem;line-height:2}
+  .home-wisdom__meaning,.ali-wisdom__meaning{font-size:.76rem}
+}
+
+
+/* v5.24.0 — Event spacing, traditional hadith typography, and visible Jalali date field. */
+@font-face {
+  font-family: "Amiri";
+  src: url("../fonts/Amiri-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Move the events block away from the top edge and bring slide captions lower. */
+.event-hero { margin-top: 24px !important; }
+.home-event-overlay { bottom: 9px !important; }
+
+/* Amiri's classical Naskh form better matches traditional hadith artwork.
+   Persian meaning/source remain in the site's readable UI font. */
+.home-wisdom__arabic,
+.ali-wisdom__arabic {
+  font-family: "Amiri", "Noto Naskh Arabic", serif !important;
+  font-size: 1.04rem !important;
+  font-weight: 400 !important;
+  line-height: 2.12 !important;
+  letter-spacing: 0 !important;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-wrap: pretty;
+}
+@media (max-width: 360px) {
+  .home-wisdom__arabic,
+  .ali-wisdom__arabic {
+    font-size: .96rem !important;
+    line-height: 2.08 !important;
+  }
+}
+
+/* Explicit contrast keeps the selected birth date visible on mobile browsers. */
+.jalali-date-control #birthDate {
+  color: #184b49 !important;
+  -webkit-text-fill-color: #184b49 !important;
+  text-align: center;
+  font-family: "Estedad", "Vazirmatn", Tahoma, sans-serif !important;
+  font-weight: 800;
+  letter-spacing: .025em;
+}
+
+
+/* v5.57.0 — Full-width identity banner, right-aligned and slightly larger, without a card frame. */
+.home-identity-banner{position:relative;margin:0;padding:12px 4%;display:flex;align-items:center;justify-content:flex-start;direction:rtl;text-align:right;min-width:0;overflow:hidden;border:0;border-top:1px solid rgba(196,154,58,.22);border-bottom:1px solid rgba(196,154,58,.22);border-radius:0;background:radial-gradient(circle at 96% 20%,rgba(196,154,58,.10) 0 1px,transparent 2px),radial-gradient(circle at 4% 80%,rgba(196,154,58,.09) 0 1px,transparent 2px),linear-gradient(135deg,#fffdf7 0%,#f5eddd 48%,#fffaf0 100%);background-size:18px 18px,18px 18px,auto}
+.home-identity-banner img{display:block;width:90%;max-width:520px;height:auto;aspect-ratio:1672/941;object-fit:contain;object-position:right center;margin-inline-start:0;margin-inline-end:auto}
+@media(min-width:600px){.home-identity-banner{padding:16px 5%}.home-identity-banner img{width:82%;max-width:720px}}
+@media(max-width:360px){.home-identity-banner{padding:10px 4%}.home-identity-banner img{width:94%}}
+
+
+/* v5.58.0 — Shared design-system finishing layer across all pages. */
+:root{
+  --focus-ring:0 0 0 3px rgba(196,154,58,.30);
+  --focus-outline:#8a641e;
+  --surface-border:rgba(32,57,87,.10);
+  --surface-shadow:0 8px 24px rgba(18,34,54,.07);
+}
+/* Keep media and form controls within narrow mobile layouts. */
+.app-container img,.app-container video,.app-container canvas{max-width:100%}
+.app-container input,.app-container textarea,.app-container select{min-width:0;max-width:100%}
+/* A single, high-contrast keyboard focus language for links and controls. */
+.app-container a:focus-visible,
+.app-container button:focus-visible,
+.app-container input:focus-visible,
+.app-container textarea:focus-visible,
+.app-container select:focus-visible,
+.app-container [role="button"]:focus-visible,
+.app-container [tabindex]:focus-visible{
+  outline:2px solid var(--focus-outline);
+  outline-offset:3px;
+  box-shadow:var(--focus-ring);
+}
+/* Make disabled actions visually consistent and clearly non-interactive. */
+.app-container button:disabled,
+.app-container input:disabled,
+.app-container select:disabled,
+.app-container textarea:disabled,
+.app-container [aria-disabled="true"]{
+  cursor:not-allowed;
+  opacity:.58;
+}
+/* Respect the operating system's reduced-motion preference across pages. */
+@media(prefers-reduced-motion:reduce){
+  .app-container *,
+  .app-container *::before,
+  .app-container *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* v5.61.0 — Center the ring identity calligraphy on every screen size. */
+.home-identity-banner{justify-content:center;text-align:center}
+.home-identity-banner img{margin-inline:auto;object-position:center center}
+@media(min-width:600px){.home-identity-banner img{margin-inline:auto}}
+
+
+/* v5.62.0 — Tighter identity banner: crop transparent lower canvas and reduce vertical whitespace. */
+.home-identity-banner{padding-top:4px;padding-bottom:2px;overflow:hidden}
+.home-identity-banner img{
+  display:block;
+  width:90%;
+  max-width:520px;
+  height:clamp(170px,34vw,300px);
+  object-fit:cover;
+  object-position:center top;
+  margin-inline:auto;
+}
+@media(min-width:600px){
+  .home-identity-banner{padding-top:6px;padding-bottom:3px}
+  .home-identity-banner img{width:82%;max-width:720px;height:clamp(220px,29vw,360px)}
+}
+@media(max-width:360px){
+  .home-identity-banner{padding-top:2px;padding-bottom:1px}
+  .home-identity-banner img{width:94%;height:clamp(145px,42vw,170px)}
+}
+
+
+/* v5.63.0 — Smaller, tighter-cropped home identity typography. */
+.home-identity-banner{padding-top:3px;padding-bottom:2px}
+.home-identity-banner img{width:82%;max-width:470px;height:clamp(125px,27vw,235px);object-fit:cover;object-position:center 43%;margin-inline:auto}
+@media(min-width:600px){.home-identity-banner{padding-top:4px;padding-bottom:2px}.home-identity-banner img{width:74%;max-width:650px;height:clamp(180px,23vw,290px);object-position:center 43%}}
+@media(max-width:360px){.home-identity-banner{padding-top:2px;padding-bottom:1px}.home-identity-banner img{width:88%;height:clamp(112px,35vw,140px);object-position:center 43%}}
+
+
+/* v5.64.0 — Slightly smaller typography with a higher crop edge. */
+.home-identity-banner{padding-top:2px;padding-bottom:1px}
+.home-identity-banner img{width:78%;max-width:445px;height:clamp(118px,25vw,220px);object-fit:cover;object-position:center 35%;margin-inline:auto}
+@media(min-width:600px){.home-identity-banner{padding-top:3px;padding-bottom:1px}.home-identity-banner img{width:70%;max-width:620px;height:clamp(165px,21vw,270px);object-position:center 35%}}
+@media(max-width:360px){.home-identity-banner{padding-top:1px;padding-bottom:1px}.home-identity-banner img{width:84%;height:clamp(104px,32vw,130px);object-position:center 35%}}
+
+
+/* v5.66.0 — Compact the supplied identity artwork further. */
+.home-identity-banner{padding-top:1px!important;padding-bottom:1px!important}
+.home-identity-banner img{width:65%!important;max-width:365px!important;height:clamp(92px,19vw,168px)!important;object-fit:cover!important;object-position:center 34%!important}
+@media(min-width:600px){.home-identity-banner img{width:58%!important;max-width:475px!important;height:clamp(125px,17vw,218px)!important}}
+@media(max-width:360px){.home-identity-banner img{width:72%!important;max-width:270px!important;height:clamp(82px,24vw,106px)!important}}
+
+
+/* v5.67.0 — Smaller identity artwork with more cropping from the top edge. */
+.home-identity-banner{padding-top:0!important;padding-bottom:1px!important}
+.home-identity-banner img{width:54%!important;max-width:300px!important;height:clamp(76px,16vw,112px)!important;object-fit:cover!important;object-position:center 72%!important}
+@media(min-width:600px){.home-identity-banner img{width:50%!important;max-width:340px!important;height:clamp(90px,15vw,132px)!important;object-position:center 72%!important}}
+@media(max-width:360px){.home-identity-banner img{width:62%!important;max-width:230px!important;height:clamp(68px,20vw,86px)!important;object-position:center 72%!important}}
+
+
+/* v5.69.0 — Internal-page polish inspired by clear, restrained mobile design systems.
+   Keep the site's teal/navy/gold identity; improve hierarchy, spacing, and touch feedback. */
+:root{
+  --ui-radius-card:20px;
+  --ui-border-soft:rgba(24,53,74,.09);
+  --ui-shadow-soft:0 8px 24px rgba(22,43,60,.055);
+  --ui-shadow-hover:0 12px 30px rgba(22,43,60,.09);
+}
+.app-container:not(.home-app) .app-header{
+  min-height:64px;
+  padding:calc(12px + env(safe-area-inset-top,0px)) clamp(16px,4vw,24px) 12px;
+  border-bottom:1px solid rgba(26,56,75,.07);
+}
+.app-container:not(.home-app) .app-header h1{
+  letter-spacing:-.025em;
+  font-size:clamp(1.04rem,3.7vw,1.28rem);
+  font-weight:850;
+}
+.app-container:not(.home-app) .page{
+  padding-inline:clamp(15px,4vw,24px);
+  padding-top:clamp(18px,4vw,28px);
+  padding-bottom:calc(92px + env(safe-area-inset-bottom,0px));
+}
+.app-container:not(.home-app) .header-back,
+.app-container:not(.home-app) .header-logout{
+  display:grid;place-items:center;
+  width:42px;height:42px;min-width:42px;
+  border-radius:14px;
+  border:1px solid var(--ui-border-soft);
+  background:linear-gradient(145deg,#fff,#f5f8f8);
+  color:#24445a;
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.app-container:not(.home-app) .header-back:active,
+.app-container:not(.home-app) .header-logout:active{transform:scale(.96)}
+.app-container:not(.home-app) .header-back svg,
+.app-container:not(.home-app) .header-logout svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.app-container:not(.home-app) .section-title,
+.app-container:not(.home-app) .section-heading h2,
+.app-container:not(.home-app) .activities-section-heading h2{
+  letter-spacing:-.02em;
+}
+.app-container:not(.home-app) :is(.profile-hero,.profile-stats,.profile-info,.profile-actions,.att-summary,.att-stats,.pending-members-panel,.official-gate,.feedback-hero,.auth-hero,.auth-card,.coach-login,.activity-report-card,.activity-event-card,.camp-payment-card){
+  border-radius:var(--ui-radius-card);
+}
+.app-container:not(.home-app) :is(.profile-stats,.profile-info,.att-summary,.att-stats,.pending-members-panel,.official-gate,.feedback-hero,.coach-login,.activity-report-card,.activity-event-card){
+  box-shadow:var(--ui-shadow-soft);
+}
+.app-container:not(.home-app) :is(.form-control,input[type="text"],input[type="tel"],input[type="search"],input[type="email"],input[type="password"],textarea,select){
+  min-height:46px;
+  border-radius:13px;
+  border-color:rgba(35,67,86,.16);
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.app-container:not(.home-app) :is(.form-control,input,textarea,select):focus-visible{
+  outline:none;
+  border-color:#17877b;
+  box-shadow:0 0 0 3px rgba(23,135,123,.13);
+}
+.app-container:not(.home-app) :is(.btn-submit,.att-btn-all,.att-save-btn,.pending-refresh,.pending-approve,.pending-reject){
+  min-height:44px;
+  border-radius:14px;
+  font-weight:800;
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;
+}
+.app-container:not(.home-app) :is(.btn-submit,.att-btn-all,.att-save-btn):active{transform:scale(.985)}
+.app-container:not(.home-app) :is(.info-row,.pstat,.att-stat,.att-summary__date,.att-summary__official){
+  transition:background .18s ease,border-color .18s ease;
+}
+.profile-page .profile-hero{
+  padding:24px 18px 22px;
+  background:radial-gradient(circle at 88% 0%,rgba(220,190,112,.19),transparent 38%),linear-gradient(145deg,#fff 0%,#f4f9f7 100%);
+  border:1px solid rgba(28,79,78,.09);
+  box-shadow:0 14px 32px rgba(24,58,64,.075);
+}
+.profile-page .profile-stats{gap:10px;margin-top:14px}
+.profile-page .pstat{
+  border:1px solid rgba(29,69,82,.08);
+  border-radius:16px;
+  background:linear-gradient(150deg,#fff,#f8fbfa);
+  padding:14px 10px;
+}
+.profile-page .pstat__num{letter-spacing:-.035em}
+.profile-page .profile-info{padding:19px;border:1px solid rgba(29,69,82,.08);background:#fff}
+.profile-page .info-row{padding:13px 0;border-bottom:1px solid rgba(29,69,82,.07)}
+.profile-page .info-row:last-child{border-bottom:0}
+.profile-page .info-row__icon{
+  width:40px;height:40px;flex:0 0 40px;
+  display:grid;place-items:center;border-radius:13px;
+  background:linear-gradient(145deg,#e7f4ef,#d9eee7);color:#176e63;
+}
+.profile-page .info-row__icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.attendance-page .att-summary,.att-summary{border:1px solid rgba(29,69,82,.08);box-shadow:var(--ui-shadow-soft)}
+.attendance-page .att-stat,.att-stat{border:1px solid rgba(29,69,82,.07);border-radius:16px}
+.pending-members-panel{border:1px solid rgba(29,69,82,.09);padding:16px;background:linear-gradient(150deg,#fff,#f8fbfa)}
+.pending-member-card{border-radius:15px!important;background:#fff!important;box-shadow:0 3px 12px rgba(22,43,60,.035)}
+.activities-app .activities-intro{border-radius:22px;overflow:hidden}
+.activities-app .activity-report-card,.activities-app .activity-event-card{border:1px solid rgba(29,69,82,.09);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.activities-app .activity-report-card:active,.activities-app .activity-event-card:active{transform:scale(.995)}
+.feedback-page .feedback-hero{border:1px solid rgba(29,69,82,.08);box-shadow:var(--ui-shadow-soft)}
+.app-container:not(.home-app) .bottom-nav{
+  padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));
+  border-top:1px solid rgba(23,55,73,.08);
+  box-shadow:0 -8px 24px rgba(18,43,59,.045);
+  backdrop-filter:blur(18px);
+}
+.app-container:not(.home-app) .nav-item{min-height:54px}
+.app-container:not(.home-app) .nav-item span{font-weight:750;letter-spacing:-.01em}
+@media(min-width:760px){
+  .app-container:not(.home-app) .page{max-width:900px;margin-inline:auto}
+  .profile-page .profile-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:390px){
+  .app-container:not(.home-app) .page{padding-inline:13px}
+  .profile-page .pstat{padding:12px 7px}
+  .profile-page .pstat__label{font-size:.7rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .app-container:not(.home-app) *{scroll-behavior:auto!important;transition:none!important}
+}

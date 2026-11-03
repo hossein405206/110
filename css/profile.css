@@ -1,0 +1,331 @@
+/* ============================================================================
+   پروفایل من — استایل اختصاصی
+   ============================================================================ */
+
+.profile-page {
+  --font-display: 'Aref Ruqaa', serif;
+  --font-body: 'Vazirmatn', sans-serif;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   کارت هویت
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.profile-hero {
+  text-align: center;
+  padding: 24px 16px 20px;
+  margin-bottom: 16px;
+  background: linear-gradient(160deg, #FFFFFF 0%, var(--bg-cream-soft) 100%);
+  border: 1.5px solid var(--border-gold);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-soft), transparent 70%);
+  pointer-events: none;
+}
+
+.profile-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px; left: -50px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--teal-soft), transparent 70%);
+  pointer-events: none;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 14px;
+  border-radius: var(--r-circle);
+  background: linear-gradient(135deg, var(--teal-500), var(--teal-600));
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.1rem;
+  border: 3px solid var(--gold-300);
+  box-shadow: 0 6px 20px rgba(15, 107, 98, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--teal-600);
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-phone {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-role-badge { display:inline-flex; align-items:center; justify-content:center; padding:5px 14px; background:transparent; color:var(--text-muted); border:1px solid transparent; font-size:.75rem; font-weight:700; border-radius:var(--r-pill); box-shadow:none; position:relative; z-index:1; }
+.profile-role-badge.role-badge--unregistered { background:transparent; color:#7b8794; border-color:transparent; }
+.profile-role-badge.role-badge--member { background:linear-gradient(135deg,#60a5fa,#2563eb); color:#fff; border-color:#bfdbfe; box-shadow:0 5px 14px rgba(37,99,235,.20); }
+.profile-role-badge.role-badge--official { background:linear-gradient(135deg,#99f6e4,#0d9488); color:#064e4b; border-color:#5eead4; }
+.profile-role-badge.role-badge--coach { background:linear-gradient(135deg,#f8e7a3,#d4a438); color:#694b08; border-color:#e8c65c; }
+.profile-role-badge.role-badge--owner { color:#fff; border:1px solid rgba(167,139,250,.55); background:linear-gradient(115deg,#7c3aed,#4338ca,#7c3aed); background-size:220% 220%; animation:ownerRoleShift 4s ease infinite; }
+.profile-hero.profile-hero--unregistered .profile-avatar { background:linear-gradient(135deg,#e2e8f0,#b8c2cf); border-color:#e2e8f0; box-shadow:0 6px 18px rgba(100,116,139,.12); }
+.profile-hero.profile-hero--registered .profile-avatar { background:linear-gradient(135deg,#60a5fa,#2563eb); border-color:#bfdbfe; box-shadow:0 6px 18px rgba(37,99,235,.22); }
+@keyframes ownerRoleShift { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
+@media (prefers-reduced-motion:reduce) { .profile-role-badge.role-badge--owner { animation:none; } }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   آمار
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pstat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 6px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--r-md);
+  transition: transform var(--t-fast) var(--ease-smooth);
+}
+
+.pstat:hover {
+  transform: translateY(-2px);
+}
+
+.pstat__num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold-600);
+  line-height: 1;
+}
+
+.pstat__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   اطلاعات
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.profile-info {
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-cream-soft) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  margin-bottom: 8px;
+  transition: border-color var(--t-fast) var(--ease-smooth),
+              transform var(--t-fast) var(--ease-smooth);
+}
+
+.info-row:hover {
+  border-color: var(--border-gold);
+  transform: translateX(-2px);
+}
+
+.info-row__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-circle);
+  background: linear-gradient(135deg, var(--teal-soft), var(--gold-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-teal);
+}
+
+.info-row__icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--teal-500);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.info-row__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-row__content small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.info-row__content strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   دکمه‌های پایین
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.profile-actions .btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-text {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease-smooth);
+  text-align: center;
+}
+
+.btn-text:hover {
+  color: var(--burgundy-500);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   دکمه‌ی خروج در هدر
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.header-logout {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-circle);
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  color: var(--text-invert);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease-smooth);
+}
+
+.header-logout:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.header-logout svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   موبایل کوچک
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  .profile-avatar {
+    width: 78px;
+    height: 78px;
+    font-size: 1.8rem;
+  }
+  .profile-name {
+    font-size: 1.2rem;
+  }
+  .pstat__num {
+    font-size: 1.35rem;
+  }
+  .info-row {
+    padding: 10px 12px;
+  }
+  .info-row__icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* Profile photo upload */
+.profile-avatar.has-image{overflow:hidden;padding:0;background:#e9eef1}
+.profile-avatar__img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.profile-photo-change{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;gap:7px;margin:0 auto 12px;padding:8px 13px;border:1px solid rgba(15,107,98,.18);border-radius:999px;background:#edf7f5;color:#14665f;font:700 .7rem 'Vazirmatn',sans-serif;cursor:pointer;transition:background .18s,transform .18s}
+.profile-photo-change:hover{background:#e1f0ed;transform:translateY(-1px)}
+.profile-photo-change:disabled{opacity:.6;cursor:wait}
+
+
+/* قاب مشکی تنها نشانهٔ بصری مالک اصلی در پروفایل است. */
+.profile-avatar.profile-avatar--owner{border:3px solid #111!important;box-shadow:0 0 0 2px rgba(0,0,0,.08)}
+
+
+/* Avatar ring follows the member's current ring status */
+.profile-avatar.profile-avatar--unregistered{border:3px solid #aab3bf!important;box-shadow:0 0 0 1px rgba(120,130,145,.18)!important}
+.profile-avatar.profile-avatar--member{border:3px solid #22a447!important;box-shadow:0 0 0 1px rgba(34,164,71,.2)!important}
+.profile-avatar.profile-avatar--official{border:3px solid #2688e8!important;box-shadow:0 0 0 1px rgba(38,136,232,.25)!important}
+.profile-avatar.profile-avatar--coach{border:3px solid #d4a438!important;box-shadow:0 0 0 1px rgba(212,164,56,.25)!important}
+.profile-avatar.profile-avatar--owner{border:3px solid #171717!important;box-shadow:0 0 0 1px #b89436,0 0 0 3px #171717!important}
+.profile-avatar.profile-avatar--owner:after{content:'';position:absolute;inset:-3px;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 18% 22%,#f3d77c 0 1px,transparent 1.8px),radial-gradient(circle at 82% 25%,#c6a34c 0 1px,transparent 1.8px),radial-gradient(circle at 76% 78%,#f0d17a 0 1px,transparent 1.8px),radial-gradient(circle at 24% 80%,#b58a2c 0 1px,transparent 1.8px)}
+.profile-role-badge.role-badge--unregistered{color:#77818e;background:#eef1f4;border-color:#d5dbe2}
+.profile-role-badge.role-badge--member{color:#176b2e;background:#e0f7e7;border-color:#8cdaa1;box-shadow:none}
+.profile-role-badge.role-badge--official{color:#155eaa;background:#e0f0ff;border-color:#8cc5ff}
+.profile-role-badge.role-badge--coach{color:#75520b;background:#fff4cc;border-color:#e4c35c}
+.profile-role-badge[hidden]{display:none!important}

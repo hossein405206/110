@@ -1,0 +1,56 @@
+.leaderboard-page{padding-bottom:94px}.ranking-hero{position:relative;overflow:hidden;padding:26px 20px 25px;border-radius:26px;background:linear-gradient(145deg,#182d49,#0c1828);color:#fff;text-align:center;box-shadow:0 18px 42px rgba(15,24,40,.2)}.ranking-hero:before{content:'';position:absolute;width:180px;height:180px;border-radius:50%;right:-75px;top:-100px;background:rgba(212,164,56,.13)}.ranking-hero:after{content:'';position:absolute;width:130px;height:130px;border-radius:50%;left:-70px;bottom:-90px;background:rgba(255,255,255,.04)}.ranking-icon{position:relative;z-index:1;font-size:2.7rem;filter:drop-shadow(0 8px 12px rgba(0,0,0,.22));margin-bottom:4px}.ranking-hero span{position:relative;z-index:1;font-size:.56rem;letter-spacing:2px;color:#e1c36d;font-weight:800}.ranking-hero h2{position:relative;z-index:1;font-size:1.55rem;margin:3px 0 4px}.ranking-hero p{position:relative;z-index:1;font-size:.62rem;line-height:1.9;color:rgba(255,255,255,.68);max-width:290px;margin:auto}.podium-section{margin-top:16px;padding:18px 10px 8px;border-radius:24px;background:linear-gradient(180deg,#fff,#fbf5e8);border:1px solid rgba(212,164,56,.2);box-shadow:0 10px 26px rgba(23,35,56,.07)}.podium{display:grid;grid-template-columns:1fr 1.12fr 1fr;align-items:end;gap:7px;min-height:210px}.podium-item{position:relative;text-align:center;padding:16px 5px 13px;border-radius:19px 19px 13px 13px;background:#f3f4f5;border:1px solid rgba(23,35,56,.08);box-shadow:0 7px 16px rgba(23,35,56,.06);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:160px}.podium-item.rank-1{min-height:198px;margin-top:-18px;background:linear-gradient(160deg,#fff7d8,#f0d078);border-color:#d4a438;box-shadow:0 13px 30px rgba(212,164,56,.25),inset 0 1px 0 rgba(255,255,255,.7);z-index:2}.podium-item.rank-2{background:linear-gradient(160deg,#fff,#e5e8eb)}.podium-item.rank-3{background:linear-gradient(160deg,#fff7f0,#e5c2a5)}.podium-medal{font-size:1.45rem;position:absolute;top:-16px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.14))}.rank-1 .podium-medal{font-size:1.85rem;top:-23px}.podium-avatar,.ranking-avatar{display:grid;place-items:center;border-radius:50%;font-weight:800;background:#1e2f4a;color:#fff}.podium-avatar{width:46px;height:46px;font-size:1rem;border:3px solid rgba(255,255,255,.8);margin-top:10px}.rank-1 .podium-avatar{width:54px;height:54px;background:linear-gradient(145deg,#d4a438,#8f6a1f);box-shadow:0 5px 14px rgba(143,106,31,.28)}.podium-name{font-size:.65rem;color:#26374e;margin-top:8px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.podium-name small{display:block;font-size:.46rem;color:#8f6a1f;margin-top:2px}.podium-score{font-size:.9rem;color:#172b45;margin-top:5px}.rank-1 .podium-score{font-size:1.05rem;color:#745415}.podium-rank{font-size:.48rem;color:#7d8794;margin-top:1px}.podium-item.is-me{outline:2px solid rgba(212,164,56,.45);outline-offset:2px}.podium-loading{text-align:center;padding:70px 10px;color:#8993a1;font-size:.65rem}.podium-loading.error{color:#a83a2e}.ranking-heading{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 10px}.ranking-heading span{display:block;font-size:.5rem;letter-spacing:1.5px;color:#a67b22;font-weight:800}.ranking-heading h2{font-size:1rem;color:#1d3048;margin-top:2px}.ranking-heading a{font-size:.58rem;font-weight:800;color:#9b7627;background:#f8f0df;padding:8px 11px;border-radius:11px}.ranking-list{display:grid;gap:7px}.ranking-row{display:grid;grid-template-columns:34px 38px 1fr auto;align-items:center;gap:8px;padding:10px 11px;border-radius:16px;background:#fff;border:1px solid rgba(23,35,56,.07);box-shadow:0 5px 14px rgba(23,35,56,.05);transition:transform .2s ease,box-shadow .2s ease}.ranking-row.is-me{border-color:rgba(212,164,56,.42);background:#fffaf0}.ranking-position{text-align:center;font-size:.76rem;font-weight:900;color:#9a7525}.ranking-row.rank-1 .ranking-position{color:#7c5b17}.ranking-avatar{width:34px;height:34px;font-size:.7rem;background:linear-gradient(145deg,#304966,#182c45)}.ranking-name{min-width:0}.ranking-name strong{display:block;font-size:.68rem;color:#253850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ranking-name small{display:block;color:#a07825;font-size:.47rem;margin-top:2px}.ranking-score{text-align:left;min-width:52px}.ranking-score strong{display:block;font-size:.78rem;color:#1b304a}.ranking-score small{display:block;font-size:.45rem;color:#8a94a1;margin-top:1px}.ranking-note{display:flex;gap:10px;align-items:center;margin-top:14px;padding:14px 15px;border-radius:18px;background:rgba(30,47,74,.05);border:1px solid rgba(30,47,74,.07)}.ranking-note>span{font-size:1.2rem}.ranking-note strong{font-size:.63rem;color:#30435b}.ranking-note p{font-size:.52rem;color:#7f8996;line-height:1.8;margin-top:2px}.ranking-empty{grid-column:1/-1;text-align:center;padding:35px 15px;color:#7f8996}.ranking-empty span{display:block;font-size:2rem;margin-bottom:8px}.ranking-empty strong{font-size:.72rem;color:#34485f}.ranking-empty p{font-size:.55rem;margin-top:5px}@media(max-width:360px){.podium{gap:4px}.podium-item{padding-inline:3px}.podium-name{font-size:.58rem}.ranking-row{grid-template-columns:30px 34px 1fr auto;gap:6px}}
+
+/* Visual refinement v6 */
+.ranking-hero{border-radius:24px;box-shadow:0 16px 36px rgba(15,24,40,.17)}.podium-section{border-radius:22px}.ranking-row{border-radius:15px;box-shadow:0 4px 12px rgba(23,35,56,.045);transition:transform .18s var(--ease-out),box-shadow .18s,border-color .18s}.ranking-row:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(23,35,56,.07)}.ranking-row.rank-1{background:linear-gradient(100deg,#fff7dc,#fff)}.ranking-row.rank-1 .ranking-position{font-size:.9rem}.ranking-note{background:rgba(255,255,255,.58)}
+/* Profile photos in the podium and ranking list */
+.podium-avatar{position:relative;overflow:hidden}
+.podium-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.podium-avatar .ranking-avatar__fallback{position:relative;z-index:0}
+.ranking-avatar{position:relative;overflow:hidden}
+.ranking-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;z-index:1}
+.ranking-avatar__fallback{position:relative;z-index:0}
+
+/* Game participants are registered ring members: blue identity accents. */
+.podium-avatar { outline:2px solid #60a5fa; outline-offset:2px; }
+.ranking-avatar { border:2px solid #93c5fd; box-shadow:0 0 0 2px rgba(59,130,246,.08); }
+.ranking-row.is-me .ranking-avatar { border-color:#2563eb; }
+
+.member-role-badge{display:inline-flex;align-items:center;width:max-content;margin-top:4px;padding:2px 7px;border-radius:999px;background:linear-gradient(135deg,#dbeafe,#93c5fd);border:1px solid #bfdbfe;color:#1d4ed8;font-size:.48rem;font-weight:800}.leader-row .leader-avatar{border-color:#93c5fd}.leader-row.me{background:linear-gradient(100deg,#eff6ff,#fff);border-color:#93c5fd}.podium-item .podium-name .member-role-badge{display:none}
+
+/* Only verified ring members receive the blue membership accent. */
+.ranking-row.is-registered .ranking-avatar{border-color:#93c5fd;box-shadow:0 0 0 2px rgba(59,130,246,.08)}
+.ranking-row.is-unregistered .ranking-avatar{border-color:#d9e0e7;background:#eef2f5;color:#7b8794;box-shadow:none}
+.podium-item.is-registered .podium-avatar{outline:2px solid #60a5fa;outline-offset:2px}
+.podium-item.is-unregistered .podium-avatar{outline:none;box-shadow:none}
+.member-role-badge--neutral{color:#8994a1!important;background:transparent!important;border-color:transparent!important;box-shadow:none!important;font-weight:600!important}
+.member-role-badge{display:inline-flex;align-items:center;width:max-content;margin:4px 3px 0;padding:2px 7px;border:1px solid transparent;border-radius:999px;font-size:.48rem;font-weight:800;line-height:1.7}
+.member-role-badge--neutral,.member-role-badge--unregistered{background:transparent;color:#8a94a1;border-color:transparent}
+.member-role-badge--member{background:linear-gradient(135deg,#dbeafe,#93c5fd);border-color:#bfdbfe;color:#1d4ed8}
+.member-role-badge--official{background:linear-gradient(135deg,#ccfbf1,#5eead4);border-color:#99f6e4;color:#115e59}
+.member-role-badge--coach{background:linear-gradient(135deg,#fff4c6,#f4dfa0);border-color:#ead184;color:#765710}
+.member-role-badge--owner{background:linear-gradient(115deg,#7c3aed,#4338ca,#7c3aed);background-size:220% 220%;border-color:#a78bfa;color:#fff;animation:recordOwnerShift 4s ease infinite}
+@keyframes recordOwnerShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){.member-role-badge--owner{animation:none}}
+
+
+/* نقش مالک فقط با قاب مشکی آواتار مشخص می‌شود. */
+.owner-avatar{border:3px solid #111!important;box-sizing:border-box;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+
+
+/* Status ring palette shared with profile and game */
+.podium-avatar.role-ring--unregistered,.ranking-avatar.role-ring--unregistered{outline:2px solid #aab3bf;outline-offset:2px;border-color:#aab3bf;background:#eef1f4;color:#66717f;box-shadow:none}
+.podium-avatar.role-ring--member,.ranking-avatar.role-ring--member{outline:2px solid #22a447;outline-offset:2px;border-color:#22a447;box-shadow:0 0 0 1px rgba(34,164,71,.16)}
+.podium-avatar.role-ring--official,.ranking-avatar.role-ring--official{outline:2px solid #2688e8;outline-offset:2px;border-color:#2688e8;box-shadow:0 0 0 1px rgba(38,136,232,.18)}
+.podium-avatar.role-ring--coach,.ranking-avatar.role-ring--coach{outline:2px solid #d4a438;outline-offset:2px;border-color:#d4a438;box-shadow:0 0 0 1px rgba(212,164,56,.2)}
+.podium-avatar.role-ring--owner,.ranking-avatar.role-ring--owner{outline:2px solid #171717;outline-offset:2px;border:3px solid #171717!important;box-shadow:0 0 0 1px #b89436,0 0 0 3px #171717!important}
+.member-role-badge--unregistered{color:#77818e!important;background:#eef1f4!important;border-color:#d5dbe2!important}
+.member-role-badge--member{color:#176b2e!important;background:#e0f7e7!important;border-color:#8cdaa1!important}
+.member-role-badge--official{color:#155eaa!important;background:#e0f0ff!important;border-color:#8cc5ff!important}
+.member-role-badge--coach{color:#75520b!important;background:#fff4cc!important;border-color:#e4c35c!important}
+
+.podium-avatar.role-ring--owner:after,.ranking-avatar.role-ring--owner:after{content:'';position:absolute;inset:-2px;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 18% 22%,#f3d77c 0 1px,transparent 1.8px),radial-gradient(circle at 82% 25%,#c6a34c 0 1px,transparent 1.8px),radial-gradient(circle at 76% 78%,#f0d17a 0 1px,transparent 1.8px),radial-gradient(circle at 24% 80%,#b58a2c 0 1px,transparent 1.8px)}
+
+/* Keep ranking avatars compact and circular on narrow screens too. */
+.ranking-avatar,.podium-avatar{position:relative;box-sizing:border-box;width:44px;height:44px;min-width:44px;flex:0 0 44px;border-radius:50%;overflow:hidden;display:inline-flex;align-items:center;justify-content:center}
+.ranking-avatar img,.podium-avatar img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;border-radius:inherit}
+.ranking-row .ranking-avatar{width:38px;height:38px;min-width:38px;flex-basis:38px}

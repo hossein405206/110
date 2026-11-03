@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F6B62">
+  <title>حضور و غیاب | کانون</title>
+
+  <link rel="stylesheet" href="css/style.css?v=5.85.0">
+  <link rel="stylesheet" href="css/attendance.css?v=5.85.0">
+  <link rel="stylesheet" href="css/islamic-design.css?v=5.85.0">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <header class="app-header">
+      <a href="officials.html" class="header-back" aria-label="بازگشت">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </a>
+      <h1>حضور و غیاب</h1>
+    </header>
+
+    <main class="page">
+
+      <!-- ═══ خلاصه‌ی جلسه ═══ -->
+      <section class="att-summary">
+        <div class="att-summary__date">
+          <span class="att-summary__label">تاریخ جلسه</span>
+          <strong id="sessionDate">—</strong>
+        </div>
+        <div class="att-summary__official">
+          <span class="att-summary__label">مسئول</span>
+          <strong id="officialName">—</strong>
+        </div>
+      </section>
+
+      <!-- ═══ شمارنده‌ها ═══ -->
+      <section class="att-stats">
+        <div class="att-stat att-stat--present">
+          <span class="att-stat__num" id="countPresent">۰</span>
+          <span class="att-stat__label">حاضر</span>
+        </div>
+        <div class="att-stat att-stat--excused">
+          <span class="att-stat__num" id="countExcused">۰</span>
+          <span class="att-stat__label">موجه</span>
+        </div>
+        <div class="att-stat att-stat--absent">
+          <span class="att-stat__num" id="countAbsent">۰</span>
+          <span class="att-stat__label">غایب</span>
+        </div>
+      </section>
+
+      <!-- ═══ درخواست‌های عضویت در انتظار تأیید ═══ -->
+      <section class="pending-members-panel" id="pendingMembersPanel" aria-labelledby="pendingMembersTitle">
+        <div class="pending-members-panel__head"><div><h2 id="pendingMembersTitle">درخواست‌های عضویت</h2><p>حساب‌های جدید پس از بررسی حضوری تأیید می‌شوند.</p></div><button type="button" id="refreshPendingMembers" class="pending-refresh">بروزرسانی</button></div>
+        <p id="pendingMembersStatus" class="pending-members-status" role="status">در حال دریافت درخواست‌ها…</p>
+        <div id="pendingMembersList" class="pending-members-list"></div>
+      </section>
+
+      <!-- ═══ نوار ابزار ═══ -->
+      <div class="att-toolbar"><button type="button" class="att-btn-all" id="addMemberBtn">＋ افزودن عضو</button>
+        <input
+          type="search"
+          id="searchInput"
+          class="att-search"
+          placeholder="جستجوی اسم..."
+          autocomplete="off">
+        <button type="button" class="att-btn-all" id="markAllPresent">
+          همه حاضر
+        </button>
+      </div>
+
+      <!-- ═══ لیست اعضا ═══ -->
+      <section class="att-list" id="attendanceList">
+        <div class="att-loading">
+          <div class="spinner"></div>
+          <span>در حال بارگذاری...</span>
+        </div>
+      </section>
+
+      <!-- ═══ حالت خالی ═══ -->
+      <div class="empty hidden" id="attendanceEmpty">
+        <p>عضوی در لیست نیست</p>
+      </div>
+
+    </main>
+    <div class="modal" id="memberModal" role="dialog" aria-modal="true"><div class="modal-content"><div class="modal-header"><h3>افزودن عضو</h3><button type="button" class="close-btn" data-close-modal>×</button></div><form id="memberForm"><input id="memberName" class="form-control" placeholder="نام و نام خانوادگی عضو" maxlength="140" autocomplete="name" required><button class="btn-submit" type="submit">افزودن</button></form></div></div>
+
+    <!-- ═══ دکمه ذخیره شناور ═══ -->
+    <div class="att-save-bar" id="saveBar">
+      <div class="att-save-bar__info">
+        <span id="saveProgress">۰ از ۰</span>
+      </div>
+      <button type="button" class="att-save-btn" id="saveBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        <span>ذخیره</span>
+      </button>
+    </div>
+
+    <nav class="bottom-nav"></nav>
+  </div>
+
+  <script src="js/main.js?v=5.85.0" defer></script>
+  <script src="js/attendance.js?v=5.85.0" defer></script>
+</body>
+</html>

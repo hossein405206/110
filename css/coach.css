@@ -1,0 +1,443 @@
+.coach-page{padding-bottom:90px}.coach-login{margin:45px 0;padding:30px 20px;border-radius:28px;background:linear-gradient(145deg,#172b46,#0d192a);color:#fff;text-align:center;box-shadow:0 18px 45px rgba(15,24,40,.18)}.coach-lock{width:68px;height:68px;margin:0 auto 15px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(145deg,#e4c56d,#a87921);font-size:1.8rem}.coach-login h2,.coach-top h2{font:700 1.8rem 'Aref Ruqaa',serif;margin:5px 0}.coach-login p,.coach-top p{color:rgba(255,255,255,.62);font-size:.72rem;line-height:1.9}.coach-login form{display:grid;gap:10px;margin-top:22px}.coach-top{display:flex;align-items:center;justify-content:space-between;padding:20px 2px}.coach-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:14px}.coach-stat{padding:16px;border-radius:19px;background:#fff;border:1px solid rgba(23,35,56,.08);box-shadow:0 7px 18px rgba(23,35,56,.06)}.coach-stat strong{display:block;font-size:1.35rem;color:#182a43}.coach-stat span{font-size:.6rem;color:#7a8699}.coach-panel{margin:12px 0;padding:17px;border-radius:23px;background:rgba(255,253,248,.92);border:1px solid rgba(23,35,56,.08);box-shadow:0 10px 25px rgba(23,35,56,.06)}.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.panel-head h3{font-size:.95rem;color:#172338}.eyebrow{font-size:.5rem;letter-spacing:1.8px;font-weight:800;color:#b18a37}.mini-action,.btn-secondary{border:0;border-radius:12px;padding:9px 11px;background:#eef1f5;color:#243b58;font:700 .65rem Vazirmatn}.event-editor{padding:13px;border-radius:17px;background:#f7f1e4;margin-bottom:13px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.form-grid label{font-size:.62rem;font-weight:700;color:#536073}.form-grid label.full{grid-column:1/-1}.form-grid input,.form-grid textarea{margin-top:5px}.event-upload{margin-top:10px;padding:15px;border:1px dashed #cdbb8c;border-radius:14px;text-align:center;color:#7c8795;font-size:.65rem}.event-upload input{max-width:100%}.editor-actions{display:flex;gap:8px;margin-top:10px}.editor-actions>*{flex:1}.admin-list{display:grid;gap:8px}.admin-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px;border-radius:14px;background:#f8f5ed;border:1px solid rgba(23,35,56,.06)}.admin-item img{width:52px;height:40px;object-fit:cover;border-radius:9px}.admin-item-main{flex:1;min-width:0}.admin-item-main strong,.admin-item-main small{display:block}.admin-item-main strong{font-size:.68rem;color:#26364b}.admin-item-main small{font-size:.55rem;color:#7f8a98;margin-top:3px}.admin-actions{display:flex;gap:5px}.admin-actions button{border:0;border-radius:9px;padding:7px 8px;font:700 .56rem Vazirmatn;background:#e9edf2;color:#29405d}.admin-actions .danger{background:#f4e2e5;color:#8b2e3e}.report-box{max-height:330px;overflow:auto}.report-row{display:grid;grid-template-columns:90px 1fr 65px;gap:7px;padding:9px 0;border-bottom:1px solid #eee6d5;font-size:.6rem}.report-row span:last-child{text-align:left;font-weight:800}.prize-editor{display:flex;gap:8px}.prize-editor input{flex:1}.muted{font-size:.55rem;color:#8a95a3;margin-top:8px}.hidden{display:none!important}@media(max-width:380px){.form-grid{grid-template-columns:1fr}.form-grid label.full{grid-column:auto}}
+.coach-page{max-width:620px;margin:auto}.coach-login{min-height:65vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle at 15% 15%,rgba(224,192,100,.16),transparent 28%),linear-gradient(145deg,#0d1b2e,#172d49 60%,#0b1727);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 80px rgba(15,24,40,.25)}.coach-login:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(224,192,100,.13);right:-90px;bottom:-100px;box-shadow:0 0 0 35px rgba(224,192,100,.025),0 0 0 70px rgba(224,192,100,.02)}.coach-login h2{font-family:var(--font-body)!important;font-weight:800;font-size:2rem}.coach-lock{box-shadow:0 14px 30px rgba(213,168,60,.2)}.coach-top{background:linear-gradient(145deg,#14263f,#0d1b2d);border-radius:23px;padding:20px;color:#fff;margin-bottom:12px;box-shadow:0 16px 35px rgba(15,24,40,.14)}.coach-top p{color:rgba(255,255,255,.55)}.coach-panel{transition:transform .2s,box-shadow .2s}.coach-panel:hover{transform:translateY(-2px);box-shadow:0 16px 35px rgba(23,35,56,.09)}.coach-panel h3{font-family:var(--font-body);font-weight:800}.coach-stat{position:relative;overflow:hidden}.coach-stat:after{content:"";position:absolute;left:-15px;bottom:-20px;width:65px;height:65px;border-radius:50%;background:rgba(212,164,56,.08)}.coach-page .btn-submit{box-shadow:0 10px 22px rgba(23,35,56,.12)}.coach-page .mini-action{box-shadow:0 4px 10px rgba(23,35,56,.08)}
+
+/* V2 management refinements */
+.coach-role-badge{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;background:rgba(224,192,100,.14);border:1px solid rgba(224,192,100,.28);color:#e4c56d;font-size:.58rem;font-weight:800;margin-right:auto;margin-left:8px}.panel-subtitle{display:block;margin-top:5px;color:#8792a1;font-size:.55rem;line-height:1.8}.permission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}.permission-item{display:flex;align-items:center;gap:7px;padding:9px 10px;border-radius:12px;background:#fff;border:1px solid rgba(23,35,56,.08);font-size:.58rem;color:#39495e;cursor:pointer}.permission-item input{accent-color:#b98a2c}.permission-summary{font-size:.5rem;color:#8b7440;margin-top:5px;line-height:1.8}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}.status-dot.on{background:#4d9b72;box-shadow:0 0 0 3px rgba(77,155,114,.1)}.status-dot.off{background:#a0a8b2}.permission-hidden{display:none!important}.coach-admin-item{align-items:flex-start}@media(max-width:380px){.permission-grid{grid-template-columns:1fr}.coach-role-badge{display:none}}
+
+
+/* WordPress-like coach workspace */
+.coach-page{max-width:980px;padding:18px 16px 105px}
+.coach-top{position:relative;gap:12px;flex-wrap:wrap;box-shadow:0 14px 36px rgba(16,33,55,.12)}
+.coach-top>div{min-width:0;flex:1}
+.coach-top h2{font-family:var(--font-body)!important;font-size:1.25rem;line-height:1.5}
+.coach-top p{margin-top:5px}
+.coach-top .btn-secondary{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.15)}
+.coach-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0}
+.coach-stat{border-radius:16px;border-color:rgba(24,42,67,.07);padding:17px;box-shadow:0 8px 22px rgba(18,38,61,.05)}
+.coach-stat strong{font-size:1.55rem;line-height:1.4}
+.coach-stat span{font-size:.68rem;line-height:1.7}
+.coach-quick-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0 23px}
+.coach-quick-link{position:relative;display:flex;flex-direction:column;min-width:0;gap:3px;padding:15px;border-radius:17px;background:linear-gradient(160deg,#fff,#fbfaf7);border:1px solid rgba(28,52,76,.09);box-shadow:0 8px 20px rgba(18,38,61,.045);color:#203650;text-decoration:none;transition:transform .18s,border-color .18s,box-shadow .18s}
+.coach-quick-link:hover{transform:translateY(-2px);border-color:rgba(177,138,55,.38);box-shadow:0 12px 24px rgba(18,38,61,.08)}
+.coach-quick-link>span{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#f4ecd9;color:#987020;font-size:.66rem;font-weight:900;margin-bottom:5px}
+.coach-quick-link strong{font-size:.74rem;line-height:1.7}
+.coach-quick-link small{font-size:.56rem;color:#8a95a3;line-height:1.7}
+.coach-panel{scroll-margin-top:14px;margin:14px 0;padding:20px;border-radius:19px;background:#fff;border:1px solid rgba(22,43,66,.075);box-shadow:0 9px 26px rgba(18,38,61,.045)}
+.panel-head{align-items:center;gap:12px;flex-wrap:wrap}
+.panel-head h3{font-size:.92rem;line-height:1.8}
+.panel-subtitle{display:block;margin-top:3px;font-size:.58rem;color:#8893a1;line-height:1.8}
+.coach-account-panel{background:linear-gradient(145deg,#fff,#f9fbfa);border-color:rgba(15,107,98,.12)}
+.coach-account-panel .form-grid{margin-top:10px}
+.coach-account-panel .editor-actions{justify-content:flex-start}
+.coach-account-panel .editor-actions button{flex:0 1 230px}
+.feedback-list{display:grid;gap:10px}
+.feedback-item{padding:15px;border:1px solid rgba(29,48,72,.08);border-radius:15px;background:#fcfcfb;min-width:0}
+.feedback-item__top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.feedback-item__top strong{display:inline-flex;padding:5px 9px;border-radius:999px;background:#f5edda;color:#8f6b23;font-size:.6rem}
+.feedback-item__top small{display:block;margin-top:6px;color:#798596;font-size:.58rem;line-height:1.7}
+.feedback-item__top time{flex:0 0 auto;color:#929ba6;font-size:.5rem;direction:ltr}
+.feedback-item>p{white-space:pre-wrap;overflow-wrap:anywhere;margin:12px 0;color:#2f4056;font-size:.7rem;line-height:2}
+.feedback-item__actions{display:flex;justify-content:flex-end}
+.feedback-item__actions label{display:flex;align-items:center;gap:8px;color:#6f7d8d;font-size:.6rem}
+.feedback-item__actions select{min-width:132px;width:auto;margin:0;padding:7px 10px;font-size:.62rem}
+.admin-list .admin-item{border-radius:13px}
+.event-editor{border:1px solid rgba(177,138,55,.1)}
+#coachDashboard{animation:coachDashboardIn .28s ease both}
+@keyframes coachDashboardIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:720px){
+ .coach-page{padding-inline:12px}
+ .coach-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .coach-quick-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .coach-panel{padding:15px;border-radius:16px}
+}
+@media(max-width:390px){
+ .coach-quick-link{padding:12px}
+ .coach-quick-link strong{font-size:.68rem}
+ .coach-top{padding:16px}
+ .coach-top .btn-secondary{font-size:.58rem;padding:8px}
+ .feedback-item__top{display:block}
+ .feedback-item__top time{display:block;margin-top:6px}
+ .feedback-item__actions label{width:100%;justify-content:space-between}
+}
+
+/* Role identity: coach=gold, owner=animated purple/indigo, official=turquoise. */
+.coach-role-badge.is-coach { background:linear-gradient(135deg,#f8e7a3,#d4a438); border-color:rgba(212,164,56,.48); color:#694b08; box-shadow:0 6px 16px rgba(180,132,29,.16); }
+.coach-role-badge.is-owner, .staff-role-badge.is-owner { color:#fff; border:1px solid rgba(167,139,250,.5); background:linear-gradient(115deg,#7c3aed,#4338ca,#7c3aed); background-size:220% 220%; animation:ownerRoleShift 4s ease infinite; box-shadow:0 6px 18px rgba(99,102,241,.24); }
+.staff-role-badge { display:inline-flex; align-items:center; max-width:100%; padding:3px 8px; margin-top:5px; border-radius:999px; font:800 .54rem Vazirmatn; line-height:1.7; border:1px solid transparent; }
+.staff-role-badge.is-coach { color:#765710; background:linear-gradient(135deg,#fff4c6,#f4dfa0); border-color:#ead184; }
+.staff-role-badge.is-official { color:#086b64; background:linear-gradient(135deg,#d9fbf3,#a8eee2); border-color:#8fe4d5; }
+.prize-card { padding:14px; border-radius:19px; background:linear-gradient(145deg,#f1fbf8,#f3f5ff); border:1px solid #d8ece8; }
+.prize-card-intro { display:flex; align-items:center; gap:11px; padding:4px 2px 13px; }
+.prize-trophy, .prize-heading-icon { display:grid; place-items:center; flex:0 0 auto; width:43px; height:43px; border-radius:15px; background:linear-gradient(135deg,#ccfbf1,#dbeafe); box-shadow:inset 0 1px 0 rgba(255,255,255,.85); font-size:1.3rem; }
+.prize-card-intro strong { display:block; color:#174d4b; font-size:.74rem; }
+.prize-card-intro p { margin-top:3px; color:#70858b; font-size:.57rem; line-height:1.8; }
+.prize-editor { display:grid; gap:10px; margin-top:2px; }
+.prize-editor textarea { min-height:92px; resize:vertical; border:1px solid #c8e3df; background:rgba(255,255,255,.94); color:#243b53; line-height:1.9; }
+.prize-editor textarea:focus { border-color:#2b9d91; box-shadow:0 0 0 3px rgba(20,148,136,.12); }
+#savePrizeBtn.prize-save-btn { display:flex; align-items:center; justify-content:center; gap:8px; min-height:46px; border:1px solid rgba(15,118,110,.18); border-radius:14px; color:#fff; background:linear-gradient(115deg,#0f766e,#2563eb); box-shadow:0 8px 18px rgba(15,118,110,.20); font-weight:800; transition:transform .18s ease,box-shadow .18s ease,filter .18s ease; }
+#savePrizeBtn.prize-save-btn span { display:grid; place-items:center; width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,.18); }
+#savePrizeBtn.prize-save-btn:hover { transform:translateY(-1px); box-shadow:0 11px 22px rgba(15,118,110,.24); filter:saturate(1.05); }
+#savePrizeBtn.prize-save-btn:disabled { opacity:.7; transform:none; }
+@keyframes ownerRoleShift { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
+@media (prefers-reduced-motion:reduce) { .coach-role-badge.is-owner,.staff-role-badge.is-owner { animation:none; } }
+@media(max-width:420px) { .prize-card { padding:11px; } .prize-heading-icon { width:37px;height:37px; } .admin-actions { flex-wrap:wrap; justify-content:flex-end; } }
+
+
+/* Independent multi-photo activity reports */
+.activity-photo-picker{margin-top:15px;padding:15px;border:1px dashed rgba(201,154,53,.48);border-radius:18px;background:linear-gradient(145deg,#fffaf0,#fff);display:grid;gap:12px}
+.activity-photo-picker__label{display:grid;justify-items:center;text-align:center;gap:6px;padding:15px;border-radius:14px;background:#f8f1df;color:#24364d;cursor:pointer}
+.activity-photo-picker__label>span{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#e5c873,#b88a2a);color:#fff;font-size:1.45rem}
+.activity-photo-picker__label strong{font-size:.78rem}.activity-photo-picker__label small{font-size:.58rem;color:#7b8795;line-height:1.8}
+#activityReportPhotos{width:100%;font:inherit;font-size:.65rem;color:#657184}
+.activity-photo-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.activity-photo-preview>span{grid-column:1/-1;text-align:center;color:#8b95a2;font-size:.63rem;padding:10px}
+.activity-photo-preview__item{min-width:0;overflow:hidden;border:1px solid rgba(24,43,67,.09);border-radius:12px;background:#fff}
+.activity-photo-preview__item img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#f1eee7}
+.activity-photo-preview__item span,.activity-photo-preview__item small{display:block;padding:4px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.48rem;color:#44546a}
+.activity-photo-preview__item small{color:#8993a1;padding-top:0}
+.activity-clear-photos{justify-self:start;min-height:34px;font-size:.58rem}
+.activity-report-admin-item{align-items:center}
+.activity-report-admin-item .admin-item-main p{font-size:.6rem;color:#7c8795;line-height:1.7;margin-top:4px;white-space:pre-line}
+.activity-report-admin-thumbs{display:flex;align-items:center;gap:3px;flex:0 0 auto}
+.activity-report-admin-thumbs img{width:38px;height:42px;object-fit:cover;border-radius:7px;background:#f0ede5}
+.activity-report-no-photo{font-size:.52rem;color:#8b95a2}
+@media(max-width:420px){.activity-report-admin-thumbs img{width:30px;height:34px}.activity-report-admin-item{gap:8px}.activity-photo-preview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Secure consent-photo viewer */
+.registration-photo-modal { z-index: 2100; }
+.registration-photo-modal__content { max-width: 720px; width: min(100%, 720px); }
+.registration-photo-modal__image { display: block; width: 100%; max-height: 68vh; object-fit: contain; margin: 12px auto 0; border-radius: 12px; background: #f5f5f5; }
+.registration-photo-modal__image[hidden] { display: none; }
+.registration-photo-modal__status { margin: 8px 0; color: var(--text-secondary, #475569); }
+
+
+/* v5.32.0 — Cohesive, professional coach workspace and clearer hierarchy. */
+.coach-page{max-width:1080px;padding:22px 18px 112px}
+.coach-login{min-height:clamp(430px,68vh,610px);max-width:560px;margin:clamp(22px,6vh,56px) auto 34px;padding:clamp(26px,5vw,42px);border:1px solid rgba(224,192,100,.2);border-radius:30px;background:radial-gradient(ellipse at 12% 8%,rgba(39,167,151,.16),transparent 34%),radial-gradient(ellipse at 100% 100%,rgba(224,192,100,.11),transparent 35%),linear-gradient(145deg,#0d1b2e,#172d49 58%,#0a1726);box-shadow:0 28px 75px rgba(13,27,46,.22)}
+.coach-lock{position:relative;z-index:1;width:76px;height:76px;border:1px solid rgba(255,255,255,.42);border-radius:24px;background:linear-gradient(145deg,#f0d98d,#b98726);color:#15283f;box-shadow:0 14px 30px rgba(213,168,60,.23)}
+.coach-login h2{font-family:var(--font-persian-ui,"Estedad",Tahoma,sans-serif)!important;font-size:clamp(1.4rem,4vw,1.85rem);line-height:1.7;letter-spacing:-.025em}
+.coach-login>p{max-width:42ch;margin:6px auto 0;font-size:.78rem;line-height:2.1;color:rgba(255,255,255,.72)}
+.coach-login form{width:100%;max-width:390px;margin:26px auto 0;gap:13px}
+.coach-login .form-control{min-height:49px;padding:12px 14px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:border-color .18s,background .18s,box-shadow .18s}
+.coach-login .form-control::placeholder{color:rgba(255,255,255,.52)}
+.coach-login .form-control:focus{outline:none;border-color:#d8b653;background:rgba(255,255,255,.11);box-shadow:0 0 0 4px rgba(216,182,83,.12)}
+.coach-login .btn-submit{min-height:50px;margin-top:3px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:linear-gradient(115deg,#d9b34d,#f0d98d 48%,#b98524);color:#17263a;font-weight:900;box-shadow:0 10px 24px rgba(185,133,36,.2);transition:transform .18s,filter .18s,box-shadow .18s}
+.coach-login .btn-submit:hover{transform:translateY(-1px);filter:saturate(1.08);box-shadow:0 14px 28px rgba(185,133,36,.25)}
+.coach-top{border:1px solid rgba(224,192,100,.16);background:radial-gradient(ellipse at 100% 0,rgba(45,170,153,.13),transparent 38%),linear-gradient(145deg,#14263f,#0b1929);border-radius:23px}
+.coach-stats{gap:12px}
+.coach-stat{border-radius:18px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.coach-stat:hover{transform:translateY(-2px);border-color:rgba(177,138,55,.25);box-shadow:0 13px 28px rgba(18,38,61,.08)}
+.coach-quick-nav{gap:12px}
+.coach-quick-link{min-height:112px;padding:16px;border-radius:18px;background:linear-gradient(150deg,#fff 0%,#faf8f2 100%);border-color:rgba(28,52,76,.09)}
+.coach-quick-link:focus-visible{outline:3px solid #d9b34d;outline-offset:3px}
+.coach-panel{border-radius:21px;box-shadow:0 9px 28px rgba(18,38,61,.045)}
+.coach-panel .form-control,.coach-panel input:not([type=checkbox]):not([type=file]),.coach-panel textarea,.coach-panel select{border-radius:12px;min-height:42px}
+.coach-panel .btn-submit,.coach-panel .mini-action,.coach-panel .btn-secondary{min-height:39px;border-radius:12px;font-weight:800}
+.coach-panel .panel-head{padding-bottom:11px;border-bottom:1px solid rgba(22,43,66,.07)}
+.coach-panel .panel-head h3{font-size:.98rem;letter-spacing:-.01em}
+.coach-panel:focus-within{border-color:rgba(15,107,98,.2)}
+@media(max-width:720px){.coach-page{padding:14px 12px 105px}.coach-login{min-height:unset;margin:18px auto 25px;padding:28px 18px;border-radius:24px}.coach-quick-link{min-height:100px}.coach-stats{gap:9px}}
+@media(prefers-reduced-motion:reduce){.coach-stat,.coach-login .btn-submit,.coach-quick-link{transition:none}.coach-stat:hover,.coach-login .btn-submit:hover,.coach-quick-link:hover{transform:none}}
+
+
+/* v5.33.0 — polished coach workspace, keyboard access, and mobile forms */
+.coach-page{color:#20334b}
+.coach-login{isolation:isolate}
+.coach-login:focus-within{border-color:rgba(224,192,100,.42);box-shadow:0 30px 80px rgba(15,24,40,.25),0 0 0 4px rgba(224,192,100,.07)}
+.coach-login .form-control{width:100%;min-height:49px;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(255,255,255,.075);color:#fff;padding:12px 14px;font:600 .78rem/1.7 var(--font-persian-ui,"Estedad",Tahoma,sans-serif);transition:border-color .18s,background .18s,box-shadow .18s}
+.coach-login .form-control::placeholder{color:rgba(255,255,255,.48)}
+.coach-login .form-control:focus{outline:none;border-color:#d9b34d;background:rgba(255,255,255,.11);box-shadow:0 0 0 4px rgba(217,179,77,.12)}
+.coach-quick-link:active,.coach-page .btn-submit:active,.coach-page .mini-action:active,.coach-page .btn-secondary:active{transform:translateY(1px)}
+.coach-panel .form-control:focus,.coach-panel input:focus,.coach-panel textarea:focus,.coach-panel select:focus{outline:none;border-color:#16877c;box-shadow:0 0 0 3px rgba(22,135,124,.12)}
+.coach-panel .admin-item,.coach-panel .feedback-item{overflow-wrap:anywhere}
+.coach-panel button:focus-visible,.coach-panel a:focus-visible,.coach-page button:focus-visible{outline:3px solid #d9b34d;outline-offset:3px}
+.coach-page .panel-head small,.coach-page .muted{line-height:1.9}
+@media(max-width:420px){.coach-login h2{font-size:1.65rem}.coach-login p{font-size:.75rem}.coach-panel .editor-actions{flex-wrap:wrap}.coach-panel .editor-actions>*{min-width:100%}.coach-quick-link{min-height:94px}}
+@media(prefers-reduced-motion:reduce){.coach-page *{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* v5.34.0 accessibility and restrained role styling */
+.coach-login .form-control::placeholder{color:rgba(255,255,255,.86)!important;opacity:1;font-weight:500}
+.coach-role-badge.is-owner,.staff-role-badge.is-owner{color:#344256;background:#eef1f5;border:1px solid #d9dfe7;box-shadow:none;animation:none;background-size:auto}
+.coach-login .form-control{caret-color:#f1d16d}
+
+/* Camp management and 8-day attendance line chart */
+.attendance-trend-panel{overflow:hidden}
+.attendance-trend-summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;margin-bottom:7px;border-radius:15px;background:linear-gradient(125deg,#e6f7f1,#f7fbf9);border:1px solid #cce8de}
+.attendance-trend-summary span{color:#58766d;font-size:.72rem;font-weight:700}
+.attendance-trend-summary strong{color:#087b66;font-size:1.15rem;font-weight:900}
+.attendance-trend-chart{width:100%;overflow:hidden}
+.attendance-trend-chart svg{display:block;width:100%;height:auto;min-height:160px}
+.attendance-trend-note{margin:0;padding:0 5px;color:#82918e;font-size:.62rem;line-height:1.8}
+.camp-admin-item,.camp-registration-item{align-items:flex-start}
+.camp-admin-item .admin-item-main small,.camp-registration-item .admin-item-main small{line-height:1.9;overflow-wrap:anywhere}
+.camp-admin-item .admin-actions,.camp-registration-item .admin-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;max-width:46%}
+.payment-waiting{font-size:.58rem;color:#8a6420;background:#fff4d5;border-radius:9px;padding:6px 8px}
+@media(max-width:420px){.camp-admin-item,.camp-registration-item{flex-direction:column}.camp-admin-item .admin-actions,.camp-registration-item .admin-actions{max-width:100%;width:100%;justify-content:flex-start}.attendance-trend-summary strong{font-size:1rem}}
+
+
+/* v5.35.0 — readable mobile login controls and restrained role labels */
+.coach-login .form-control{color:#fff!important;background:rgba(255,255,255,.14)!important}
+.coach-login .form-control::placeholder{color:#eef3fa!important;opacity:1!important;font-weight:600!important}
+.coach-login .form-control:focus::placeholder{color:#fff!important}
+.coach-role-badge.is-owner,.staff-role-badge.is-owner{font-weight:600!important;letter-spacing:0!important;transform:none!important}
+
+
+/* v5.36.0 — persistent, accessible feedback for coach sign-in */
+.coach-login-status{min-height:1.4em;margin:10px 0 0;color:#e7f2ff;font-size:.92rem;line-height:1.8;overflow-wrap:anywhere}
+.coach-login-status:empty{display:none}
+.coach-login-status.is-error{color:#ffb7b7;font-weight:600}
+.coach-login-status.is-success{color:#b9f5d0}
+#coachLoginForm button[type="submit"]{touch-action:manipulation}
+
+/* v5.44.0 — attendance archive */
+.attendance-trend-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;padding:0 0 10px;color:#64766f;font-size:.72rem;font-weight:800}.attendance-trend-legend span{display:inline-flex;align-items:center;gap:6px}.attendance-trend-legend i{display:inline-block;width:10px;height:10px;border-radius:50%}.attendance-archive-controls{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin:12px 0 16px}.attendance-archive-controls label{grid-column:1/-1;color:#56665f;font-size:.78rem;font-weight:800}.attendance-archive-controls .form-control{min-width:0;min-height:46px}.attendance-archive-controls .btn-submit{min-height:46px;padding:10px 16px;white-space:nowrap}.attendance-archive-summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.attendance-archive-summary span,.attendance-archive-row>span{border-radius:10px;padding:6px 10px;font-size:.7rem;font-weight:900;white-space:nowrap}.is-present{color:#087b66!important;background:#e5f6ef}.is-excused{color:#9b7010!important;background:#fff5d8}.is-absent{color:#bd3540!important;background:#ffeaec}.attendance-archive-list{display:grid;gap:8px}.attendance-archive-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid #e7ece8;border-radius:14px;background:#fff}.attendance-archive-row>div{min-width:0;display:grid;gap:4px}.attendance-archive-row strong{font-size:.83rem;color:#25384a;overflow-wrap:anywhere}.attendance-archive-row small{font-size:.7rem;color:#75847d;line-height:1.8;overflow-wrap:anywhere}.attendance-archive-empty{padding:18px;border-radius:14px;background:#f7f8f6;color:#738078;text-align:center;font-size:.8rem}@media(max-width:420px){.attendance-archive-controls{grid-template-columns:1fr}.attendance-archive-controls label{grid-column:auto}.attendance-archive-controls .btn-submit{width:100%}.attendance-archive-row{align-items:flex-start}}
+
+/* v5.45.0 — ensure attendance chart and schedule audience labels remain visible */
+.attendance-trend-panel{display:block!important;visibility:visible!important;opacity:1!important}
+.attendance-trend-chart{display:block;min-height:210px;width:100%;overflow-x:auto}
+.attendance-trend-chart svg{display:block!important;width:100%;min-width:320px;height:auto;min-height:180px}
+.schedule-admin-category{display:inline-flex;margin:4px 0;padding:3px 7px;border-radius:8px;font-size:.68rem;font-weight:800}
+.attendance-saved-notice{margin:12px 0;padding:12px 14px;border-radius:12px;background:#e7f5ef;color:#17634f;font-size:.82rem;line-height:1.9}
+
+
+/* Member attendance history search */
+.attendance-member-history-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px;padding:13px;margin-bottom:12px;border:1px solid rgba(23,43,65,.08);border-radius:15px;background:#f8f7f2}
+.attendance-member-history-controls label{display:block;min-width:0;color:#536073;font-size:.65rem;font-weight:800}
+.attendance-member-history-controls input{margin-top:6px}
+.attendance-member-history-controls .btn-submit{min-width:140px;white-space:nowrap}
+.attendance-member-history-results{display:grid;gap:10px;min-width:0}
+.attendance-member-history-range,.attendance-member-history-result-count{margin:0;color:#69778a;font-size:.62rem;line-height:1.9}
+.attendance-member-history-range strong{color:#263c56}
+.attendance-member-history-limit{margin:0;padding:9px 11px;border-radius:10px;background:#fff4d8;color:#78571c;font-size:.61rem;line-height:1.8}
+.attendance-member-history-card{min-width:0;padding:13px;border:1px solid rgba(23,43,65,.09);border-radius:15px;background:linear-gradient(150deg,#fff,#fcfbf7)}
+.attendance-member-history-card-head{display:grid;gap:10px}
+.attendance-member-history-card-head>div:first-child{min-width:0}
+.attendance-member-history-card-head strong{display:block;color:#1f344e;font-size:.8rem;overflow-wrap:anywhere}
+.attendance-member-history-card-head small{display:block;margin-top:5px;color:#798597;font-size:.57rem;line-height:1.9}
+.attendance-member-history-counts{display:flex;flex-wrap:wrap;gap:6px}
+.attendance-member-history-counts span{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#f0f3f5;font-size:.61rem;font-weight:800}
+.attendance-member-history-counts .is-present{background:#e5f5ee;color:#176e55}
+.attendance-member-history-counts .is-excused{background:#fff3d4;color:#876213}
+.attendance-member-history-counts .is-absent{background:#fae8e9;color:#a3333c}
+.attendance-member-history-details{margin-top:11px;border-top:1px solid #ece8de;padding-top:9px}
+.attendance-member-history-details summary{cursor:pointer;color:#344c68;font-size:.63rem;font-weight:800}
+.attendance-member-history-list{display:grid;gap:1px;margin-top:8px;max-height:360px;overflow:auto;border:1px solid #eee9df;border-radius:10px;background:#f6f4ee}
+.attendance-member-history-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;background:#fff;font-size:.63rem}
+.attendance-member-history-row time{direction:rtl;color:#68768a;font-variant-numeric:tabular-nums}
+.attendance-member-history-row span{font-weight:800}
+.attendance-member-history-empty{padding:15px;border-radius:12px;background:#f7f5ef;color:#57677b;font-size:.65rem;line-height:1.9}
+.attendance-member-history-empty small{display:block;margin-top:5px;color:#8792a1;font-size:.58rem}
+@media(max-width:420px){.attendance-member-history-controls{grid-template-columns:1fr}.attendance-member-history-controls .btn-submit{width:100%;min-width:0}.attendance-member-history-card{padding:11px}.attendance-member-history-counts{gap:5px}.attendance-member-history-counts span{font-size:.58rem;padding:5px 7px}}
+
+
+/* v5.76.0 — روشن‌سازی پنل مربیان؛ نمودارها و منطق آن‌ها عمداً حفظ شده‌اند. */
+body:has(.coach-page){background:#f5f7fa!important;color:#172b46}
+body:has(.coach-page) .app-container{background:transparent}
+.coach-page{max-width:1080px;padding:16px 14px 100px}
+.coach-page .app-header,.app-header:has(+ .coach-page){background:#fff!important;color:#18304d!important;border-bottom:1px solid #e8edf3;box-shadow:0 3px 14px rgba(25,48,75,.035)}
+.app-header:has(+ .coach-page) h1{color:#18304d}
+.app-header:has(+ .coach-page) .header-back{color:#18304d}
+.coach-login{background:linear-gradient(145deg,#fff,#f9fbff)!important;color:#18304d!important;border:1px solid #e5ebf3!important;box-shadow:0 16px 40px rgba(28,49,75,.08)!important}
+.coach-login:after{border-color:rgba(191,148,55,.14)}
+.coach-login h2{color:#18304d}
+.coach-login p{color:#7b899b!important}
+.coach-lock{background:linear-gradient(145deg,#fff0c8,#f8e5ad)!important;color:#8a681d;border:1px solid #f0dfb4;box-shadow:none!important}
+.coach-page .form-control,.coach-page input,.coach-page textarea,.coach-page select{border:1px solid #e0e7ef;border-radius:12px;background:#fff;color:#203650;box-shadow:none}
+.coach-page .form-control:focus,.coach-page input:focus,.coach-page textarea:focus,.coach-page select:focus{outline:none;border-color:#9cb8d5;box-shadow:0 0 0 3px rgba(64,119,171,.09)}
+.coach-top{background:linear-gradient(120deg,#fff,#f9fbfe)!important;color:#18304d!important;border:1px solid #e6ecf3;box-shadow:0 8px 25px rgba(26,48,75,.045)!important;border-radius:20px}
+.coach-top h2{color:#18304d}
+.coach-top p{color:#7d8ba0!important}
+.coach-role-badge{background:#fff5d9;color:#8a671c;border-color:#f0dfb1}
+.coach-stats{gap:10px}
+.coach-stat,.coach-panel{background:#fff!important;border:1px solid #e8edf3!important;box-shadow:0 6px 22px rgba(27,49,75,.045)!important}
+.coach-stat{border-radius:18px;padding:16px}
+.coach-stat:after{background:rgba(80,130,180,.045)}
+.coach-stat strong{color:#18304d}
+.coach-stat span{color:#7e8da1}
+.coach-panel{border-radius:20px;padding:18px;transition:box-shadow .18s,border-color .18s}
+.coach-panel:hover{transform:none;box-shadow:0 10px 28px rgba(27,49,75,.065)!important;border-color:#dce5ef!important}
+.panel-head h3{color:#1c3553}
+.panel-subtitle,.muted{color:#8190a4}
+.eyebrow{color:#a9802a}
+.coach-quick-nav{gap:10px}
+.coach-quick-link{background:#fff;border:1px solid #e7edf4;box-shadow:0 5px 17px rgba(27,49,75,.035);border-radius:17px;color:#1c3553;padding:14px}
+.coach-quick-link:hover{background:#fbfdff;border-color:#d5e1ee;box-shadow:0 9px 22px rgba(27,49,75,.07)}
+.coach-quick-link>span{background:#f3f6fb;color:#456b94}
+.coach-quick-link small{color:#8190a4}
+.mini-action,.btn-secondary{background:#f2f5f9;color:#35516f;border:1px solid #e4eaf1;box-shadow:none!important}
+.coach-top .btn-secondary{background:#f2f5f9!important;color:#35516f!important;border-color:#e4eaf1!important}
+.event-editor{background:#f8fafc;border:1px solid #e8edf3;border-radius:16px}
+.admin-item,.feedback-item{background:#fbfcfe;border-color:#e8edf3;border-radius:14px}
+.admin-item-main strong{color:#1d3552}
+.admin-item-main small{color:#8190a4}
+.admin-actions button{background:#edf2f8;color:#35516f}
+.admin-actions .danger{background:#fff0f0;color:#a33c49}
+.feedback-item__top strong{background:#fff5dc;color:#8a671c}
+.feedback-item>p{color:#344962}
+.coach-account-panel{background:linear-gradient(145deg,#fff,#fbfdfd)!important}
+.prize-card{background:#f8fbff;border-color:#e2ebf5}
+.prize-card-intro strong{color:#234968}
+.report-row{border-color:#e8edf3}
+/* حفظ نمودار آمار حضور: فقط پوسته‌ی پنل روشن می‌شود؛ ابعاد و نمایش داده‌های نمودار دست‌نخورده‌اند. */
+#attendanceTrendPanel{background:#fff!important;border-color:#e4ebf3!important}
+#attendanceTrendSummary{border-radius:14px}
+#attendanceTrendChart{background:transparent}
+@media(max-width:720px){
+ .coach-page{padding:10px 10px 92px}
+ .coach-top{padding:16px}
+ .coach-stats{gap:8px}
+ .coach-stat{padding:13px}
+ .coach-panel{padding:14px;border-radius:16px}
+ .coach-quick-nav{gap:8px}
+ .coach-quick-link{padding:12px;border-radius:14px}
+}
+
+
+/* v5.77.0 — ورودی لوکس پنل مربیان + رفع پوشانده‌شدن کلیک دکمه ورود */
+#coachLogin.coach-login{
+  isolation:isolate;
+  min-height:min(690px,calc(100svh - 150px));
+  margin:28px auto 42px;
+  padding:clamp(28px,6vw,46px) clamp(22px,5vw,38px);
+  border-radius:30px!important;
+  border:1px solid rgba(221,185,99,.48)!important;
+  background:
+    radial-gradient(ellipse at 50% -12%,rgba(213,177,92,.19),transparent 43%),
+    radial-gradient(circle at 0% 100%,rgba(78,112,151,.22),transparent 34%),
+    linear-gradient(145deg,#0a1423 0%,#14263d 48%,#091321 100%)!important;
+  color:#f7f1e5!important;
+  box-shadow:0 28px 75px rgba(6,17,31,.28),inset 0 1px 0 rgba(255,255,255,.09),inset 0 0 0 5px rgba(255,255,255,.018)!important;
+}
+#coachLogin.coach-login:before{
+  content:"";
+  position:absolute;
+  inset:11px;
+  z-index:0;
+  pointer-events:none;
+  border:1px solid rgba(218,184,105,.16);
+  border-radius:22px;
+}
+#coachLogin.coach-login:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;
+  right:-115px;bottom:-132px;
+  z-index:0;
+  pointer-events:none!important;
+  border:1px solid rgba(221,185,99,.2);
+  border-radius:50%;
+  box-shadow:0 0 0 22px rgba(221,185,99,.035),0 0 0 46px rgba(221,185,99,.025),0 0 0 70px rgba(221,185,99,.018);
+}
+#coachLogin.coach-login>*{position:relative;z-index:1}
+#coachLogin .coach-lock{
+  width:82px;height:82px;
+  margin:0 auto 22px;
+  border-radius:27px;
+  color:#f5d58a;
+  background:linear-gradient(145deg,#273b54,#101e31)!important;
+  border:1px solid rgba(229,194,111,.72)!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.13),0 0 0 6px rgba(224,188,101,.055)!important;
+  font-size:2.05rem;
+}
+#coachLogin h2{
+  margin:0 0 8px!important;
+  color:#fff7e8!important;
+  font-size:clamp(1.8rem,5vw,2.25rem)!important;
+  letter-spacing:-.4px;
+  text-shadow:0 3px 20px rgba(0,0,0,.18);
+}
+#coachLogin>p:not(.coach-login-status){
+  max-width:340px;
+  margin:0 auto;
+  color:#bdc8d7!important;
+  font-size:.8rem;
+  line-height:2;
+}
+#coachLogin form{
+  position:relative;
+  z-index:5;
+  gap:13px;
+  margin-top:30px;
+}
+#coachLogin .form-control{
+  position:relative;
+  z-index:6;
+  width:100%;
+  min-height:56px;
+  padding:15px 17px;
+  border-radius:15px!important;
+  border:1px solid rgba(200,216,235,.2)!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.045))!important;
+  color:#fff7e8!important;
+  caret-color:#edce83;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.12),0 5px 18px rgba(0,0,0,.08)!important;
+  -webkit-appearance:none;
+  appearance:none;
+}
+#coachLogin .form-control::placeholder{color:#aab8ca!important;opacity:1}
+#coachLogin .form-control:focus{
+  outline:none;
+  border-color:#d9b76c!important;
+  box-shadow:0 0 0 3px rgba(217,183,108,.12),0 8px 22px rgba(0,0,0,.13)!important;
+}
+#coachLogin .btn-submit{
+  position:relative;
+  z-index:7;
+  min-height:56px;
+  margin-top:5px;
+  border-radius:15px!important;
+  border:1px solid #f2d88e!important;
+  background:linear-gradient(135deg,#f0d38b 0%,#c69a42 47%,#e4bd67 100%)!important;
+  color:#19283a!important;
+  font-size:.95rem;
+  font-weight:900;
+  letter-spacing:.1px;
+  box-shadow:0 10px 25px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.55)!important;
+  cursor:pointer;
+  pointer-events:auto!important;
+  touch-action:manipulation;
+}
+#coachLogin .btn-submit:hover{filter:brightness(1.045);transform:translateY(-1px)}
+#coachLogin .btn-submit:active{transform:translateY(0) scale(.99)}
+#coachLogin .coach-login-status{
+  position:relative;
+  z-index:3;
+  min-height:1.5em;
+  margin:13px 0 0;
+  color:#d7e0ed!important;
+  overflow-wrap:anywhere;
+}
+#coachLogin .coach-login-status:empty{display:block;min-height:1.5em}
+@media(max-width:420px){
+ #coachLogin.coach-login{min-height:0;margin:16px auto 28px;padding:30px 20px;border-radius:25px!important}
+ #coachLogin.coach-login:before{inset:8px;border-radius:18px}
+ #coachLogin .coach-lock{width:74px;height:74px;border-radius:24px}
+ #coachLogin form{margin-top:24px}
+ #coachLogin .form-control,#coachLogin .btn-submit{min-height:54px}
+}
+
+/* v5.78.0 — رسیدهای اردو: طراحی روشن هماهنگ با پنل و نمودار اصلی مربیان */
+#campPaymentReviewSection{margin-top:18px;background:#fff;border:1px solid #e6edf4;border-radius:18px;padding:16px}
+#campPaymentReviewAdmin .camp-registration-item{gap:12px;padding:14px;background:#fbfcfe;border:1px solid #e8edf3;border-radius:14px}
+#campPaymentReviewAdmin .admin-actions{display:flex;flex-wrap:wrap;gap:8px}
+#campPaymentReviewAdmin .admin-actions button{border-radius:10px;padding:9px 12px;background:#edf3f8;color:#284665;border:1px solid #dfe8f0;font-weight:800}
+#campPaymentReviewAdmin .admin-actions button[data-camp-payment-ok]{background:linear-gradient(135deg,#f2d994,#c9a14d);color:#1a2a3c;border-color:#e3c575}
+#campPaymentReviewAdmin .admin-actions button.danger{background:#fff0ef;color:#9e3b3b;border-color:#f2d4d2}
+#campPaymentReviewAdmin .payment-waiting{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;background:#fff6df;color:#87651e;font-size:.75rem;font-weight:800}
+@media(max-width:520px){#campPaymentReviewSection{padding:13px}#campPaymentReviewAdmin .camp-registration-item{align-items:stretch}#campPaymentReviewAdmin .admin-actions{display:grid;grid-template-columns:1fr 1fr}#campPaymentReviewAdmin .admin-actions button{min-height:42px}}
+
+
+/* v5.79.0 — حفظ نمودار برای مربیان؛ پنهان‌سازی صریح برای مسئول اردو در js/coach.js. */
+
+
+/* Ring membership review — clear identity and readable details */
+.ring-review-card{align-items:flex-start;gap:14px;padding:16px;border:1px solid rgba(15,107,98,.13);background:linear-gradient(145deg,#fff 0%,#f8fbfa 100%);box-shadow:0 8px 22px rgba(20,48,64,.045)}
+.ring-review-card .admin-item-main{min-width:0;display:grid;gap:7px}
+.ring-review-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ring-review-heading>strong{font-size:.9rem!important;color:#173b3a!important;font-weight:900}
+.ring-review-status{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:#fff4d9;color:#8a6414;font-size:.58rem;font-weight:800}
+.ring-review-card .admin-item-main small{font-size:.62rem;line-height:1.9;white-space:normal;overflow-wrap:anywhere;color:#64736f}
+.ring-review-card .admin-actions{flex-wrap:wrap;align-self:center}
+.ring-review-card .admin-actions button{min-height:36px;padding:8px 11px;border-radius:10px;font-size:.62rem}
+@media(max-width:520px){.ring-review-card{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.ring-review-card .admin-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.ring-review-heading>strong{font-size:.82rem!important}}

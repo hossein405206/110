@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14243b"><title>پنل مربیان | حلقه شهید هادی ذوالفقاری</title>
+<script>if(new URLSearchParams(window.location.search).get('campOfficial')==='1'){window.location.replace('camp-official.html');}</script>
+<link rel="stylesheet" href="css/style.css?v=5.84.0"><link rel="stylesheet" href="css/coach.css?v=5.88.0">
+  <link rel="stylesheet" href="css/islamic-design.css?v=5.84.0">
+</head>
+<body><div class="app-container">
+<header class="app-header"><a href="index.html" class="header-back" aria-label="بازگشت">←</a><h1>پنل مربیان</h1></header>
+<main class="page coach-page">
+<section id="coachLogin" class="coach-login">
+<div class="coach-lock">♙</div><h2>ورود مربیان</h2><p>مربیان با شماره همراه و کد ورود خود وارد می‌شوند.</p>
+<form id="coachLoginForm"><input id="coachPhone" class="form-control" dir="ltr" inputmode="numeric" maxlength="16" placeholder="شماره همراه مربی" required><input id="coachCode" class="form-control" dir="ltr" placeholder="کد ورود یا گذرواژه حساب" autocomplete="off" required><button class="btn-submit" type="submit">ورود به پنل</button></form><p id="coachLoginStatus" class="coach-login-status" role="status" aria-live="polite"></p>
+</section>
+<section id="coachDashboard" class="hidden">
+<div class="coach-top"><div><h2>داشبورد حلقه</h2><p id="coachName">—</p></div><span id="coachRoleBadge" class="coach-role-badge">—</span><button id="coachLogout" class="btn-secondary">خروج</button></div>
+<section class="coach-panel coach-permission-section attendance-trend-panel" id="attendanceTrendPanel" data-permission="reports"><div class="panel-head"><div><h3>آمار حضور مسجد</h3><small class="panel-subtitle">امروز و ۷ روز گذشته · بر اساس ثبت مسئول حضور و غیاب</small></div></div><div id="attendanceTrendSummary" class="attendance-trend-summary"><span>حاضرین امروز</span><strong>— نفر</strong></div><div id="attendanceTrendChart" class="attendance-trend-chart" role="img" aria-label="نمودار تعداد حاضران امروز و هفت روز گذشته"></div></section><section class="coach-panel attendance-archive-panel" id="attendanceArchivePanel" data-permission="reports"><div class="panel-head"><div><h3>آرشیو تاریخی حضوریاب</h3><small class="panel-subtitle">تاریخ دلخواه را انتخاب کن؛ سوابق روزهای گذشته نگهداری می‌شوند.</small></div></div><div class="attendance-archive-controls"><label for="attendanceArchiveDate">تاریخ گزارش</label><input id="attendanceArchiveDate" class="form-control" type="date" ><button id="loadAttendanceArchive" type="button" class="btn-submit">مشاهده گزارش</button></div><div id="attendanceArchiveResults" aria-live="polite"><p class="muted">برای مشاهده سوابق، تاریخ را انتخاب کن.</p></div></section>
+<section class="coach-panel attendance-member-history-panel coach-permission-section" id="coachAttendanceMemberHistorySection" data-permission="reports">
+<div class="panel-head"><div><h3>سوابق کامل حضور و غیاب اعضا</h3><small class="panel-subtitle">نام عضو را جست‌وجو کن تا شمارش حاضر، موجه و غیبت و سوابق هر تاریخ را ببینی.</small></div></div>
+<form id="attendanceMemberHistoryForm" class="attendance-member-history-controls">
+<label for="attendanceMemberSearch">نام عضو<input id="attendanceMemberSearch" class="form-control" type="search" minlength="2" maxlength="100" autocomplete="off" placeholder="بخشی از نام را وارد کن" required></label>
+<button id="searchAttendanceMemberBtn" type="submit" class="btn-submit">جست‌وجوی سوابق</button>
+</form>
+<div id="attendanceMemberHistoryResults" class="attendance-member-history-results" aria-live="polite"><p class="muted">برای دیدن آمار و تاریخچه، نام عضو را جست‌وجو کن.</p></div>
+</section>
+<div class="coach-stats" id="coachStats"></div>
+
+<section class="coach-panel coach-account-panel" id="coachAccountPanel">
+<div class="panel-head"><div><h3>حساب کاربری من</h3><small class="panel-subtitle">شماره همراه یا کد ورود خودت را تغییر بده؛ لازم نیست هر دو را عوض کنی.</small></div></div>
+<div class="form-grid">
+<label>شماره همراه جدید (اختیاری)<input id="ownCoachNewPhone" class="form-control" dir="ltr" inputmode="numeric" maxlength="16" placeholder="09xxxxxxxxx"></label>
+<label>رمز ورود جدید (اختیاری)<input id="ownCoachNewCode" class="form-control" dir="ltr" minlength="8" autocomplete="new-password" placeholder="حداقل ۸ نویسه"></label>
+</div>
+<div class="editor-actions"><button type="button" id="saveOwnCoachCredentials" class="btn-submit">ذخیره اطلاعات ورود</button></div>
+</section>
+
+<nav class="coach-quick-nav" aria-label="دسترسی سریع پنل">
+<a class="coach-quick-link" data-permission="events" href="#coachEventsSection"><span>۱</span><strong>رویدادها</strong><small>تصویر و خبر</small></a>
+<a class="coach-quick-link" data-permission="events" href="#coachCampsSection"><span>۲</span><strong>اردوها</strong><small>هزینه و رسید</small></a>
+<a class="coach-quick-link" data-permission="events" href="#coachActivityReportsSection"><span>۲</span><strong>گزارش فعالیت</strong><small>گالری چندعکسی اردو</small></a>
+<a class="coach-quick-link" data-permission="schedule" href="#coachScheduleSection"><span>۳</span><strong>برنامه هفتگی</strong><small>مرتب از شنبه تا جمعه</small></a>
+<a class="coach-quick-link" data-permission="registrations" href="#coachRegistrationsSection"><span>۴</span><strong>ثبت‌نام‌ها</strong><small>درخواست‌ها</small></a>
+<a class="coach-quick-link" data-permission="reports" href="#coachAttendanceReportsSection"><span>۵</span><strong>گزارش‌ها</strong><small>حضور و غیاب</small></a>
+<a class="coach-quick-link" data-permission="officials" href="#officialStaffPanel"><span>۶</span><strong>مسئولین</strong><small>کدهای ورود</small></a>
+<a class="coach-quick-link" data-permission="feedback" href="#feedbackSection"><span>۷</span><strong>بازخوردها</strong><small>پیام اعضا</small></a>
+<a class="coach-quick-link" data-permission="game" href="#coachGameSection"><span>۸</span><strong>بازی</strong><small>جایزه هفتگی</small></a><a class="coach-quick-link" data-permission="reports" href="#coachAttendanceMemberHistorySection"><span>۹</span><strong>سوابق اعضا</strong><small>جست‌وجوی حضور و غیاب کامل</small></a>
+</nav>
+
+<section class="coach-panel coach-permission-section" id="coachEventsSection" data-permission="events"><div class="panel-head"><div><h3>مدیریت رویدادها</h3></div><button id="newEventBtn" class="mini-action">＋ رویداد جدید</button></div>
+<div id="eventEditor" class="event-editor hidden"><input id="eventId" type="hidden"><div class="form-grid"><label>عنوان<input id="eventTitle" class="form-control"></label><label>برچسب<input id="eventLabel" class="form-control" placeholder="رویداد ویژه"></label><label class="full">توضیح<textarea id="eventDescription" class="form-control"></textarea></label><label>تاریخ<input id="eventDate" class="form-control" type="date"></label><label>ترتیب<input id="eventSort" class="form-control" type="number" value="0"></label><label class="full">با کلیک روی رویداد، کاربر به کدام بخش برود؟<select id="eventTargetPage" class="form-control"><option value="activities.html">صفحه فعالیت‌ها و جزئیات</option><option value="register.html">ثبت‌نام اردو</option><option value="game.html">بازی و جوایز</option><option value="ring-registration.html">ثبت‌نام در حلقه</option><option value="schedule.html">برنامه هفتگی</option><option value="index.html">صفحه اصلی</option></select></label></div>
+<div class="event-upload"><input id="eventImage" type="file" accept="image/jpeg,image/png,image/webp"><div id="eventPreview">تصویر رویداد را انتخاب کن</div></div>
+<div class="editor-actions"><button id="saveEventBtn" class="btn-submit">ذخیره رویداد</button><button id="cancelEventBtn" class="btn-secondary">انصراف</button></div></div>
+<div id="eventsAdmin" class="admin-list"></div></section>
+
+<section class="coach-panel coach-permission-section" id="coachCampsSection" data-permission="events"><div class="panel-head"><div><h3>مدیریت اردوها</h3><small class="panel-subtitle">ثبت نام اردو، شماره کارت، هزینه و پایان مهلت ثبت‌نام</small></div></div><div class="event-editor"><div class="form-grid"><label class="full">نام اردو<input id="campTitle" class="form-control" maxlength="140" placeholder="مثلاً اردوی فرهنگی جمعه"></label><label class="full">لینک متن رضایت‌نامه<input id="campConsentUrl" class="form-control" type="url" inputmode="url" dir="ltr" placeholder="https://..."><small class="panel-subtitle">این لینک در فرم ثبت‌نام اردو برای دریافت متن رضایت‌نامه استفاده می‌شود.</small></label><label class="full">شماره کارت مقصد<input id="campCardNumber" class="form-control" dir="ltr" inputmode="numeric" maxlength="30" placeholder="شماره کارت یا شبا"></label><label>هزینه (تومان)<input id="campCost" class="form-control" inputmode="numeric" dir="ltr" placeholder="مثلاً ۱۵۰۰۰۰"></label><label>ظرفیت اردو (نفر)<input id="campCapacity" class="form-control" type="number" min="1" max="100000" step="1" placeholder="مثلاً ۵۰" required></label><label>پایان ثبت‌نام<input id="campDeadline" class="form-control" type="date"></label></div><div class="editor-actions"><button type="button" id="saveCampBtn" class="btn-submit">ثبت اردو</button><button type="button" id="cancelCampBtn" class="btn-secondary">پاک‌کردن فرم</button></div></div><div id="campsAdmin" class="admin-list"><div class="empty"><p>اردوها پس از ورود بارگذاری می‌شوند.</p></div></div><section class="coach-panel" id="campPaymentReviewSection"><div class="panel-head"><div><h3>بررسی رسیدهای پرداخت</h3><small class="panel-subtitle">رسیدهای ثبت‌شده را مشاهده و تأیید یا رد کن.</small></div></div><div id="campPaymentReviewAdmin" class="admin-list"><div class="empty"><p>رسیدها پس از ورود بارگذاری می‌شوند.</p></div></div></section></section>
+
+<section class="coach-panel coach-permission-section" id="coachActivityReportsSection" data-permission="events">
+<div class="panel-head"><div><h3>گزارش اردوها و فعالیت‌ها</h3><small class="panel-subtitle">یک گزارش مستقل با چند عکس بساز؛ تصاویر در یک گالری کنار هم نمایش داده می‌شوند.</small></div><button type="button" id="newActivityReportBtn" class="mini-action">＋ گزارش جدید</button></div>
+<div id="activityReportEditor" class="event-editor hidden">
+<div class="form-grid">
+<label class="full">عنوان گزارش *<input id="activityReportTitle" class="form-control" maxlength="160" placeholder="مثلاً گزارش اردوی فرهنگی روز جمعه" required></label>
+<label class="full">توضیحات گزارش<textarea id="activityReportDescription" class="form-control" rows="4" maxlength="6000" placeholder="شرح برنامه، اتفاقات و نکته‌های مهم اردو..."></textarea></label>
+<label>تاریخ فعالیت<input id="activityReportDate" class="form-control" type="date"></label>
+</div>
+<div class="activity-photo-picker"><label for="activityReportPhotos" class="activity-photo-picker__label"><span>＋</span><strong>انتخاب چند عکس</strong><small>حداکثر ۱۰ عکس؛ عکس‌ها پیش از ارسال به‌صورت خودکار فشرده می‌شوند.</small></label><input id="activityReportPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple><div id="activityPhotoPreview" class="activity-photo-preview"><span>هنوز عکسی انتخاب نشده</span></div><button type="button" id="clearActivityPhotosBtn" class="btn-secondary activity-clear-photos">پاک‌کردن عکس‌های انتخاب‌شده</button></div>
+<div class="editor-actions"><button type="button" id="saveActivityReportBtn" class="btn-submit">ذخیره گزارش و عکس‌ها</button><button type="button" id="cancelActivityReportBtn" class="btn-secondary">انصراف</button></div>
+</div>
+<div id="activityReportsAdmin" class="admin-list"><div class="empty"><p>گزارش‌ها پس از ورود بارگذاری می‌شوند.</p></div></div>
+</section>
+
+<section class="coach-panel hidden" id="coachStaffPanel"><div class="panel-head"><div><h3>مدیریت مربیان</h3><small class="panel-subtitle">مدیریت دسترسی مربیان</small></div></div>
+<div class="event-editor"><div class="form-grid"><label>نام مربی<input id="newCoachName" class="form-control" placeholder="نام و نام خانوادگی"></label><label>شماره همراه مربی<input id="newCoachPhone" class="form-control" dir="ltr" inputmode="numeric" maxlength="16" placeholder="09xxxxxxxxx"></label><label>رمز ورود مربی<input id="newCoachCode" class="form-control" dir="ltr" minlength="8" autocomplete="new-password" placeholder="حداقل ۸ نویسه"></label></div>
+<div class="permission-grid" id="newCoachPermissions"></div>
+<div class="editor-actions"><button id="addCoachBtn" class="btn-submit">ثبت مربی</button></div></div>
+<div id="coachList" class="admin-list"></div></section>
+
+<section class="coach-panel hidden" id="memberResetPanel">
+  <div class="panel-head"><div><h3>پاک‌کردن سابقه عضویت</h3><small class="panel-subtitle">ویژه مالک اصلی؛ فقط اطلاعات عضویت این شماره پاک می‌شود.</small></div><span class="prize-heading-icon" aria-hidden="true">♻️</span></div>
+  <div class="event-editor">
+    <p class="reset-member-warning">این عملیات ثبت‌نام حلقه، رکوردهای بازی، حضور و غیاب، درخواست‌های اردو و پیام‌های ثبت‌شده با این شماره را حذف می‌کند. حساب ورود مالک و تنظیمات مربی ارشد دست‌نخورده می‌ماند.</p>
+    <label>شماره همراه حساب عضویت<input id="resetMemberPhone" class="form-control" inputmode="numeric" dir="ltr" maxlength="16" placeholder="09xxxxxxxxx" autocomplete="off"></label>
+    <div class="editor-actions"><button type="button" id="resetMemberHistoryBtn" class="btn-submit">پاک‌کردن کامل سابقه عضو</button></div>
+  </div>
+</section>
+
+<section class="coach-panel hidden coach-permission-section" data-permission="officials" id="officialStaffPanel"><div class="panel-head"><div><h3>مدیریت مسئولین</h3><small class="panel-subtitle">دو مسئول حضور و غیاب: راهنمایی و دبستان + مسئول نظارت</small></div></div>
+<div class="event-editor"><div class="form-grid"><label>نام مسئول<input id="newOfficialName" class="form-control" placeholder="نام و نام خانوادگی"></label><label>شماره همراه مسئول (برای نمایش رنگ نقش در رکوردها، اختیاری)<input id="newOfficialPhone" class="form-control" inputmode="numeric" dir="ltr" maxlength="16" placeholder="09xxxxxxxxx"></label><label>کد مسئول<input id="newOfficialCode" class="form-control" dir="ltr" placeholder="مثلاً ATT-GUIDE"></label><label class="full">نوع مسئولیت<select id="newOfficialRole" class="form-control"><option value="حضور و غیاب - راهنمایی">حضور و غیاب — راهنمایی</option><option value="حضور و غیاب - دبستان">حضور و غیاب — دبستان</option><option value="نظارت">نظارت</option><option value="مسئول اردو">مسئول اردو</option></select></label></div>
+<div class="editor-actions"><button id="addOfficialBtn" class="btn-submit">ثبت مسئول</button></div></div>
+<div id="officialList" class="admin-list"></div></section>
+
+<section class="coach-panel coach-permission-section" id="coachScheduleSection" data-permission="schedule"><div class="panel-head"><div><h3>مدیریت برنامه هفتگی</h3></div><button id="newScheduleBtn" class="mini-action">＋ برنامه جدید</button></div>
+<div id="scheduleEditor" class="event-editor hidden"><input id="scheduleId" type="hidden"><div class="form-grid"><label>روز<select id="scheduleDay" class="form-control"><option value="">انتخاب روز</option><option>شنبه</option><option>یک‌شنبه</option><option>دوشنبه</option><option>سه‌شنبه</option><option>چهارشنبه</option><option>پنج‌شنبه</option><option>جمعه</option></select></label><label>عنوان برنامه<input id="scheduleTitle" class="form-control" placeholder="مثلاً جلسه حلقه"></label><label>دسته برنامه<select id="scheduleCategory" class="form-control"><option value="حلقه">حلقه</option><option value="بازی">بازی</option></select></label><label>گروه برنامه<select id="scheduleAudience" class="form-control"><option value="راهنمایی">راهنمایی</option><option value="دبستان">دبستان</option><option value="هر دو">هر دو گروه</option></select></label></div><div class="editor-actions"><button id="saveScheduleBtn" class="btn-submit">ذخیره برنامه</button><button id="cancelScheduleBtn" class="btn-secondary">انصراف</button></div></div><div id="scheduleAdmin" class="admin-list"></div></section>
+
+<section class="coach-panel coach-permission-section" id="recentSiteMembersSection" data-permission="registrations"><div class="panel-head"><div><h3>تازه‌واردهای سایت</h3><small class="panel-subtitle">آخرین حساب‌هایی که در سایت ساخته شده‌اند؛ ورود به سایت نیاز به تأیید ندارد.</small></div></div><div id="recentSiteMembersAdmin" class="admin-list"><div class="empty"><p>پس از ورود بارگذاری می‌شود.</p></div></div></section>
+<section class="coach-panel coach-permission-section" id="ringMembershipReviewSection" data-permission="registrations"><div class="panel-head"><div><h3>درخواست‌های عضویت در حلقه</h3><small class="panel-subtitle">درخواست‌ها را بررسی و تأیید یا رد کن؛ این بخش از ساخت حساب سایت جداست.</small></div></div><div id="ringMembershipAdmin" class="admin-list"><div class="empty"><p>درخواست‌ها پس از ورود بارگذاری می‌شوند.</p></div></div></section>
+<section class="coach-panel coach-permission-section" id="coachRegistrationsSection" data-permission="registrations"><div class="panel-head"><div><h3>ثبت‌نام‌ها</h3></div></div><div id="registrationsAdmin" class="admin-list"></div></section>
+<section class="coach-panel coach-permission-section" id="coachAttendanceReportsSection" data-permission="reports"><div class="panel-head"><div><h3>گزارش ماه جاری</h3></div></div><div id="attendanceAdmin" class="report-box"></div></section>
+<section class="coach-panel coach-permission-section" data-permission="reports"><div class="panel-head"><div><h3>اخطارهای ماه جاری</h3></div></div><div id="warningsAdmin" class="report-box"></div></section>
+<section class="coach-panel coach-permission-section" id="coachGameSection" data-permission="game">
+<div class="panel-head"><div><h3>جایزه هفتگی بازی</h3><small class="panel-subtitle">متن جایزه این هفته را واضح و کوتاه بنویس.</small></div><span class="prize-heading-icon" aria-hidden="true">🏆</span></div>
+<div class="prize-card"><div class="prize-card-intro"><span class="prize-trophy" aria-hidden="true">🏆</span><div><strong>جایزه این هفته</strong><p>متنی که اینجا ذخیره می‌کنی برای اعضا نمایش داده می‌شود.</p></div></div>
+<div class="prize-editor"><textarea id="gamePrize" class="form-control" rows="3" placeholder="مثلاً: جایزه نفر اول رکورد هفتگی..." aria-label="متن جایزه هفتگی"></textarea><button type="button" id="savePrizeBtn" class="btn-submit prize-save-btn"><span aria-hidden="true">✓</span> ذخیره جایزه</button></div>
+<p class="muted">خالی گذاشتن این کادر، متن پیش‌فرض جایزه را نمایش می‌دهد.</p></div></section>
+
+<section class="coach-panel coach-permission-section" id="feedbackSection" data-permission="feedback">
+<div class="panel-head"><div><h3>انتقاد و پیشنهاد اعضا</h3><small class="panel-subtitle">پیام‌های ارسال‌شده از صفحه «انتقاد و پیشنهاد» در این بخش نمایش داده می‌شوند.</small></div><button type="button" class="mini-action" id="refreshFeedbackBtn">به‌روزرسانی</button></div>
+<div id="feedbackAdmin" class="feedback-list"><div class="empty"><p>پیام‌ها پس از ورود و دریافت اطلاعات بارگذاری می‌شوند.</p></div></div>
+</section>
+</section>
+<div id="registrationPhotoModal" class="modal registration-photo-modal" role="dialog" aria-modal="true" aria-labelledby="registrationPhotoTitle" hidden>
+  <div class="modal-content registration-photo-modal__content">
+    <div class="modal-header">
+      <h3 id="registrationPhotoTitle">تصویر رضایت‌نامه پدر</h3>
+      <button type="button" id="registrationPhotoClose" class="close-btn" aria-label="بستن تصویر">×</button>
+    </div>
+    <p id="registrationPhotoStatus" class="registration-photo-modal__status" role="status" aria-live="polite">در حال آماده‌سازی نمایشگر…</p>
+    <img id="registrationPhotoImage" class="registration-photo-modal__image" alt="تصویر رضایت‌نامه پدر" hidden>
+  </div>
+</div>
+</main>
+<nav class="bottom-nav"></nav>
+</div><script src="js/main.js?v=5.88.0" defer></script><script src="js/coach.js?v=5.88.0" defer></script></body></html>

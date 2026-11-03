@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F6B62">
+  <title>ثبت‌نام در حلقه | حلقه شهید هادی ذوالفقاری</title>
+  <link rel="stylesheet" href="css/style.css?v=5.89.0">
+  <style>
+    .ring-register-intro{background:linear-gradient(135deg,#eaf6f2,#f8f4e9);border:1px solid #d4e9e2;border-radius:18px;padding:16px;margin:12px 0 22px;line-height:1.9}
+    #ringRegisterForm{display:grid;gap:12px;padding:clamp(15px,4vw,22px);border:1px solid #e5ece9;border-radius:22px;background:linear-gradient(180deg,#fff 0%,#fbfdfc 100%);box-shadow:0 12px 34px rgba(24,54,49,.055)}
+    #ringRegisterForm .form-section-title{margin:0 0 2px;padding-bottom:10px;border-bottom:1px solid #edf1ef;color:#164f49;font-size:1rem}
+    #ringRegisterForm .form-group{margin:0}
+    #ringRegisterForm .form-control{min-height:48px;border:1px solid #dce7e2;border-radius:13px;background:#fff;transition:border-color .18s,box-shadow .18s}
+    #ringRegisterForm .form-control:focus{border-color:#299987;box-shadow:0 0 0 4px rgba(41,153,135,.1);outline:0}
+    #ringRegisterForm label{display:block;margin-bottom:7px;color:#334d48;font-size:.78rem;font-weight:800}
+    #ringRegisterForm .field-hint{display:block;margin-top:6px;color:#7a8983;font-size:.65rem;line-height:1.8}
+    #ringRegisterForm .ring-register-submit{min-height:50px;border-radius:14px;font-weight:900;box-shadow:0 8px 18px rgba(15,107,98,.14)}
+    .ring-register-account{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-color:#cfe5dd;background:linear-gradient(120deg,#f1faf6,#fff);box-shadow:0 8px 22px rgba(15,107,98,.05)}
+    .ring-register-account strong{font-size:.88rem;color:#174e47}
+    @media(max-width:420px){#ringRegisterForm{padding:14px;border-radius:18px}.ring-register-account{align-items:flex-start;flex-direction:column;gap:5px}}
+    .ring-register-intro strong{display:block;color:#0f6b62;margin-bottom:4px}
+    .ring-register-status{display:none;border-radius:14px;padding:12px 14px;margin:14px 0;font-weight:700;line-height:1.8}
+    .ring-register-status.show{display:block}
+    .ring-register-status.success{background:#e7f7ed;color:#17633b}
+    .ring-register-status.error{background:#fff0ee;color:#9b2c20}
+    .ring-register-status.info{background:#eef5ff;color:#234f8b}
+    .ring-register-account{padding:14px;border:1px solid #e1e9e6;border-radius:14px;background:#fff;margin-bottom:18px}
+    .ring-register-account strong{display:block;margin-bottom:6px}
+    .ring-register-account span{display:block;color:#66736f;direction:ltr;text-align:right}
+    .ring-register-privacy{font-size:.88rem;color:#586761;line-height:1.9;margin:14px 0}
+    .ring-register-submit{width:100%;margin-top:8px}
+      .jalali-date-control{display:grid;grid-template-columns:minmax(0,1fr) 48px;gap:8px;align-items:stretch}
+    .jalali-date-control input{cursor:pointer;background:#fff}
+    .jalali-calendar-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:1px solid #b9ddd3;border-radius:12px;background:linear-gradient(145deg,#e7f7f2,#eef2ff);color:#0f6b62;font-size:1.1rem;cursor:pointer}.jalali-calendar-toggle small{font:800 .52rem "Noto Sans Arabic UI","Noto Sans Arabic","Vazirmatn",Tahoma,Arial,sans-serif}
+    .jalali-picker{margin-top:9px;padding:13px;border:1px solid #cfe3dd;border-radius:18px;background:#fff;box-shadow:0 14px 35px rgba(14,73,67,.12)}
+    .jalali-picker[hidden]{display:none!important}
+    .jalali-picker__head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
+    .jalali-picker__head strong{font-size:.8rem;color:#184b49}
+    .jalali-picker__head button,.jalali-picker__foot button{border:0;border-radius:10px;padding:7px 10px;background:#eaf6f2;color:#0f6b62;font:800 .7rem "Noto Sans Arabic UI","Noto Sans Arabic","Vazirmatn",Tahoma,Arial,sans-serif;cursor:pointer}
+    .jalali-picker__head button:disabled{opacity:.28;cursor:default}
+    .jalali-picker__weekdays,.jalali-picker__days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+    .jalali-picker__weekdays{margin-bottom:6px;color:#84938f;font-size:.58rem;font-weight:800}
+    .jalali-picker__days button,.jalali-picker__days span{min-width:0;aspect-ratio:1;display:grid;place-items:center;border-radius:10px;font:700 .69rem "Noto Sans Arabic UI","Noto Sans Arabic","Vazirmatn",Tahoma,Arial,sans-serif}
+    .jalali-picker__days button{border:1px solid transparent;background:#f5f8f7;color:#244743;cursor:pointer}
+    .jalali-picker__days button:hover{background:#dff4ee}
+    .jalali-picker__days button.is-selected{background:linear-gradient(135deg,#0f8b7d,#2563eb);color:#fff;box-shadow:0 4px 10px rgba(15,107,98,.18)}
+    .jalali-picker__days button:disabled{opacity:.22;cursor:default;background:#f5f5f5}
+    .jalali-picker__foot{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
+    .jalali-picker__foot button:last-child{background:#f1f4f5;color:#596b6d}
+    .form-control.field-invalid{border-color:#dc4545!important;background:#fff8f8!important;box-shadow:0 0 0 3px rgba(220,69,69,.10)!important}
+    .field-error-message{display:block;margin-top:5px;color:#bd2d2d;font-size:.67rem;font-weight:700;line-height:1.8}
+    .field-error-message[hidden]{display:none!important}
+    .ring-register-status.error{border:1px solid #ffd0ca}
+    @media(max-width:370px){.jalali-picker{padding:9px}.jalali-picker__days{gap:2px}.jalali-picker__days button,.jalali-picker__days span{font-size:.62rem;border-radius:7px}}
+    .ring-register-submit{background:linear-gradient(135deg,#0f766e,#0f9488)!important;box-shadow:0 8px 20px rgba(15,118,110,.22)!important}
+    .ring-register-submit:hover{box-shadow:0 12px 25px rgba(15,118,110,.29)!important}
+    .jalali-picker__selected{margin:0 0 10px;text-align:center;color:#596b7b;font-size:.72rem;font-weight:800;line-height:1.8}
+    .jalali-picker__years,.jalali-picker__months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;max-height:250px;overflow:auto;padding:2px;overscroll-behavior:contain}
+    .jalali-picker__years{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .jalali-picker__choice{min-width:0;padding:10px 4px;border:1px solid #dce9e5;border-radius:12px;background:#f6faf8;color:#194d48;font:800 .72rem Vazirmatn,Tahoma,Arial,sans-serif;cursor:pointer}
+    .jalali-picker__choice:hover{background:#e4f5ef;border-color:#90d8c3}
+    .jalali-picker__choice.is-selected{background:linear-gradient(135deg,#0f766e,#0f9488);border-color:#0f766e;color:#fff;box-shadow:0 5px 12px rgba(15,118,110,.18)}
+    .jalali-picker__choice:disabled{opacity:.3;cursor:not-allowed}
+    .jalali-picker__foot{margin-top:12px}
+    #jalaliConfirmDate{background:linear-gradient(135deg,#0f766e,#0f9488);color:#fff}
+    #jalaliConfirmDate:disabled{opacity:.4;cursor:not-allowed}
+    @media(max-width:360px){.jalali-picker__years{grid-template-columns:repeat(3,minmax(0,1fr))}.jalali-picker__months{gap:5px}.jalali-picker__choice{font-size:.65rem;padding:9px 3px}}
+    
+    /* Keep stage switching reliable: display:grid must never override [hidden]. */
+    .jalali-picker [hidden],
+    .jalali-picker__years[hidden],
+    .jalali-picker__months[hidden],
+    #jalaliCalendarStep[hidden]{display:none!important}
+    .jalali-picker__years,.jalali-picker__months{grid-auto-rows:minmax(40px,auto);align-content:start}
+    .jalali-picker__choice{display:flex;align-items:center;justify-content:center;min-height:42px;font-size:.82rem;font-weight:800;line-height:1.35;border-radius:12px}
+    .jalali-picker__years{grid-template-columns:repeat(4,minmax(0,1fr));background:#f8fbfa;border:1px solid #e5efec;border-radius:15px;padding:7px}
+    .jalali-picker__months{grid-template-columns:repeat(3,minmax(0,1fr));background:#f8fbfa;border:1px solid #e5efec;border-radius:15px;padding:7px}
+    .jalali-picker__head{padding-bottom:9px;border-bottom:1px solid #e8f0ed}
+    .jalali-picker__head strong{font-size:.9rem;font-weight:900;text-align:center}
+    .jalali-picker__foot{display:grid;grid-template-columns:1fr 1.35fr;gap:8px}
+    .jalali-picker__foot button{min-height:42px;border-radius:12px;font-size:.78rem}
+    #jalaliConfirmDate{background:linear-gradient(135deg,#0f766e,#0f9488);color:#fff;box-shadow:0 6px 14px rgba(15,118,110,.18)}
+    #jalaliConfirmDate:disabled{opacity:.42;box-shadow:none;cursor:not-allowed}
+    #jalaliBackStep{white-space:nowrap}
+    @media(max-width:360px){.jalali-picker__years{grid-template-columns:repeat(3,minmax(0,1fr))}.jalali-picker__months{grid-template-columns:repeat(2,minmax(0,1fr))}.jalali-picker__choice{min-height:40px;font-size:.76rem}}
+    
+    /* Persistent registration states */
+    .page{position:relative;isolation:isolate}
+    .registration-state-card[hidden],.registration-state-status[hidden]{display:none!important}
+    .registration-state-card{position:absolute;z-index:5;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(100% - 28px,440px);padding:clamp(22px,5vw,32px);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;border:1px solid rgba(255,255,255,.8);border-radius:26px;background:rgba(255,255,255,.94);box-shadow:0 24px 70px rgba(8,49,44,.2),0 4px 14px rgba(8,49,44,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);animation:registrationCardIn .35s cubic-bezier(.2,.8,.2,1) both}
+    .registration-state-icon{width:66px;height:66px;display:grid;place-items:center;border-radius:22px;background:linear-gradient(145deg,#e7f7f1,#d7eee7);color:#0f7668;font-size:1.9rem;box-shadow:inset 0 1px 0 #fff}
+    .registration-state-message{margin:0;color:#173e39;font-size:clamp(.96rem,3.5vw,1.12rem);font-weight:900;line-height:2}
+    .registration-state-status{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border:1px solid #e2ebe7;border-radius:15px;background:#f7faf8;color:#63736e;font-size:.76rem}
+    .registration-state-status strong{color:#a16a12;font-size:.82rem;font-weight:900}
+    .page.registration-pending> :not(.registration-state-card),.page.registration-incomplete> :not(.registration-state-card){filter:blur(16px);opacity:.07;pointer-events:none;user-select:none;transition:filter .25s,opacity .25s}
+    .page.registration-pending:before,.page.registration-incomplete:before{content:'';position:absolute;z-index:3;inset:0;border-radius:20px;background:rgba(242,248,245,.46);pointer-events:none}
+    .page.registration-pending,.page.registration-incomplete{min-height:570px}
+    .page.registration-approved{min-height:460px;display:grid;place-items:center}
+    .page.registration-approved> :not(.registration-state-card){display:none!important}
+    .page.registration-approved .registration-state-card{position:relative;inset:auto;transform:none;width:min(100%,460px);border-color:#cfe9df;background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(239,250,245,.97))}
+    .page.registration-approved .registration-state-icon{background:linear-gradient(145deg,#dff7e9,#c8efdb);color:#16804b}
+    .page.registration-approved .registration-state-status{display:none}
+    .page.registration-incomplete .registration-state-status strong{color:#b45309}
+    @keyframes registrationCardIn{from{opacity:0;transform:translate(-50%,-46%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @media(max-width:480px){.registration-state-card{border-radius:22px;padding:23px 18px}.page.registration-pending,.page.registration-incomplete{min-height:540px}}
+    @media(prefers-reduced-motion:reduce){.registration-state-card{animation:none}}
+  </style>
+  <link rel="stylesheet" href="css/islamic-design.css?v=5.86.0">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="header-back" aria-label="بازگشت"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <h1>ثبت‌نام در حلقه</h1>
+    </header>
+    <main class="page">
+      <h2 class="section-title">فرم عضویت حلقه</h2>
+      <p class="section-subtitle">برای عضویت در حلقه فرم زیر را تکمیل کنید</p>
+      <div class="ring-register-intro">
+        <strong>چرا این اطلاعات لازم است؟</strong>
+        این اطلاعات برای سامان‌دهی عضویت و تماس ضروری حلقه درخواست می شود
+      </div>
+      <div id="ringRegisterStatus" class="ring-register-status" role="status" aria-live="polite"></div>
+      <div class="ring-register-account" id="ringRegisterAccount" hidden>
+        <strong id="ringRegisterName">عضو</strong>
+        <span id="ringRegisterPhone"></span>
+      </div>
+      <form id="ringRegisterForm" novalidate>
+        <h3 class="form-section-title">اطلاعات فردی</h3>
+        <div class="form-group"><label for="firstName">نام</label><input id="firstName" class="form-control" type="text" readonly maxlength="60" autocomplete="given-name"></div>
+        <div class="form-group"><label for="lastName">نام خانوادگی</label><input id="lastName" class="form-control" type="text" readonly maxlength="80" autocomplete="family-name"></div>
+        <div class="form-group"><label for="nationalCode">کد ملی <span class="req">*</span></label><input id="nationalCode" class="form-control" type="text" inputmode="numeric" dir="ltr" maxlength="10" minlength="10" placeholder="۱۰ رقم" required></div>
+        <div class="form-group">
+          <label for="birthDate">تاریخ تولد (شمسی) <span class="req">*</span></label>
+          <div class="jalali-date-control">
+            <input id="birthDate" class="form-control" type="text" dir="ltr" maxlength="10" autocomplete="bday" placeholder="برای انتخاب تاریخ تقویم را باز کن" aria-describedby="birthDateHint birthDateError" aria-haspopup="dialog" aria-expanded="false" readonly required>
+            <button type="button" id="openBirthDatePicker" class="jalali-calendar-toggle" aria-label="باز کردن تقویم شمسی" aria-controls="birthDatePicker"><span aria-hidden="true">📅</span><small>تقویم</small></button>
+          </div>
+          <small id="birthDateHint" class="field-hint">تاریخ را از تقویم شمسی انتخاب کن.</small>
+          <div id="birthDatePicker" class="jalali-picker" role="dialog" aria-label="انتخاب تاریخ تولد شمسی" aria-modal="false" hidden>
+            <div class="jalali-picker__head">
+              <button type="button" id="jalaliBackStep" aria-label="مرحله قبل" hidden>→ بازگشت</button>
+              <strong id="jalaliPickerTitle">ابتدا سال تولد را انتخاب کنید</strong>
+              <button type="button" id="closeBirthDatePicker">بستن</button>
+            </div>
+            <p id="jalaliSelectedLabel" class="jalali-picker__selected">سال تولد را انتخاب کنید</p>
+            <div id="jalaliPickerYears" class="jalali-picker__years" aria-label="سال‌های تولد"></div>
+            <div id="jalaliPickerMonths" class="jalali-picker__months" aria-label="ماه‌های سال" hidden></div>
+            <div id="jalaliCalendarStep" hidden>
+              <div class="jalali-picker__weekdays" aria-hidden="true"><span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span></div>
+              <div class="jalali-picker__days" id="jalaliPickerDays"></div>
+            </div>
+            <div class="jalali-picker__foot">
+              <button type="button" id="closeBirthDatePickerFooter">انصراف</button>
+              <button type="button" id="jalaliConfirmDate" disabled>تأیید تاریخ</button>
+            </div>
+          </div>
+          <small id="birthDateError" class="field-error-message" hidden></small>
+        </div>
+        <div class="form-group"><label for="school">نام مدرسه <span class="req">*</span></label><input id="school" class="form-control" type="text" maxlength="120" required></div>
+        <div class="form-group"><label for="grade">پایه تحصیلی <span class="req">*</span></label><select id="grade" class="form-control" required><option value="">انتخاب کن</option><option>سوم دبستان</option><option>چهارم دبستان</option><option>پنجم دبستان</option><option>ششم دبستان</option><option>هفتم</option><option>هشتم</option><option>نهم</option><option>دهم</option><option>یازدهم</option><option>دوازدهم</option><option>فارغ‌التحصیل</option><option>سایر</option></select></div>
+
+        <h3 class="form-section-title">اطلاعات خانواده و تماس</h3>
+        <div class="form-group"><label for="fatherName">نام پدر <span class="req">*</span></label><input id="fatherName" class="form-control" type="text" maxlength="80" required></div>
+        <div class="form-group"><label for="fatherPhone">شماره همراه پدر <span class="req">*</span></label><input id="fatherPhone" class="form-control" type="tel" inputmode="tel" dir="ltr" maxlength="11" placeholder="09xxxxxxxxx" required></div>
+        
+        <div class="form-group"><label for="emergencyPhone">شماره تماس ضروری <span class="req">*</span></label><input id="emergencyPhone" class="form-control" type="tel" inputmode="tel" dir="ltr" maxlength="11" placeholder="09xxxxxxxxx" required></div>
+        <div class="form-group"><label for="address">آدرس محل سکونت <span class="req">*</span></label><textarea id="address" class="form-control" rows="3" maxlength="500" required placeholder="شهر، محله، خیابان و نشانی لازم"></textarea></div>
+        
+        <button type="submit" class="btn-submit ring-register-submit" id="ringRegisterSubmit">ثبت‌نام در حلقه</button>
+      </form>
+      <section id="ringRegistrationState" class="registration-state-card" aria-live="polite" hidden>
+        <div class="registration-state-icon" aria-hidden="true"><span id="ringRegistrationStateIcon">⌛</span></div>
+        <p id="ringRegistrationStateMessage" class="registration-state-message">شما قبلا ثبت نام کردید لطفا منتظر باشید تا توسط مربیان تایید شوید</p>
+        <div id="ringRegistrationStateStatus" class="registration-state-status"><span>وضعیت ثبت‌نام</span><strong id="ringRegistrationStateLabel">در صف بررسی</strong></div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="ناوبری اصلی"></nav>
+  </div>
+  <script src="js/main.js?v=5.88.0" defer></script>
+  <script>
+  (function(){
+    'use strict';
+    var $=function(id){return document.getElementById(id);};
+    var member=null,form=$('ringRegisterForm'),button=$('ringRegisterSubmit'),status=$('ringRegisterStatus');
+    function digits(v){return String(v||'').replace(/[۰-۹]/g,function(c){return String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c));}).replace(/[٠-٩]/g,function(c){return String('٠١٢٣٤٥٦٧٨٩'.indexOf(c));}).replace(/\D/g,'');}
+        function dateDiv(a,b){return ~~(a/b);}
+    function dateMod(a,b){return a-dateDiv(a,b)*b;}
+    function jalCalShamsi(jy){
+      var breaks=[-61,9,38,199,426,686,756,818,1111,1181,1210,1635,2060,2097,2192,2262,2324,2394,2456,3178];
+      var bl=breaks.length,gy=jy+621,leapJ=-14,jp=breaks[0],jm,jump,leapG,march,n;
+      if(jy<jp||jy>=breaks[bl-1])throw new Error('سال شمسی نامعتبر است');
+      for(var i=1;i<bl;i++){jm=breaks[i];jump=jm-jp;if(jy<jm)break;leapJ+=dateDiv(jump,33)*8+dateDiv(dateMod(jump,33),4);jp=jm;}
+      n=jy-jp;leapJ+=dateDiv(n,33)*8+dateDiv(dateMod(n,33)+3,4);
+      if(dateMod(jump,33)===4&&jump-n===4)leapJ++;
+      leapG=dateDiv(gy,4)-dateDiv((dateDiv(gy,100)+1)*3,4)-150;
+      march=20+leapJ-leapG;
+      if(jump-n<6)n=n-jump+dateDiv(jump+4,33)*33;
+      var leap=dateMod(dateMod(n+1,33)-1,4);if(leap===-1)leap=4;
+      return {leap:leap,gy:gy,march:march};
+    }
+    function gregorianJdnShamsi(gy,gm,gd){
+      var d=dateDiv((gy+dateDiv(gm-8,6)+100100)*1461,4)+dateDiv(153*dateMod(gm+9,12)+2,5)+gd-34840408;
+      return d-dateDiv(dateDiv(gy+100100+dateDiv(gm-8,6),100)*3,4)+752;
+    }
+    function jdnGregorianShamsi(jdn){
+      var j=4*jdn+139361631;
+      j=j+dateDiv(dateDiv(4*jdn+183187720,146097)*3,4)*4-3908;
+      var i=dateDiv(dateMod(j,1461),4)*5+308,gd=dateDiv(dateMod(i,153),5)+1,gm=dateMod(dateDiv(i,153),12)+1,gy=dateDiv(j,1461)-100100+dateDiv(8-gm,6);
+      return {gy:gy,gm:gm,gd:gd};
+    }
+    function jdnJalaaliShamsi(jdn){
+      var gy=jdnGregorianShamsi(jdn).gy,jy=Math.min(gy-621,3177),r=jalCalShamsi(jy),jdn1f=gregorianJdnShamsi(r.gy,3,r.march),k=jdn-jdn1f,jm,jd;
+      if(k>=0){if(k<=185)return {jy:jy,jm:1+dateDiv(k,31),jd:dateMod(k,31)+1};k-=186;}
+      else{jy-=1;k+=179;if(r.leap===1)k++;}
+      jm=7+dateDiv(k,30);jd=dateMod(k,30)+1;
+      return {jy:jy,jm:jm,jd:jd};
+    }
+    function normalizeDateText(value){
+      return String(value||'').trim().replace(/[۰-۹]/g,function(c){return String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c));}).replace(/[٠-٩]/g,function(c){return String('٠١٢٣٤٥٦٧٨٩'.indexOf(c));}).replace(/[.-]/g,'/').replace(/\s/g,'');
+    }
+    function pad2(n){return ('0'+String(n)).slice(-2);}
+    function validJalaliDate(value){
+      var s=normalizeDateText(value),m=/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(s);
+      if(!m)return '';
+      var jy=Number(m[1]),jm=Number(m[2]),jd=Number(m[3]);
+      if(jy<1300||jy>1500||jm<1||jm>12||jd<1)return '';
+      var cal;try{cal=jalCalShamsi(jy);}catch(e){return '';}
+      var maxDays=jm<=6?31:(jm<=11?30:(cal.leap===0?30:29));
+      if(jd>maxDays)return '';
+      var now=new Date(),today=jdnJalaaliShamsi(gregorianJdnShamsi(now.getFullYear(),now.getMonth()+1,now.getDate()));
+      if(jy>today.jy||(jy===today.jy&&(jm>today.jm||(jm===today.jm&&jd>today.jd))))return '';
+      return jy+'/'+pad2(jm)+'/'+pad2(jd);
+    }
+    function birthDateToJalali(value){
+      var s=normalizeDateText(value),m=/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(s);
+      if(!m)return String(value||'');
+      var y=Number(m[1]),mo=Number(m[2]),d=Number(m[3]);
+      if(y>=1700){var j=jdnJalaaliShamsi(gregorianJdnShamsi(y,mo,d));return j.jy+'/'+pad2(j.jm)+'/'+pad2(j.jd);}
+      if(y>=1300&&y<=1500)return y+'/'+pad2(mo)+'/'+pad2(d);
+      return String(value||'');
+    }
+        var alreadyRegistered=false, pickerYear=1400, pickerMonth=1, pickerStage='year', stagedDate='';
+    var jalaliMonthNames=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+    var fieldIds=['nationalCode','birthDate','school','grade','fatherName','fatherPhone','emergencyPhone','address'];
+    function toPersianDigits(value){return String(value||'').replace(/\d/g,function(c){return '۰۱۲۳۴۵۶۷۸۹'.charAt(Number(c));});}
+    function todayJalali(){var d=new Date();return jdnJalaaliShamsi(gregorianJdnShamsi(d.getFullYear(),d.getMonth()+1,d.getDate()));}
+    function jalaliToGregorianShamsi(jy,jm,jd){
+      var cal=jalCalShamsi(jy),offset=(jm-1)*31-Math.floor(jm/7)*(jm-7)+jd-1;
+      return jdnGregorianShamsi(gregorianJdnShamsi(cal.gy,3,cal.march)+offset);
+    }
+    function compareJalali(a,b){return a.jy-b.jy||a.jm-b.jm||a.jd-b.jd;}
+    function isFutureJalali(y,m,d){return compareJalali({jy:y,jm:m,jd:d},todayJalali())>0;}
+    function hideDatePicker(){
+      $('birthDatePicker').hidden=true;
+      $('birthDate').setAttribute('aria-expanded','false');
+    }
+    function getFieldError(id,field){
+      var err=$(id+'Error');
+      if(err)return err;
+      err=document.createElement('small');
+      err.id=id+'Error';
+      err.className='field-error-message';
+      err.hidden=true;
+      var group=field&&field.closest?field.closest('.form-group'):null;
+      if(group)group.appendChild(err);
+      else if(field&&field.parentNode)field.parentNode.appendChild(err);
+      return err;
+    }
+    function clearFieldError(id){
+      var field=$(id),err=$(id+'Error');
+      if(field){field.classList.remove('field-invalid');field.removeAttribute('aria-invalid');}
+      if(err){err.textContent='';err.hidden=true;}
+    }
+    function clearAllFieldErrors(){fieldIds.forEach(clearFieldError);}
+    function markFieldError(id,message){
+      var field=$(id),err=field?getFieldError(id,field):null;
+      if(field){field.classList.add('field-invalid');field.setAttribute('aria-invalid','true');}
+      if(err){err.textContent=message;err.hidden=false;}
+      if(field){field.scrollIntoView({behavior:'smooth',block:'center'});field.focus({preventScroll:true});}
+      show('قسمت مشخص‌شده را اصلاح کن.','error');
+    }
+    function openDatePicker(){
+      var current=normalizeDateText($('birthDate').value);
+      var m=/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(current);
+      var today=todayJalali();
+      pickerYear=m?Number(m[1]):today.jy;
+      pickerMonth=m?Number(m[2]):today.jm;
+      stagedDate='';
+      pickerStage='year';
+      $('birthDatePicker').hidden=false;
+      $('birthDate').setAttribute('aria-expanded','true');
+      renderDatePicker();
+      window.requestAnimationFrame(function(){ $('birthDatePicker').scrollIntoView({behavior:'smooth',block:'nearest'}); });
+    }
+    function renderDatePicker(){
+      var title=$('jalaliPickerTitle'),years=$('jalaliPickerYears'),months=$('jalaliPickerMonths'),calendar=$('jalaliCalendarStep');
+      var back=$('jalaliBackStep'),confirm=$('jalaliConfirmDate'),label=$('jalaliSelectedLabel'),today=todayJalali();
+      years.hidden=pickerStage!=='year';
+      months.hidden=pickerStage!=='month';
+      calendar.hidden=pickerStage!=='day';
+      back.hidden=pickerStage==='year';
+      confirm.disabled=!stagedDate||!validJalaliDate(stagedDate);
+      if(pickerStage==='year'){
+        title.textContent='ابتدا سال تولد را انتخاب کنید';
+        label.textContent='سال موردنظر را از فهرست زیر انتخاب کنید';
+        years.innerHTML='';
+        for(var y=today.jy;y>=1300;y--){
+          var yb=document.createElement('button');
+          yb.type='button';yb.className='jalali-picker__choice'+(y===pickerYear?' is-selected':'');
+          yb.textContent=toPersianDigits(y);yb.setAttribute('aria-label','سال '+toPersianDigits(y));
+          yb.addEventListener('click',function(year){return function(){pickerYear=year;pickerStage='month';stagedDate='';renderDatePicker();};}(y));
+          years.appendChild(yb);
+        }
+      } else if(pickerStage==='month'){
+        title.textContent='حالا ماه تولد را انتخاب کنید';
+        label.textContent='سال انتخاب‌شده: '+toPersianDigits(pickerYear);
+        months.innerHTML='';
+        jalaliMonthNames.forEach(function(name,index){
+          var month=index+1,mb=document.createElement('button');
+          mb.type='button';mb.className='jalali-picker__choice'+(month===pickerMonth?' is-selected':'');
+          mb.textContent=name;
+          if(pickerYear===today.jy&&month>today.jm)mb.disabled=true;
+          mb.addEventListener('click',function(mo){return function(){pickerMonth=mo;pickerStage='day';stagedDate='';renderDatePicker();};}(month));
+          months.appendChild(mb);
+        });
+      } else {
+        title.textContent='روز تولد را انتخاب و تأیید کنید';
+        label.textContent='انتخاب شما: '+toPersianDigits(pickerYear+'/'+pad2(pickerMonth)+(stagedDate?'/'+stagedDate.split('/')[2]:''));
+        var grid=$('jalaliPickerDays');grid.innerHTML='';
+        var days=pickerMonth<=6?31:(pickerMonth<=11?30:(jalCalShamsi(pickerYear).leap===0?30:29));
+        var first=jalaliToGregorianShamsi(pickerYear,pickerMonth,1);
+        var offset=(new Date(first.gy,first.gm-1,first.gd).getDay()+1)%7;
+        var selected=stagedDate?stagedDate:normalizeDateText($('birthDate').value);
+        var sm=/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(selected);
+        for(var blank=0;blank<offset;blank++)grid.appendChild(document.createElement('span'));
+        for(var day=1;day<=days;day++){
+          var db=document.createElement('button'),y0=pickerYear,m0=pickerMonth,d0=day,canonical=y0+'/'+pad2(m0)+'/'+pad2(d0);
+          db.type='button';db.textContent=toPersianDigits(day);db.setAttribute('aria-label',toPersianDigits(canonical));
+          if(sm&&Number(sm[1])===y0&&Number(sm[2])===m0&&Number(sm[3])===d0)db.classList.add('is-selected');
+          if(isFutureJalali(y0,m0,d0))db.disabled=true;
+          db.addEventListener('click',function(y1,m1,d1){return function(){
+            var candidate=y1+'/'+pad2(m1)+'/'+pad2(d1);
+            if(!validJalaliDate(candidate)){return;}
+            stagedDate=candidate;
+            // Show the selected date in the field immediately; confirmation still closes the picker.
+            var dateField=$('birthDate');
+            dateField.value=toPersianDigits(candidate);
+            clearFieldError('birthDate');
+            renderDatePicker();
+          };}(y0,m0,d0));
+          grid.appendChild(db);
+        }
+      }
+    }
+    function setupDatePicker(){
+      var field=$('birthDate'),open=$('openBirthDatePicker');
+      if(!field||!open)return;
+      field.addEventListener('click',openDatePicker);
+      open.addEventListener('click',openDatePicker);
+      $('jalaliBackStep').addEventListener('click',function(){
+        if(pickerStage==='day')pickerStage='month';
+        else if(pickerStage==='month')pickerStage='year';
+        stagedDate='';
+        renderDatePicker();
+      });
+      $('closeBirthDatePicker').addEventListener('click',hideDatePicker);
+      $('closeBirthDatePickerFooter').addEventListener('click',hideDatePicker);
+      $('jalaliConfirmDate').addEventListener('click',function(){
+        if(!stagedDate||!validJalaliDate(stagedDate))return;
+        field.value=toPersianDigits(stagedDate);
+        clearFieldError('birthDate');
+        hideDatePicker();
+      });
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('birthDatePicker').hidden)hideDatePicker();});
+      document.addEventListener('click',function(e){var picker=$('birthDatePicker');if(!picker.hidden&&!picker.contains(e.target)&&e.target!==field&&e.target!==open)hideDatePicker();});
+    }
+    function serverErrorField(message){
+      var m=String(message||'');
+      if(m.indexOf('کد ملی')>=0)return ['nationalCode',m];
+      if(m.indexOf('تاریخ تولد')>=0||m.indexOf('شمسی')>=0)return ['birthDate',m];
+      if(m.indexOf('مدرسه')>=0)return ['school',m];
+      if(m.indexOf('پایه')>=0)return ['grade',m];
+      if(m.indexOf('نام پدر')>=0)return ['fatherName',m];
+      if(m.indexOf('شماره همراه پدر')>=0)return ['fatherPhone',m];
+      if(m.indexOf('آدرس')>=0)return ['address',m];
+      if(m.indexOf('اضطراری')>=0)return ['emergencyPhone',m];
+      return null;
+    }
+    function show(message,type){status.textContent=message;status.className='ring-register-status show '+(type||'info');}
+    function set(id,value){var el=$(id);if(el)el.value=value==null?'':String(value);}
+    function fill(item){
+      if(!item)return;
+      ['nationalCode','fatherName','fatherPhone','address','school','grade','emergencyPhone'].forEach(function(k){set(k,item[k]||'');});
+      set('birthDate',toPersianDigits(birthDateToJalali(item.birthDate)));
+    }
+    function renderRegistrationState(item){
+      if(!item)return;
+      var page=document.querySelector('main.page'),card=$('ringRegistrationState');
+      var required=['nationalCode','birthDate','fatherName','fatherPhone','address','school','grade','emergencyPhone'];
+      var missing=required.some(function(key){return !String(item[key]||'').trim();});
+      var state=String(item.status||'در انتظار تایید');
+      var approved=state==='تایید شد';
+      var incomplete=!approved&&(state==='رد شد'||state==='اطلاعات ناقص'||missing);
+      page.classList.remove('registration-pending','registration-incomplete','registration-approved');
+      card.hidden=false;
+      $('ringRegistrationStateStatus').hidden=approved;
+      if(approved){
+        page.classList.add('registration-approved');
+        $('ringRegistrationStateIcon').textContent='✓';
+        $('ringRegistrationStateMessage').textContent='شما قبلا در حلقه ثبتنام کردید';
+      }else{
+        page.classList.add(incomplete?'registration-incomplete':'registration-pending');
+        $('ringRegistrationStateIcon').textContent=incomplete?'!':'⌛';
+        $('ringRegistrationStateMessage').textContent='شما قبلا ثبت نام کردید لطفا منتظر باشید تا توسط مربیان تایید شوید';
+        $('ringRegistrationStateLabel').textContent=incomplete?'اطلاعات ناقص':'در صف بررسی';
+      }
+    }
+
+    function boot(){
+      if(!window.KanoonApp||!window.KanoonApp.session||!window.KanoonApp.api){setTimeout(boot,80);return;}
+      member=window.KanoonApp.session.getMember();
+      if(!member||!member.token){location.replace('login.html?return=ring-registration.html');return;}
+      $('ringRegisterAccount').hidden=false;
+      $('ringRegisterName').textContent=[member.firstName,member.lastName].filter(Boolean).join(' ')||'عضو حلقه';
+      $('ringRegisterPhone').textContent=member.phone||'';
+      set('firstName',member.firstName||'');set('lastName',member.lastName||'');
+      window.KanoonApp.api.post({action:'getRingRegistration',token:member.token}).then(function(res){
+        if(res.registered&&res.item){
+          alreadyRegistered=true;
+          renderRegistrationState(res.item);
+        } else if(new URLSearchParams(location.search).get('required')) show('برای ورود به بازی، ابتدا فرم ثبت‌نام در حلقه را کامل کن.','info');
+      }).catch(function(err){show(err.message||'دریافت وضعیت عضویت ناموفق بود.','error');});
+    }
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      clearAllFieldErrors();
+      if(!member||!member.token){show('نشست ورود پیدا نشد؛ دوباره وارد شو.','error');return;}
+      var data={action:'saveRingRegistration',token:member.token,
+        nationalCode:digits($('nationalCode').value),birthDate:validJalaliDate($('birthDate').value),
+        fatherName:$('fatherName').value.trim(),fatherPhone:digits($('fatherPhone').value),
+        address:$('address').value.trim(),school:$('school').value.trim(),grade:$('grade').value,
+        guardianName:$('fatherName').value.trim(),emergencyPhone:digits($('emergencyPhone').value)};
+      if(data.nationalCode.length!==10){markFieldError('nationalCode','کد ملی باید دقیقاً ۱۰ رقم باشد.');return;}
+      if(!data.birthDate){markFieldError('birthDate','تاریخ تولد شمسی را از تقویم انتخاب کن.');return;}
+      if(!data.school){markFieldError('school','نام مدرسه را وارد کن.');return;}
+      if(!data.grade){markFieldError('grade','پایه تحصیلی را انتخاب کن.');return;}
+      if(!data.fatherName){markFieldError('fatherName','نام پدر را وارد کن.');return;}
+      if(!/^09\d{9}$/.test(data.fatherPhone)){markFieldError('fatherPhone','شماره همراه پدر باید ۱۱ رقم و با ۰۹ شروع شود.');return;}
+      if(!/^09\d{9}$/.test(data.emergencyPhone)){markFieldError('emergencyPhone','شماره تماس ضروری باید ۱۱ رقم و با ۰۹ شروع شود.');return;}
+      if(data.address.length<8){markFieldError('address','آدرس را کامل‌تر وارد کن.');return;}
+      button.disabled=true;button.textContent='در حال ثبت...';
+      try{
+        var res=await window.KanoonApp.api.post(data);
+        alreadyRegistered=true;
+        renderRegistrationState(res.item||Object.assign({},data,{status:'در انتظار تایید'}));
+        window.scrollTo({top:0,behavior:'smooth'});
+      }catch(err){
+        var mapped=serverErrorField(err.message);
+        if(mapped){markFieldError(mapped[0],mapped[1]);}
+        else show(err.message||'ثبت‌نام انجام نشد؛ دوباره تلاش کن.','error');
+        button.textContent=alreadyRegistered?'ذخیره تغییرات ثبت‌نام':'ثبت‌نام در حلقه';
+      }finally{button.disabled=false;}
+    });
+    setupDatePicker();
+    fieldIds.forEach(function(id){var el=$(id);if(el){el.addEventListener('input',function(){clearFieldError(id);});el.addEventListener('change',function(){clearFieldError(id);});}});
+    boot();
+  })();
+  </script>
+</body>
+</html>
