@@ -1,0 +1,34 @@
+name: Import 313 snapshot into 110
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-313.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out 110
+        uses: actions/checkout@v4
+      - name: Download the current 313 snapshot
+        run: |
+          curl -fL https://github.com/hossein405206/313/archive/refs/heads/main.zip -o /tmp/313-main.zip
+          mkdir -p /tmp/source
+          unzip -q /tmp/313-main.zip -d /tmp/source
+          rsync -a --delete --exclude='.git' --exclude='.github/workflows/import-313.yml' /tmp/source/313-main/ ./
+      - name: Commit the mirrored project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to import."
+            exit 0
+          fi
+          git commit -m "Import complete 313 project snapshot"
+          git push
