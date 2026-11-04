@@ -3,14 +3,15 @@
     <style name="Theme.HalqehYar" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">sans</item>
         <item name="android:colorAccent">#17A99A</item>
-        <item name="android:navigationBarColor">#101A2C</item>
-        <item name="android:statusBarColor">#101A2C</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowActionModeOverlay">true</item>
     </style>
     <style name="Theme.HalqehYar.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#101A2C</item>
-        <item name="windowSplashScreenAnimatedIcon">@android:drawable/ic_dialog_info</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_halqeh_yar</item>
         <item name="postSplashScreenTheme">@style/Theme.HalqehYar</item>
     </style>
 </resources>
