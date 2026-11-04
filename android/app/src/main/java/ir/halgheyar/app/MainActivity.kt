@@ -2,6 +2,13 @@ package ir.halgheyar.app
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.Context
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
+import android.webkit.JavascriptInterface
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.Network
@@ -90,6 +97,7 @@ class MainActivity : ComponentActivity() {
             .build()
 
         configureWebView()
+        webView.addJavascriptInterface(HalqehBridge(), "HalqehNative")
         setupNetworkMonitoring()
         if (savedInstanceState == null) webView.loadUrl(HOME_URL)
         else webView.restoreState(savedInstanceState)
@@ -99,6 +107,58 @@ class MainActivity : ComponentActivity() {
                 if (webView.canGoBack()) webView.goBack() else finish()
             }
         })
+    }
+
+
+    private inner class HalqehBridge {
+        @JavascriptInterface
+        fun shareText(text: String) {
+            runOnUiThread {
+                val send = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, text.take(4000))
+                }
+                startActivity(Intent.createChooser(send, "اشتراک‌گذاری حلقه‌یار"))
+            }
+        }
+
+        @JavascriptInterface
+        fun setSystemBarsDark(isDark: Boolean) {
+            runOnUiThread {
+                WindowInsetsControllerCompat(window, container).apply {
+                    isAppearanceLightStatusBars = !isDark
+                    isAppearanceLightNavigationBars = !isDark
+                }
+            }
+        }
+
+        @JavascriptInterface
+        fun showLocalNotification(title: String, body: String) {
+            runOnUiThread {
+                if (Build.VERSION.SDK_INT >= 33 &&
+                    checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) !=
+                    android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 410)
+                    return@runOnUiThread
+                }
+                val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    manager.createNotificationChannel(
+                        NotificationChannel("halqeh_updates", "اعلان‌های حلقه‌یار", NotificationManager.IMPORTANCE_DEFAULT)
+                    )
+                }
+                val notification = NotificationCompat.Builder(this@MainActivity, "halqeh_updates")
+                    .setSmallIcon(R.drawable.ic_halqeh_yar)
+                    .setContentTitle(title.take(80))
+                    .setContentText(body.take(180))
+                    .setStyle(NotificationCompat.BigTextStyle().bigText(body.take(500)))
+                    .setAutoCancel(true)
+                    .build()
+                NotificationManagerCompat.from(this@MainActivity).notify(
+                    (System.currentTimeMillis() % Int.MAX_VALUE).toInt(), notification
+                )
+            }
+        }
     }
 
     private fun configureWebView() {
