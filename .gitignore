@@ -1,0 +1,14 @@
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+*.iml
+
+# Signing keys and credentials — never commit these
+*.jks
+*.keystore
+keystore.properties
+
+# Android Studio
+.idea/
+.DS_Store
