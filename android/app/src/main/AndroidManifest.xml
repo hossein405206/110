@@ -3,6 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="false"
+        android:icon="@drawable/ic_halqeh_yar"
         android:label="حلقه‌یار"
         android:supportsRtl="true"
         android:theme="@style/Theme.HalqehYar.Starting"
