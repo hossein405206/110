@@ -1485,3 +1485,6 @@ function bindGlobalNavigation(){
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bootV4Navigation); else bootV4Navigation();
 })();
+
+/* Load Android/web progressive experience features on every page. */
+(function(){var s=document.createElement('script');s.src='js/app-enhancements.js?v=1.0.0';s.defer=true;document.head.appendChild(s)})();
