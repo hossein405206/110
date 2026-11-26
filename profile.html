@@ -7,7 +7,7 @@
   <title>پروفایل من | مسجد امام رضا (ع)</title>
 
   <link rel="stylesheet" href="css/style.css?v=5.90.0">
-  <link rel="stylesheet" href="css/profile.css?v=5.92.0">
+  <link rel="stylesheet" href="css/profile.css?v=5.93.0">
   <link rel="stylesheet" href="css/islamic-design.css?v=5.90.0">
 </head>
 <body>
@@ -34,16 +34,24 @@
 
       <!-- ═══ کارت هویت ═══ -->
       <section class="profile-hero" aria-label="هویت حساب کاربری">
-        <div class="profile-avatar" id="profileAvatar">؟</div>
-        <h2 class="profile-name" id="profileName">در حال بارگذاری...</h2>
-        <p class="profile-phone" id="profilePhone" dir="ltr">—</p>
-        <span class="profile-role-badge role-badge--unregistered" id="profileRoleBadge">عضویت تکمیل نشده</span>
-        <button type="button" class="profile-photo-change" id="changeProfilePhoto">تغییر عکس پروفایل</button>
+        <div class="profile-hero__topline"><span>حساب کاربری</span><span class="profile-hero__index">۰۱ / PROFILE</span></div>
+        <div class="profile-identity">
+          <div class="profile-avatar" id="profileAvatar">؟</div>
+          <div class="profile-identity__copy">
+            <h2 class="profile-name" id="profileName">در حال بارگذاری...</h2>
+            <p class="profile-phone" id="profilePhone" dir="ltr">—</p>
+            <span class="profile-role-badge role-badge--unregistered" id="profileRoleBadge">عضویت تکمیل نشده</span>
+          </div>
+        </div>
+        <button type="button" class="profile-photo-change" id="changeProfilePhoto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+          تغییر تصویر پروفایل
+        </button>
         <input type="file" id="profilePhotoInput" accept="image/jpeg,image/png,image/webp" hidden>
       </section>
 
       <!-- ═══ آمار ═══ -->
-      <section class="profile-stats">
+      <section class="profile-stats" aria-label="آمار فعالیت">
         <div class="pstat">
           <span class="pstat__num" id="statPoints">۰</span>
           <span class="pstat__label">امتیاز کل</span>
@@ -64,7 +72,8 @@
 
       <!-- ═══ اطلاعات ═══ -->
       <section class="profile-info">
-        <h3 class="section-title">اطلاعات من</h3>
+        <div class="profile-section-heading"><div><span>جزئیات حساب</span><h3 class="section-title">اطلاعات من</h3></div><span class="profile-section-mark">۰۲</span></div>
+        <div class="profile-info-grid">
 
         <div class="info-row">
           <div class="info-row__icon">
@@ -94,10 +103,11 @@
           <div class="info-row__icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
           <div class="info-row__content"><small>درباره من</small><strong id="infoBio">—</strong></div>
         </div>
+        </div>
       </section>
 
       <!-- ═══ دکمه ویرایش ═══ -->
-      <section class="profile-actions">
+      <section class="profile-actions" aria-label="مدیریت حساب">
         <button type="button" class="btn-submit" id="editProfileBtn">
           <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;">
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
