@@ -23,7 +23,6 @@
 
   <main class="app-home-screen">
     <section class="app-greeting" aria-labelledby="homeTitle">
-      <span class="app-greeting__eyebrow">مسجد امام رضا (ع)</span>
       <h1 id="homeTitle">حلقه شهید هادی ذوالفقاری</h1>
     </section>
 
@@ -37,10 +36,6 @@
       </div>
     </section>
 
-    <section class="home-week-strip" aria-label="تقویم هفتگی">
-      <div class="home-week-heading"><span>این هفته</span><small id="homeWeekMonth"></small></div>
-      <div class="home-week-days" id="homeWeekDays" aria-live="polite"></div>
-    </section>
 
     <section class="app-quick-section" aria-labelledby="quickTitle">
       <div class="app-section-heading"><div><h2 id="quickTitle">دسترسی‌ها</h2></div></div>
@@ -71,28 +66,7 @@
   <nav class="bottom-nav" aria-label="ناوبری اصلی"></nav>
 </div>
 
-<script>
-(function(){
-  var root=document.getElementById('homeWeekDays'),month=document.getElementById('homeWeekMonth');
-  if(!root)return;
-  var now=new Date(),start=new Date(now);
-  start.setDate(now.getDate()-((now.getDay()+1)%7));
-  var names=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
-      fmt=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric'}),
-      mf=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{month:'long',year:'numeric'});
-  if(month)month.textContent=mf.format(now);
-  names.forEach(function(n,i){
-    var d=new Date(start);d.setDate(start.getDate()+i);
-    var item=document.createElement('div'),name=document.createElement('span'),num=document.createElement('strong');
-    item.className='home-week-day'+(d.toDateString()===now.toDateString()?' is-today':'');
-    name.className='home-week-day__name';name.textContent=n;
-    num.className='home-week-day__number';num.textContent=fmt.format(d);
-    item.appendChild(name);item.appendChild(num);
-    if(d.toDateString()===now.toDateString())item.setAttribute('aria-current','date');
-    root.appendChild(item);
-  });
-})();
-</script>
+
 <script src="js/main.js?v=6.17.0-foundation" defer></script>
 <script src="js/wisdom.js?v=6.17.0-foundation" defer></script>
 </body>
