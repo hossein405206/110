@@ -73,7 +73,7 @@ a,button{ -webkit-tap-highlight-color:transparent}
 :root[data-theme="dark"]{--hy-bg:#111512;--hy-surface:#1a201c;--hy-surface-soft:#252d27;--hy-ink:#edf2ee;--hy-muted:#a0ada4;--hy-border:#303a33;--hy-green:#8eb8a2;--hy-green-deep:#c6ddce;--hy-green-tint:#28382f;--hy-gold:#d0b16d;--hy-shadow:0 1px 3px rgba(0,0,0,.2)}
 :root[data-theme="dark"] body,:root[data-theme="dark"] html{background:var(--hy-bg)!important;color:var(--hy-ink)!important}
 :root[data-theme="dark"] .app-topbar{background:var(--hy-surface)!important;border-color:var(--hy-border)!important}
-:root[data-theme="dark"] .header-brand strong,:root[data-theme="dark"] .app-greeting h1,:root[data-theme="dark"] .app-section-heading h2,:root[data-theme="dark"] .home-week-heading span{color:var(--hy-ink)!important}
+:root[data-theme="dark"] .header-brand strong,:root[data-theme="dark"] .app-greeting h1,:root[data-theme="dark"] .app-section-heading h2{color:var(--hy-ink)!important}
 :root[data-theme="dark"] .app-section-heading>div>span,:root[data-theme="dark"] .home-week-heading small,:root[data-theme="dark"] .app-quick-card,:root[data-theme="dark"] .app-wisdom-primary,:root[data-theme="dark"] .event-loading,:root[data-theme="dark"] .event-empty{background:var(--hy-surface)!important;border-color:var(--hy-border)!important}
 :root[data-theme="dark"] .app-quick-card strong{color:var(--hy-ink)!important}
 :root[data-theme="dark"] .app-wisdom-primary .home-wisdom__arabic{color:var(--hy-green-deep)!important}
