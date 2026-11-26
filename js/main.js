@@ -1322,45 +1322,13 @@
 (function () {
   'use strict';
 
-  function setupDrawer() {
-    var drawer = document.querySelector('.app-drawer');
-    var backdrop = document.querySelector('.drawer-backdrop');
-    if (!drawer || !backdrop) return;
-
-    function open() {
-      drawer.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      drawer.setAttribute('aria-hidden', 'false');
-    }
-    function close() {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-      drawer.setAttribute('aria-hidden', 'true');
-    }
-
-    document.querySelectorAll('[data-open-drawer]').forEach(function (el) {
-      el.addEventListener('click', open);
-    });
-    document.querySelectorAll('[data-close-drawer]').forEach(function (el) {
-      el.addEventListener('click', close);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
-    });
-    drawer.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', close);
-    });
-  }
-
   function setupRipples() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var selectors = [
       '.hero-primary','.hero-secondary','.quick-item',
       '.feature-card','.service-card','.nav-item',
-      '.header-menu','.header-auth','.drawer-links a'
+      '.header-auth'
     ];
 
     document.querySelectorAll(selectors.join(',')).forEach(function (el) {
@@ -1407,7 +1375,6 @@
   }
 
   function initProV2() {
-    setupDrawer();
     setupRipples();
     setupScrollReveal();
   }
@@ -1471,9 +1438,7 @@ function buildBottomNav() {
 function bindGlobalNavigation(){
   buildBottomNav();
   Array.prototype.slice.call(document.querySelectorAll('[data-open-login]')).forEach(function(b){b.addEventListener('click',function(){location.href=((window.KanoonApp&&window.KanoonApp.session&&window.KanoonApp.session.getMember())?'profile.html':'login.html')})});
-  var drawer=document.querySelector('.app-drawer'),back=document.querySelector('.drawer-backdrop');
-  Array.prototype.slice.call(document.querySelectorAll('[data-open-drawer]')).forEach(function(b){b.addEventListener('click',function(){if(drawer){drawer.classList.add('open');if(back)back.classList.add('open');document.body.classList.add('drawer-open')}})});
-  Array.prototype.slice.call(document.querySelectorAll('[data-close-drawer]')).forEach(function(b){b.addEventListener('click',function(){if(drawer){drawer.classList.remove('open');if(back)back.classList.remove('open');document.body.classList.remove('drawer-open')}})});
+  /* Mobile navigation is handled by the fixed bottom tab bar. */
 }
 (function(){
   function bootV4Navigation(){
