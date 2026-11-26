@@ -39,3 +39,55 @@ html,body{background:#e8ece8!important;color:var(--app-ink);font-family:'Vazirma
 .app-event-carousel .home-event-overlay b{font-size:10px;color:#f0d48f}
 .app-event-carousel .event-empty{flex:0 0 100%;padding:22px;background:#fff;border-radius:16px;font-size:12px;color:#7c8b86;text-align:center}
 @media(max-width:370px){.app-wisdom-primary .home-wisdom__arabic{font-size:19px}.app-event-carousel .home-event-slide{flex-basis:91%!important;width:91%!important;max-width:91%!important}}
+
+/* v6.12 — Local typography, complete dark-mode surface system */
+:root{--app-bg:#f5f4ef;--app-ink:#173a3b;--app-teal:#176e68;--app-gold:#e0b35b;--app-surface:#fff;--app-surface-soft:#f0f3ef;--app-border:#e3e8e2}
+:root[data-theme="dark"]{--app-bg:#0b1117;--app-ink:#e9f0f2;--app-teal:#70d5c4;--app-gold:#d7b76c;--app-surface:#151f27;--app-surface-soft:#1c2a33;--app-border:#283741;--hy-paper:#0b1117;--hy-card:#151f27;--hy-ink:#e9f0f2;--hy-muted:#a6b6be;--hy-line:rgba(220,238,240,.10);color-scheme:dark}
+:root[data-theme="dark"] html,:root[data-theme="dark"] body{background:#0b1117!important;color:#e9f0f2!important}
+:root[data-theme="dark"] .app-shell,:root[data-theme="dark"] .app-container,:root[data-theme="dark"] .home-app{background:#0b1117!important;color:#e9f0f2!important}
+:root[data-theme="dark"] .app-topbar{background:#121a21!important;color:#e9f0f2!important;border-bottom-color:#26343d!important;box-shadow:0 2px 14px rgba(0,0,0,.25)!important}
+:root[data-theme="dark"] .app-topbar .header-brand strong{color:#eaf3f2!important}
+:root[data-theme="dark"] .app-topbar .header-brand small{color:#9aadb4!important}
+:root[data-theme="dark"] .app-topbar .header-menu,:root[data-theme="dark"] .app-topbar .header-auth,:root[data-theme="dark"] .app-topbar .header-back{background:#1b2932!important;color:#c4d7d9!important;border:1px solid #2b3c45!important}
+:root[data-theme="dark"] .app-topbar .header-menu span{background:#b7d4d0!important}
+:root[data-theme="dark"] .app-topbar .header-auth__avatar{background:#27413f!important;color:#d5eee7!important}
+:root[data-theme="dark"] .app-greeting__eyebrow{color:#8fbdb4!important}
+:root[data-theme="dark"] .app-greeting h1{color:#e9f2f1!important}
+:root[data-theme="dark"] .app-greeting p{color:#9fb0b5!important}
+:root[data-theme="dark"] .app-wisdom-primary{background:linear-gradient(145deg,#17232b,#121c24)!important;border:1px solid #2a3a43!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important}
+:root[data-theme="dark"] .app-wisdom-primary:after{color:#7d8c70!important;opacity:.10!important}
+:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__ornament{background:#26372f!important;color:#cdb77c!important}
+:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__arabic{color:#e5d4a5!important}
+:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__meaning{color:#b8c6be!important}
+:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__source{color:#8e9c9a!important}
+:root[data-theme="dark"] .app-quick-card,:root[data-theme="dark"] .app-quick-section .app-quick-card,:root[data-theme="dark"] .quick-item{background:#151f27!important;border:1px solid #283741!important;color:#e7f0ef!important;box-shadow:none!important}
+:root[data-theme="dark"] .app-quick-card strong{color:#e7f0ef!important}
+:root[data-theme="dark"] .app-quick-card small{color:#9eb0b5!important}
+:root[data-theme="dark"] .app-section-heading h2,:root[data-theme="dark"] .app-section-heading>div>span{color:#e7f0ef!important}
+:root[data-theme="dark"] .app-section-heading a{color:#79cbbd!important}
+:root[data-theme="dark"] .app-events-section,:root[data-theme="dark"] .app-quick-section{background:transparent!important;color:#e7f0ef!important}
+:root[data-theme="dark"] .app-event-carousel .event-empty{background:#151f27!important;color:#aabac0!important;border:1px solid #283741!important}
+:root[data-theme="dark"] .app-community-card{background:linear-gradient(145deg,#172a30,#142129)!important;border:1px solid #2a3b43!important;color:#e8f1f0!important;box-shadow:none!important}
+:root[data-theme="dark"] .app-community-card h2,:root[data-theme="dark"] .app-community-card p{color:#e8f1f0!important}
+:root[data-theme="dark"] .app-community-card>div>span{color:#9fc9be!important}
+:root[data-theme="dark"] .app-footer{color:#899ba1!important}
+:root[data-theme="dark"] .bottom-nav{background:#121a21!important;border-top:1px solid #283741!important;box-shadow:0 -8px 24px rgba(0,0,0,.20)!important}
+:root[data-theme="dark"] .bottom-nav .nav-item{color:#8da1a8!important}
+:root[data-theme="dark"] .bottom-nav .nav-item.active{color:#75d0bf!important}
+:root[data-theme="dark"] .app-drawer{background:#151f27!important;color:#e8f1f0!important;border-color:#283741!important}
+:root[data-theme="dark"] .app-drawer a,:root[data-theme="dark"] .drawer-links a{color:#d8e5e5!important;border-color:#283741!important}
+:root[data-theme="dark"] .drawer-head strong{color:#eaf3f2!important}
+:root[data-theme="dark"] .drawer-head small{color:#a1b3b9!important}
+:root[data-theme="dark"] .drawer-close{background:#1c2a33!important;color:#c6d7d9!important}
+:root[data-theme="dark"] .header-menu,:root[data-theme="dark"] .app-quick-card .app-quick-icon{color:#82d6c6!important}
+:root[data-theme="dark"] .app-featured-hero{background:linear-gradient(145deg,#15484b,#102e37)!important;box-shadow:0 12px 28px rgba(0,0,0,.22)!important}
+:root[data-theme="dark"] .app-hero-art{background:radial-gradient(circle at 48% 45%,#316b67,#174c4e 38%,#102e37 78%)!important}
+:root[data-theme="dark"] .app-splash{background:radial-gradient(circle at 50% 42%,#245f5b,#10393d 52%,#091d24)!important}
+:root[data-theme="dark"] .app-splash-title{color:#eaf3f2!important}
+:root[data-theme="dark"] .app-splash-sub{color:#a9c7bf!important}
+:root[data-theme="dark"] .app-splash-mark{color:#e0c17c!important}
+:root[data-theme="dark"] .app-splash-line{background:#d5b56d!important}
+:root[data-theme="dark"] .app-home-screen{background:transparent!important}
+:root[data-theme="dark"] .app-section-heading,:root[data-theme="dark"] .app-section-heading h2{color:#eaf3f2!important}
+:root[data-theme="dark"] .app-topbar .header-menu{border:0!important}
+@media(prefers-reduced-motion:reduce){.app-wisdom-primary,.app-event-carousel .home-event-slide,.app-event-carousel .home-event-slide img{transition:none!important}}
