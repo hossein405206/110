@@ -33,7 +33,7 @@ body{margin:0!important;background:var(--hy-bg)!important;color:var(--hy-ink)!im
 .app-event-carousel{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:12px!important;min-height:0!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;padding:1px 0 3px!important}
 .app-event-carousel::-webkit-scrollbar{display:none}
 .app-event-carousel .home-event-slide{position:relative!important;display:block!important;flex:0 0 min(82%,330px)!important;width:min(82%,330px)!important;min-width:0!important;height:190px!important;min-height:190px!important;overflow:hidden!important;scroll-snap-align:start!important;border-radius:16px!important;background:#344d43!important;box-shadow:none!important;border:0!important;text-decoration:none!important}
-.app-event-carousel .home-event-slide img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.app-event-carousel .home-event-slide::after{display:none!important}\n.app-event-carousel .home-event-slide img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
 .app-event-carousel .home-event-overlay{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;gap:4px!important;padding:18px 14px 14px!important;background:linear-gradient(180deg,transparent 18%,rgba(15,25,19,.08) 42%,rgba(12,23,18,.8) 100%)!important;color:#fff!important}
 .app-event-carousel .home-event-overlay h3{margin:0!important;color:#fff!important;font-size:16px!important;line-height:1.5!important;font-weight:800!important}
 .app-event-carousel .home-event-overlay p{margin:0!important;color:rgba(255,255,255,.88)!important;font-size:11px!important;line-height:1.7!important}
@@ -67,6 +67,10 @@ body{margin:0!important;background:var(--hy-bg)!important;color:var(--hy-ink)!im
 .bottom-nav .nav-icon svg{width:21px!important;height:21px!important;stroke:currentColor!important}
 .bottom-nav .nav-item.active .nav-icon{background:var(--hy-green-tint)!important}
 .bottom-nav .nav-item:before,.bottom-nav .nav-item:after{display:none!important}
+/* Utility actions from the app-enhancement layer: compact, consistent with the bottom tabs. */
+.home-app~.hy-toolbar,.home-app .hy-toolbar{display:none!important}
+body:has(.home-app) .hy-toolbar{left:12px!important;right:auto!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;gap:6px!important}
+body:has(.home-app) .hy-fab{width:36px!important;height:36px!important;border-radius:12px!important;background:var(--hy-surface)!important;border:1px solid var(--hy-border)!important;color:var(--hy-green)!important;box-shadow:0 2px 6px rgba(20,35,27,.07)!important;backdrop-filter:none!important;font-size:18px!important}
 a,button{ -webkit-tap-highlight-color:transparent}
 .app-quick-card,.header-auth,.section-link,.bottom-nav .nav-item{touch-action:manipulation}
 .app-quick-card:active,.header-auth:active,.bottom-nav .nav-item:active{transform:scale(.985)}
