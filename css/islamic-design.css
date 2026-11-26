@@ -1870,3 +1870,13 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .auth-step-success .auth-actions{display:grid}
 @media(min-width:480px){.auth-art-panel{min-height:196px;padding:23px}.auth-entry-content{padding:22px}.auth-form{display:grid;grid-template-columns:1fr;gap:0}}
 @media(max-width:360px){.auth-art-panel{min-height:150px}.auth-entry-content{padding:15px}.auth-entry-content .auth-title{font-size:1.18rem!important}}
+/* v6.0 dashboard details */
+.app-welcome-kicker{margin-bottom:8px!important;color:#e2c27b!important}.app-welcome-kicker::before{background:#e2c27b!important}
+.app-home-screen .hero-actions a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.app-events-section .event-loading,.app-events-section .event-empty{border:1px solid var(--app-line);background:#fffdf8;border-radius:18px;padding:18px;color:#73818d}
+.app-featured-content .feature-info{gap:8px}
+.app-service-hub .service-list a{text-decoration:none}
+.app-service-hub .service-card:focus-visible,.app-quick-access a:focus-visible{outline:3px solid rgba(194,150,65,.55);outline-offset:2px}
+.app-home-screen .home-section-intro{margin-bottom:15px}
+.app-home-screen .home-section-intro>div{display:grid;gap:3px}
+.app-login .app-header{position:relative!important}
