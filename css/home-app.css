@@ -68,9 +68,8 @@ body{margin:0!important;background:var(--hy-bg)!important;color:var(--hy-ink)!im
 .bottom-nav .nav-item.active .nav-icon{background:var(--hy-green-tint)!important}
 .bottom-nav .nav-item:before,.bottom-nav .nav-item:after{display:none!important}
 /* Utility actions from the app-enhancement layer: compact, consistent with the bottom tabs. */
-.home-app~.hy-toolbar,.home-app .hy-toolbar{display:none!important}
-body:has(.home-app) .hy-toolbar{left:12px!important;right:auto!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;gap:6px!important}
-body:has(.home-app) .hy-fab{width:36px!important;height:36px!important;border-radius:12px!important;background:var(--hy-surface)!important;border:1px solid var(--hy-border)!important;color:var(--hy-green)!important;box-shadow:0 2px 6px rgba(20,35,27,.07)!important;backdrop-filter:none!important;font-size:18px!important}
+body.home-screen .hy-toolbar{left:12px!important;right:auto!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;gap:6px!important}
+body.home-screen .hy-fab{width:36px!important;height:36px!important;border-radius:12px!important;background:var(--hy-surface)!important;border:1px solid var(--hy-border)!important;color:var(--hy-green)!important;box-shadow:0 2px 6px rgba(20,35,27,.07)!important;backdrop-filter:none!important;font-size:18px!important}
 a,button{ -webkit-tap-highlight-color:transparent}
 .app-quick-card,.header-auth,.section-link,.bottom-nav .nav-item{touch-action:manipulation}
 .app-quick-card:active,.header-auth:active,.bottom-nav .nav-item:active{transform:scale(.985)}
