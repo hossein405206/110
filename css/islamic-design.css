@@ -1650,3 +1650,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .bottom-nav{min-height:64px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* Decorative geometry layer injected by the HTML shell */
+.app-geometry{position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none;opacity:.52}
+.app-geometry span{position:absolute;display:block;width:88px;height:88px;border:1px solid rgba(8,126,120,.15);transform:rotate(45deg)}
+.app-geometry span:nth-child(1){top:145px;right:-56px;box-shadow:0 0 0 12px rgba(8,126,120,.025),0 0 0 24px rgba(8,126,120,.02)}
+.app-geometry span:nth-child(2){top:48%;left:-68px;width:112px;height:112px;border-color:rgba(196,123,66,.16)}
+.app-geometry span:nth-child(3){bottom:115px;right:-34px;width:54px;height:54px;border-color:rgba(8,126,120,.14)}
+[data-design-system="110-geometric"]{position:relative;isolation:isolate}
+[data-design-system="110-geometric"]>.app-geometry{z-index:-1}
