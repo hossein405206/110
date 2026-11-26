@@ -1240,12 +1240,9 @@
         var allowedTargets=['activities.html','register.html','game.html','ring-registration.html','schedule.html','index.html'];
         var targetPage=String(e.targetPage||'activities.html');
         if(allowedTargets.indexOf(targetPage)<0)targetPage='activities.html';
-        return '<a class="home-event-slide '+(i===0?'active':'')+'" href="'+targetPage+'" aria-hidden="'+(i!==0)+'"><img src="'+esc(e.imageUrl||'images/placeholder.svg')+'" alt="'+esc(e.title)+'" loading="'+(i===0?'eager':'lazy')+'"><div class="home-event-overlay">'+labelMarkup+'<h3>'+esc(e.title)+'</h3><p>'+esc(e.description||e.date||'')+'</p><b>مشاهده جزئیات ←</b></div></a>';
+        return '<a class="home-event-slide" href="'+targetPage+'"><img src="'+esc(e.imageUrl||'images/placeholder.svg')+'" alt="'+esc(e.title)+'" loading="'+(i===0?'eager':'lazy')+'"><div class="home-event-overlay">'+labelMarkup+'<h3>'+esc(e.title)+'</h3><p>'+esc(e.description||e.date||'')+'</p><b>مشاهده جزئیات ←</b></div></a>';
       }).join('');
-      if(items.length>1){
-        var n=0,slides=root.querySelectorAll('.home-event-slide');
-        setInterval(function(){slides[n].classList.remove('active');n=(n+1)%slides.length;slides[n].classList.add('active');for(var i=0;i<slides.length;i++)slides[i].setAttribute('aria-hidden',String(i!==n))},5000);
-      }
+      /* User-controlled horizontal carousel: swipe/scroll; no forced auto-transition. */
     }).catch(function(){root.innerHTML='<div class="event-empty"><strong>رویدادها فعلاً در دسترس نیستند</strong></div>'});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
