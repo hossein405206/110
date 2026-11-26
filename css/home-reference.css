@@ -1,0 +1,52 @@
+/* Home redesign — inspired by real product patterns (Stoic daily calendar + editorial cards), not color-only tweaks */
+.app-home-screen{gap:20px!important}
+.app-greeting{padding:10px 2px 2px!important}
+.app-greeting__eyebrow{display:inline-block;letter-spacing:.02em;font-size:11px!important}
+.app-greeting h1{font-size:clamp(24px,6vw,29px)!important;letter-spacing:-.02em;margin:8px 0 5px!important}
+.app-greeting p{font-size:12px!important;line-height:1.8!important;max-width:34em}
+.home-week-strip{padding:13px 13px 12px;border-radius:18px;background:var(--app-surface,#fff);border:1px solid var(--app-border,#d9dee3);box-shadow:0 4px 14px rgba(22,30,38,.035)}
+.home-week-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.home-week-heading span{font-size:12px;font-weight:800;color:var(--app-ink,#18212b)}
+.home-week-heading small{font-size:10px;color:#7c8791}
+.home-week-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.home-week-day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:8px 2px 9px;border-radius:12px;min-height:60px;color:var(--app-ink,#18212b);transition:transform .18s ease}
+.home-week-day__name{font-size:9px;color:#737f8a;white-space:nowrap}
+.home-week-day__number{font-size:13px;font-weight:700;line-height:1}
+.home-week-day.is-today{background:#20252b;color:#fff;box-shadow:0 3px 9px rgba(0,0,0,.12)}
+.home-week-day.is-today .home-week-day__name{color:#d0d4d8}
+.app-wisdom-primary{border-radius:22px!important;min-height:160px!important;padding:17px 17px 15px!important;box-shadow:0 6px 16px rgba(42,35,21,.055)!important}
+.app-wisdom-primary .home-wisdom__ornament{font-size:10px!important;letter-spacing:.01em}
+.app-wisdom-primary .home-wisdom__arabic{font-size:clamp(20px,5.2vw,24px)!important;line-height:2!important;margin:4px 0!important}
+.app-wisdom-primary .home-wisdom__meaning{font-size:12px!important;line-height:1.85!important}
+.app-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.app-quick-card{min-height:86px!important;display:grid!important;grid-template-columns:42px 1fr!important;grid-template-rows:auto auto!important;justify-content:stretch!important;align-content:center!important;align-items:center!important;text-align:right!important;gap:2px 9px!important;padding:11px 10px!important;border-radius:16px!important;box-shadow:0 2px 8px rgba(22,30,38,.035)!important}
+.app-quick-card .app-quick-icon{grid-row:1/3;width:40px!important;height:40px!important;border-radius:13px!important;margin:0!important;font-size:19px!important}
+.app-quick-card strong{font-size:11px!important;white-space:normal!important;align-self:end!important}
+.app-quick-card small{font-size:10px!important;align-self:start!important}
+.app-quick-card:nth-child(1){border-inline-start:3px solid #567d70!important}
+.app-quick-card:nth-child(2){border-inline-start:3px solid #6686a5!important}
+.app-quick-card:nth-child(3){border-inline-start:3px solid #b58a3a!important}
+.app-quick-card:nth-child(4){border-inline-start:3px solid #8b647c!important}
+.app-section-heading{margin-bottom:12px!important}
+.app-section-heading h2{font-size:18px!important}
+.app-featured-hero{min-height:205px!important;border-radius:23px!important;grid-template-columns:.85fr 1.15fr!important;box-shadow:0 8px 22px rgba(18,35,47,.12)!important}
+.app-hero-art{min-height:205px!important}
+.app-hero-copy{padding:17px 15px!important}
+.app-hero-copy h2{font-size:clamp(18px,4.9vw,22px)!important;line-height:1.5!important}
+.app-hero-copy p{font-size:11px!important;line-height:1.75!important}
+.app-hero-cta{padding:9px 12px!important;font-size:11px!important}
+.app-community-card{min-height:130px!important;border-radius:20px!important;padding:17px!important}
+.community-art{font-size:64px!important;opacity:.72}
+:root[data-theme="dark"] .home-week-strip{background:#14171c;border-color:#282d34;box-shadow:none}
+:root[data-theme="dark"] .home-week-heading span{color:#e8eaed}
+:root[data-theme="dark"] .home-week-heading small{color:#9aa3ad}
+:root[data-theme="dark"] .home-week-day{color:#e8eaed}
+:root[data-theme="dark"] .home-week-day__name{color:#9aa3ad}
+:root[data-theme="dark"] .home-week-day.is-today{background:#e8eaed;color:#111419}
+:root[data-theme="dark"] .home-week-day.is-today .home-week-day__name{color:#555d65}
+:root[data-theme="dark"] .app-quick-card:nth-child(1){border-inline-start-color:#789b8c!important}
+:root[data-theme="dark"] .app-quick-card:nth-child(2){border-inline-start-color:#7898b8!important}
+:root[data-theme="dark"] .app-quick-card:nth-child(3){border-inline-start-color:#b99557!important}
+:root[data-theme="dark"] .app-quick-card:nth-child(4){border-inline-start-color:#a07c93!important}
+@media(max-width:360px){.home-week-days{gap:2px}.home-week-day{min-height:55px;padding:7px 0}.home-week-day__name{font-size:8px!important}.app-quick-card{padding:9px 8px!important;grid-template-columns:36px 1fr!important;gap:2px 7px!important}.app-quick-card .app-quick-icon{width:35px!important;height:35px!important}.app-featured-hero{grid-template-columns:.78fr 1.22fr!important}.app-hero-copy{padding:13px 11px!important}}
+@media(prefers-reduced-motion:reduce){.home-week-day{transition:none!important}}
