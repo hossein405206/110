@@ -1795,3 +1795,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .home-shortcuts .quick-item{min-height:76px;padding:9px!important;grid-template-columns:34px minmax(0,1fr) 10px!important}
   .home-shortcuts .quick-item>span:nth-child(2){font-size:.64rem!important}
 }
+
+/* v5.94.0 — Keep internal-page headers inside the app shell.
+   Reset legacy fixed-header offsets that survived the sticky layout. */
+.app-container:not(.home-app){padding-top:0!important}
+.app-container:not(.home-app) > .app-header{
+ position:sticky!important;top:0!important;left:auto!important;right:auto!important;
+ transform:none!important;width:100%!important;max-width:none!important;margin:0!important;
+ box-sizing:border-box!important
+}
