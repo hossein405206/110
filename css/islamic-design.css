@@ -1744,3 +1744,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .home-services .service-card{grid-template-columns:21px 36px minmax(0,1fr) 12px;gap:7px;padding:11px 9px}
  .home-services .service-icon{width:34px;height:34px}
 }
+
+
+/* HOTFIX: restore the quick-access strip's two-level layout */
+.home-shortcuts.quick-strip{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  grid-template-columns:none!important;
+  gap:0!important;
+  width:100%;
+  padding:0!important;
+  margin:0 0 34px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.home-shortcuts .shortcut-intro{width:100%;min-width:0}
+.home-shortcuts .shortcut-links{
+  display:grid!important;
+  width:100%;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:10px!important;
+}
+.home-shortcuts .quick-item{
+  display:grid!important;
+  width:100%;
+  min-width:0;
+  min-height:86px;
+  grid-template-columns:38px minmax(0,1fr) 12px!important;
+  grid-template-rows:1fr!important;
+  justify-content:initial!important;
+  align-items:center!important;
+  gap:8px!important;
+  padding:11px 9px!important;
+}
+.home-shortcuts .quick-item>span:nth-child(2){
+  display:block;
+  min-width:0;
+  font-size:.68rem!important;
+  line-height:1.7;
+  font-weight:800;
+  color:var(--g-ink)!important;
+}
+.home-shortcuts .quick-item> b{display:block;align-self:center}
+@media(max-width:640px){
+  .home-shortcuts .shortcut-links{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  .home-shortcuts .quick-item{min-height:76px;padding:9px!important;grid-template-columns:34px minmax(0,1fr) 10px!important}
+  .home-shortcuts .quick-item>span:nth-child(2){font-size:.64rem!important}
+}
