@@ -1847,3 +1847,26 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 @media(min-width:680px){body{padding:22px 0}.app-container{border-radius:30px!important;overflow:hidden!important}.app-header{border-radius:30px 30px 0 0!important}.home-main{padding-inline:21px!important}.hero-section{min-height:285px!important}.bottom-nav{bottom:18px!important;border-radius:22px!important;width:min(620px,calc(100% - 32px))!important}}
 @media(max-width:420px){.app-header{padding-inline:12px!important}.home-main{padding-inline:12px!important}.hero-section{padding:23px 18px!important;min-height:240px!important}.hero-symbol{left:6px!important;font-size:7rem!important}.home-services{padding:14px 10px!important}.service-card{grid-template-columns:25px 38px minmax(0,1fr) 11px!important;gap:8px!important;padding:10px!important}.service-icon{width:37px!important;height:37px!important}.feature-small{padding:11px!important}}
 @media(prefers-reduced-motion:reduce){.feature-card,.quick-item,.service-card{transition:none!important}}
+
+/* Login screen — redesigned as an editorial welcome / sign-in composition */
+.app-login{padding-bottom:20px!important}
+.app-auth-layout{padding-top:13px!important}
+.auth-entry-card{overflow:hidden;border:1px solid rgba(27,49,67,.08);border-radius:25px;background:#fffdf8;box-shadow:0 12px 28px rgba(20,41,60,.07)}
+.auth-art-panel{position:relative;isolation:isolate;min-height:174px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 21px;color:#f8f3e7;background:linear-gradient(135deg,#18364f,#2b566e 55%,#477582);overflow:hidden}
+.auth-art-panel::before{content:"";position:absolute;inset:0;z-index:-1;background:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Islamic_geometric_pattern.svg") center/260px;opacity:.17;mix-blend-mode:screen}
+.auth-art-panel::after{content:"";position:absolute;z-index:-1;left:-65px;top:-90px;width:250px;height:250px;border:1px solid rgba(227,197,132,.42);border-radius:50%;box-shadow:0 0 0 18px rgba(227,197,132,.045),0 0 0 39px rgba(227,197,132,.035),0 0 0 61px rgba(227,197,132,.025)}
+.auth-art-emblem{position:absolute;left:22px;top:-10px;font-family:serif;font-size:9rem;line-height:1;color:#d6b66f;opacity:.18;transform:rotate(-10deg)}
+.auth-art-caption{font-size:.75rem;font-weight:800;letter-spacing:.015em}
+.auth-art-stamp{position:absolute;top:18px;right:19px;border:1px solid rgba(232,211,165,.35);background:rgba(255,255,255,.075);border-radius:100px;padding:5px 10px;font-size:.59rem;color:rgba(255,255,255,.8);backdrop-filter:blur(5px)}
+.auth-entry-content{padding:19px 17px 17px}
+.auth-entry-content .auth-hero{margin:0 0 17px;text-align:right}
+.auth-entry-content .auth-hero__icon{display:none}
+.auth-entry-content .auth-title{margin:0 0 5px}
+.auth-entry-content .auth-subtitle{margin:0}
+.auth-entry-content .auth-form{padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important}
+.auth-form-foot{margin-top:12px;text-align:center;font-size:.62rem;color:#8a959d;line-height:1.75}
+.auth-step-success{padding:22px 17px;border-radius:24px;background:#fffdf8;border:1px solid var(--app-line);box-shadow:var(--app-shadow)}
+.auth-step-success .auth-hero{text-align:center}
+.auth-step-success .auth-actions{display:grid}
+@media(min-width:480px){.auth-art-panel{min-height:196px;padding:23px}.auth-entry-content{padding:22px}.auth-form{display:grid;grid-template-columns:1fr;gap:0}}
+@media(max-width:360px){.auth-art-panel{min-height:150px}.auth-entry-content{padding:15px}.auth-entry-content .auth-title{font-size:1.18rem!important}}
