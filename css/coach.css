@@ -441,3 +441,131 @@ body:has(.coach-page) .app-container{background:transparent}
 .ring-review-card .admin-actions{flex-wrap:wrap;align-self:center}
 .ring-review-card .admin-actions button{min-height:36px;padding:8px 11px;border-radius:10px;font-size:.62rem}
 @media(max-width:520px){.ring-review-card{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.ring-review-card .admin-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.ring-review-heading>strong{font-size:.82rem!important}}
+
+
+/* v5.91.0 — Coach workspace visual system: hierarchy, depth, controls and responsive data surfaces. */
+.coach-page{max-width:1120px;padding:14px 16px 110px;color:#1b3045}
+.coach-page .coach-login{max-width:590px;min-height:0;margin:22px auto 34px;padding:34px 28px 30px;border-radius:28px!important}
+.coach-page .coach-login:before{inset:10px;border-radius:20px}
+.coach-page .coach-lock{width:76px;height:76px;border-radius:24px}
+.coach-page .coach-login form{max-width:390px;width:100%;margin:25px auto 0}
+.coach-page .coach-top{
+  display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:14px;
+  margin:5px 0 17px;padding:22px 23px;border-radius:23px;
+  background:linear-gradient(115deg,#10263b 0%,#173d51 55%,#176c6b 100%)!important;
+  border:1px solid rgba(255,255,255,.08);color:#fff!important;
+  box-shadow:0 16px 36px rgba(16,43,62,.16)!important;overflow:hidden
+}
+.coach-page .coach-top:before{content:"";position:absolute;left:-35px;top:-85px;width:220px;height:220px;border:1px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 0 22px rgba(255,255,255,.025),0 0 0 48px rgba(255,255,255,.02);pointer-events:none}
+.coach-page .coach-top>div,.coach-page .coach-top>*{position:relative;z-index:1}
+.coach-page .coach-top h2{font-size:1.35rem;color:#fff!important;margin:0}
+.coach-page .coach-top p{color:rgba(255,255,255,.72)!important;font-size:.76rem}
+.coach-page .coach-role-badge{margin:0;padding:8px 13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#f5dfaa}
+.coach-page .coach-top .btn-secondary{min-height:40px;padding:9px 15px;border-radius:12px;background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.2)!important;color:#fff!important}
+.coach-page .coach-stats{gap:11px;margin:0 0 17px}
+.coach-page .coach-stat{
+  min-height:102px;display:flex;flex-direction:column;justify-content:center;gap:5px;
+  padding:17px 18px;border-radius:19px!important;border:1px solid #e4ebef!important;
+  background:linear-gradient(145deg,#fff,#f8fbfc)!important;
+  box-shadow:0 8px 23px rgba(24,49,69,.055)!important
+}
+.coach-page .coach-stat:before{content:"";width:27px;height:3px;border-radius:5px;background:linear-gradient(90deg,#168b82,#a6d6c9)}
+.coach-page .coach-stat strong{font-size:1.55rem;color:#173f50;line-height:1.25}
+.coach-page .coach-stat span{font-size:.7rem;color:#718392}
+.coach-page .coach-quick-nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 22px}
+.coach-page .coach-quick-link{
+  min-height:105px;justify-content:center;gap:5px;padding:14px 13px;
+  border:1px solid #e4ebef;border-radius:17px;
+  background:linear-gradient(150deg,#fff 0%,#f8fbfc 100%);
+  box-shadow:0 6px 18px rgba(24,49,69,.045);color:#213c50
+}
+.coach-page .coach-quick-link>span{width:30px;height:30px;border-radius:10px;background:#e8f3f1;color:#18766f;font-size:.72rem}
+.coach-page .coach-quick-link strong{font-size:.78rem;font-weight:900}
+.coach-page .coach-quick-link small{font-size:.62rem;color:#82919d;line-height:1.7}
+.coach-page .coach-panel{
+  position:relative;margin:13px 0;padding:20px;
+  border:1px solid #e4ebef!important;border-radius:21px!important;
+  background:linear-gradient(155deg,#fff 0%,#fcfdfd 100%)!important;
+  box-shadow:0 8px 25px rgba(22,48,68,.05)!important;
+  overflow:hidden
+}
+.coach-page .coach-panel:before{content:"";position:absolute;top:0;right:20px;width:44px;height:3px;border-radius:0 0 5px 5px;background:linear-gradient(90deg,#1a827d,#c4a15a);opacity:.8}
+.coach-page .panel-head{align-items:flex-start;gap:12px;margin-bottom:17px;padding-bottom:12px;border-bottom:1px solid #edf1f3}
+.coach-page .panel-head h3{font-size:.98rem;font-weight:900;color:#1a3548;line-height:1.7}
+.coach-page .panel-subtitle{font-size:.66rem;line-height:1.9;color:#83919c}
+.coach-page .mini-action,.coach-page .btn-secondary{min-height:39px;border-radius:12px;padding:9px 13px;font-size:.69rem;font-weight:800}
+.coach-page .mini-action{background:#eaf4f2;border:1px solid #d7e9e5;color:#176e68}
+.coach-page .form-grid{gap:13px}
+.coach-page .form-grid label,.coach-page label{font-size:.7rem;line-height:1.9;color:#526777;font-weight:800}
+.coach-page .form-control,.coach-page input:not([type=checkbox]):not([type=radio]),.coach-page textarea,.coach-page select{
+  min-height:45px;padding:11px 13px;border:1px solid #dfe7eb!important;border-radius:12px!important;
+  background:#fbfcfd!important;color:#20394c!important;font:inherit;font-size:.78rem;
+  box-shadow:inset 0 1px 2px rgba(23,48,67,.025)!important;transition:border-color .16s,box-shadow .16s,background .16s
+}
+.coach-page textarea{min-height:100px;resize:vertical}
+.coach-page .form-control:focus,.coach-page input:focus,.coach-page textarea:focus,.coach-page select:focus{
+  outline:0;border-color:#73aaa4!important;background:#fff!important;
+  box-shadow:0 0 0 3px rgba(30,133,123,.11)!important
+}
+.coach-page .event-editor{padding:17px;border:1px solid #e5ecef;border-radius:17px;background:linear-gradient(145deg,#f8fbfb,#f5f8fa)}
+.coach-page .event-upload,.coach-page .activity-photo-picker{border-radius:15px;background:#fff;border-color:#d7e3e7}
+.coach-page .editor-actions{gap:10px}
+.coach-page .editor-actions .btn-submit,.coach-page .editor-actions .btn-secondary{min-height:43px;border-radius:12px}
+.coach-page .btn-submit{min-height:45px;border-radius:13px;font-size:.78rem;font-weight:900;box-shadow:0 7px 17px rgba(17,91,91,.12)!important}
+.coach-page .admin-list{gap:10px}
+.coach-page .admin-item,.coach-page .feedback-item{
+  padding:14px 15px;border:1px solid #e7edf0;border-radius:15px;
+  background:linear-gradient(145deg,#fff,#fafcfd);box-shadow:0 4px 13px rgba(22,48,68,.03)
+}
+.coach-page .admin-item-main strong{font-size:.78rem;font-weight:900;color:#203b4f}
+.coach-page .admin-item-main small{font-size:.65rem;line-height:1.85;color:#81909b}
+.coach-page .admin-actions{gap:7px}
+.coach-page .admin-actions button{min-height:35px;padding:8px 11px;border-radius:10px;font-size:.64rem;font-weight:800}
+.coach-page .admin-actions button:not(.danger){background:#eaf3f2;border:1px solid #d8e8e5;color:#176c67}
+.coach-page .admin-actions .danger{background:#fff0ef;border:1px solid #f1d7d5;color:#a43f43}
+.coach-page .attendance-trend-summary{padding:15px 16px;border-radius:15px;background:linear-gradient(120deg,#e8f6f1,#f5faf8);border-color:#d5eae2}
+.coach-page .attendance-trend-summary strong{font-size:1.25rem}
+.coach-page .attendance-trend-chart{padding:9px 4px 2px}
+.coach-page .attendance-archive-controls,.coach-page .attendance-member-history-controls{padding:14px;border:1px solid #e6edef;border-radius:15px;background:#f8fafb}
+.coach-page .attendance-archive-row,.coach-page .attendance-member-history-card{border-color:#e5ecef;border-radius:14px}
+.coach-page .attendance-member-history-card{background:#fff;box-shadow:0 4px 14px rgba(22,48,68,.035)}
+.coach-page .report-row{font-size:.69rem;padding:11px 2px;border-color:#e9eef0}
+.coach-page .permission-item{min-height:43px;border-color:#e4ebee;border-radius:12px;background:#fff;font-size:.68rem}
+.coach-page .status-dot{width:8px;height:8px}
+.coach-page .prize-card{border-radius:16px}
+.coach-page .coach-account-panel{background:linear-gradient(145deg,#fff,#f7fbfa)!important}
+.coach-page .coach-account-panel .form-grid{margin-top:6px}
+.coach-page :where(button,a,input,textarea,select){-webkit-tap-highlight-color:transparent}
+.coach-page a:focus-visible,.coach-page button:focus-visible{outline:3px solid rgba(30,133,123,.38);outline-offset:3px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .coach-page .coach-panel,.coach-page .coach-stat,.coach-page .coach-quick-link,.coach-page .admin-item{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+ .coach-page .coach-panel:hover{transform:translateY(-2px);box-shadow:0 13px 31px rgba(22,48,68,.075)!important;border-color:#d6e5e7!important}
+ .coach-page .coach-stat:hover,.coach-page .coach-quick-link:hover{transform:translateY(-3px);box-shadow:0 13px 27px rgba(22,48,68,.09)}
+ .coach-page .admin-item:hover{border-color:#d4e4e5}
+}
+@media(max-width:760px){
+ .coach-page{padding:10px 11px 100px}
+ .coach-page .coach-top{grid-template-columns:minmax(0,1fr) auto;padding:18px 16px}
+ .coach-page .coach-role-badge{grid-column:1;grid-row:2;justify-self:start}
+ .coach-page .coach-top .btn-secondary{grid-column:2;grid-row:1/3}
+ .coach-page .coach-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .coach-page .coach-quick-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .coach-page .coach-quick-link{min-height:92px;padding:12px}
+ .coach-page .coach-panel{padding:16px;border-radius:18px!important}
+}
+@media(max-width:420px){
+ .coach-page{padding-inline:9px}
+ .coach-page .coach-top h2{font-size:1.12rem}
+ .coach-page .coach-top p{font-size:.68rem}
+ .coach-page .coach-stat{min-height:88px;padding:13px}
+ .coach-page .coach-stat strong{font-size:1.35rem}
+ .coach-page .panel-head{flex-wrap:wrap}
+ .coach-page .panel-head h3{font-size:.88rem}
+ .coach-page .form-grid{grid-template-columns:1fr}
+ .coach-page .form-grid label.full{grid-column:auto}
+ .coach-page .editor-actions{flex-wrap:wrap}
+ .coach-page .editor-actions>*{min-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .coach-page *,.profile-page *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
