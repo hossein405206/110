@@ -74,7 +74,7 @@ a,button{ -webkit-tap-highlight-color:transparent}
 :root[data-theme="dark"] body,:root[data-theme="dark"] html{background:var(--hy-bg)!important;color:var(--hy-ink)!important}
 :root[data-theme="dark"] .app-topbar{background:var(--hy-surface)!important;border-color:var(--hy-border)!important}
 :root[data-theme="dark"] .header-brand strong,:root[data-theme="dark"] .app-greeting h1,:root[data-theme="dark"] .app-section-heading h2{color:var(--hy-ink)!important}
-:root[data-theme="dark"] .app-section-heading>div>span,:root[data-theme="dark"] .home-week-heading small,:root[data-theme="dark"] .app-quick-card,:root[data-theme="dark"] .app-wisdom-primary,:root[data-theme="dark"] .event-loading,:root[data-theme="dark"] .event-empty{background:var(--hy-surface)!important;border-color:var(--hy-border)!important}
+:root[data-theme="dark"] .app-quick-card,:root[data-theme="dark"] .app-wisdom-primary,:root[data-theme="dark"] .event-loading,:root[data-theme="dark"] .event-empty{background:var(--hy-surface)!important;border-color:var(--hy-border)!important}
 :root[data-theme="dark"] .app-quick-card strong{color:var(--hy-ink)!important}
 :root[data-theme="dark"] .app-wisdom-primary .home-wisdom__arabic{color:var(--hy-green-deep)!important}
 :root[data-theme="dark"] .app-wisdom-primary .home-wisdom__meaning,:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__source,:root[data-theme="dark"] .app-wisdom-primary .home-wisdom__ornament{color:var(--hy-muted)!important}
