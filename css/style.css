@@ -3002,3 +3002,112 @@ button,a{touch-action:manipulation}
 :focus-visible{outline:3px solid color-mix(in srgb,var(--hy-teal) 65%,white);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 @media(min-width:600px){.hy-panel-card{max-width:520px;left:50%;right:auto;width:100%;transform:translate(-50%,105%);border-radius:27px 27px 0 0}.hy-panel.open .hy-panel-card{transform:translate(-50%,0)}}
+
+
+/* ==========================================================================
+   110 VISUAL SYSTEM — unified Persian-first refinement
+   v1.0 | Visual layer only: no application logic or API changes
+   ========================================================================== */
+:root{
+  --hy-brand:#176b61;
+  --hy-brand-strong:#104c47;
+  --hy-brand-soft:#e8f2ed;
+  --hy-accent:#c49a50;
+  --hy-accent-soft:#f7f0df;
+  --hy-page:#f5f6f2;
+  --hy-surface:#ffffff;
+  --hy-surface-raised:#fbfcfa;
+  --hy-ink:#1d302e;
+  --hy-muted:#687975;
+  --hy-line:#e3e9e4;
+  --hy-danger:#a83c36;
+  --hy-success:#287451;
+  --hy-radius-sm:12px;
+  --hy-radius-md:18px;
+  --hy-radius-lg:24px;
+  --hy-shadow-soft:0 4px 16px rgba(25,62,54,.055);
+  --hy-shadow-card:0 10px 28px rgba(25,62,54,.075);
+  --font-ui:'EstedadLocal','Vazirmatn',Tahoma,Arial,sans-serif;
+  --font-base:'EstedadLocal','Vazirmatn',Tahoma,Arial,sans-serif;
+}
+html,body,button,input,textarea,select{
+  font-family:var(--font-ui)!important;
+}
+body{color:var(--hy-ink)}
+.app-container,.app-shell{
+  color:var(--hy-ink);
+}
+.app-header{
+  border-color:var(--hy-line)!important;
+}
+.app-header h1,.app-header .header-brand strong,
+.section-title,.section-heading h1,.section-heading h2,
+.page h1,.page h2,.page h3{
+  letter-spacing:-.018em;
+  text-wrap:pretty;
+}
+.page,.app-page{
+  line-height:1.85;
+}
+.section-title,.page-title{
+  font-weight:850;
+}
+.section-subtitle,.page-subtitle{
+  color:var(--hy-muted);
+  line-height:1.9;
+}
+.form-group label,.form-label{
+  color:#334b45;
+  font-weight:750;
+}
+.form-control,input.form-control,textarea.form-control,select.form-control{
+  min-height:48px;
+  border:1px solid #dce6df!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  color:var(--hy-ink)!important;
+  box-shadow:inset 0 1px 2px rgba(20,55,46,.025);
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.form-control:focus,input.form-control:focus,textarea.form-control:focus,select.form-control:focus{
+  border-color:#4d9b89!important;
+  box-shadow:0 0 0 4px rgba(23,107,97,.11)!important;
+  outline:0!important;
+}
+.form-control::placeholder,input::placeholder,textarea::placeholder{
+  color:#98a7a0!important;
+  opacity:1;
+}
+.btn-submit,.btn-primary,.button-primary,[type=submit].btn{
+  border-radius:14px!important;
+  font-weight:850!important;
+  letter-spacing:-.01em;
+  transition:transform .16s ease,filter .16s ease,box-shadow .16s ease;
+}
+.btn-submit:active,.btn-primary:active,.button-primary:active,[type=submit].btn:active{
+  transform:translateY(1px) scale(.99);
+}
+.card,.info-card,.profile-card,.service-card,.feature-card{
+  border-radius:var(--hy-radius-md);
+  border-color:var(--hy-line);
+  box-shadow:var(--hy-shadow-soft);
+}
+.app-drawer,.modal-content,.hy-panel-card{
+  border-color:var(--hy-line);
+}
+a,button{touch-action:manipulation}
+:focus-visible{
+  outline:3px solid rgba(23,107,97,.58)!important;
+  outline-offset:3px!important;
+}
+@media(hover:hover){
+  .card,.info-card,.profile-card,.service-card,.feature-card{
+    transition:box-shadow .2s ease,border-color .2s ease,transform .2s ease;
+  }
+  .service-card:hover,.feature-card:hover{
+    box-shadow:var(--hy-shadow-card);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
