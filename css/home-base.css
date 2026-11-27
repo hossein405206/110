@@ -1,0 +1,48 @@
+/* حلقه‌یار — minimal shared foundation for the rebuilt home screen */
+@font-face{font-family:EstedadLocal;src:url('../fonts/Estedad-variable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:ArefRuqaaLocal;src:url('../fonts/ArefRuqaa-Bold.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:AmiriLocal;src:url('../fonts/Amiri-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+:root{--font-ui:'EstedadLocal',Tahoma,Arial,sans-serif;--font-reading:'AmiriLocal',serif;--font-display:'ArefRuqaaLocal',serif;--app-font-scale:1;--hy-bg:#f5f6f3;--hy-surface:#fff;--hy-surface-soft:#edf1ed;--hy-ink:#202823;--hy-muted:#69756e;--hy-border:#e2e7e2;--hy-green:#2f6856;--hy-green-deep:#234d40;--hy-green-tint:#e8f0eb;--hy-gold:#b58a42;--hy-radius:16px;--hy-shadow:0 1px 3px rgba(24,36,29,.05)}
+*{box-sizing:border-box}
+html{font-size:calc(16px * var(--app-font-scale,1));background:var(--hy-bg);color:var(--hy-ink);scroll-behavior:smooth}
+body,button,input,textarea,select{font-family:var(--font-ui),Tahoma,Arial,sans-serif}
+body{margin:0;background:var(--hy-bg);color:var(--hy-ink);direction:rtl}
+button,a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--hy-green) 65%,white);outline-offset:3px}
+.toast,.hy-toast{position:fixed;z-index:150;bottom:calc(145px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;max-width:90vw;text-align:center;background:#263b32;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:11px 16px;font-size:.82rem;box-shadow:0 8px 24px rgba(0,0,0,.15);transition:opacity .2s,transform .2s}
+.toast.show,.hy-toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.error{background:#8a3c37}
+.hy-toolbar{position:fixed;z-index:80;left:14px;bottom:calc(78px + env(safe-area-inset-bottom));display:flex;gap:7px;direction:ltr}
+.hy-fab,.hy-icon-btn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--hy-border);border-radius:12px;background:var(--hy-surface);color:var(--hy-green);box-shadow:0 2px 7px rgba(9,37,46,.08);font-size:20px;cursor:pointer}
+.hy-fab:active{transform:scale(.96)}
+.hy-panel{position:fixed;inset:0;z-index:120;visibility:hidden;pointer-events:none}
+.hy-panel.open{visibility:visible;pointer-events:auto}
+.hy-panel-backdrop{position:absolute;inset:0;background:rgba(4,16,23,.5);opacity:0;transition:opacity .2s}
+.hy-panel.open .hy-panel-backdrop{opacity:1}
+.hy-panel-card{position:absolute;inset:auto 0 0;background:var(--hy-surface);color:var(--hy-ink);border-radius:22px 22px 0 0;padding:22px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.15);transform:translateY(105%);transition:transform .24s ease;max-height:86dvh;overflow:auto}
+.hy-panel.open .hy-panel-card{transform:translateY(0)}
+.hy-panel-card header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.hy-panel-card header small{color:var(--hy-green);font-weight:800}
+.hy-panel-card h2{font-size:1.2rem;margin:5px 0 0}
+.hy-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--hy-border)}
+.hy-setting b{display:block;font-size:.9rem}.hy-setting small{display:block;color:var(--hy-muted);font-size:.72rem;margin-top:4px}
+.hy-segment,.hy-font-controls{display:flex;align-items:center;gap:4px;background:var(--hy-surface-soft);padding:4px;border-radius:12px}
+.hy-segment button,.hy-font-controls button{border:0;border-radius:9px;padding:8px 9px;background:transparent;color:var(--hy-ink);font:inherit;font-size:.72rem;min-height:36px}
+.hy-segment button:focus,.hy-segment button:hover{background:var(--hy-green);color:white}
+.hy-font-controls button{font-size:1rem;min-width:32px;background:var(--hy-surface)}
+#hy-font-value{font-size:.72rem;min-width:40px;text-align:center}
+.hy-action-row{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:12px 2px;border:0;border-bottom:1px solid var(--hy-border);background:transparent;color:var(--hy-ink);font:inherit;text-align:right}
+.hy-privacy-note{font-size:.7rem;line-height:1.9;color:var(--hy-muted);background:var(--hy-surface-soft);padding:11px;border-radius:12px;margin-top:16px}
+.hy-notices{position:fixed;z-index:125;inset:0;background:var(--hy-bg);color:var(--hy-ink);padding:calc(20px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));transform:translateX(105%);transition:transform .24s;overflow:auto}
+.hy-notices.open{transform:translateX(0)}
+.hy-notices-head{display:flex;justify-content:space-between;align-items:center;font-size:1.1rem;margin-bottom:18px}
+.hy-notices-head button{border:0;background:var(--hy-surface);color:var(--hy-ink);border-radius:11px;width:40px;height:40px;font-size:22px}
+.hy-notices article{background:var(--hy-surface);border:1px solid var(--hy-border);border-radius:14px;padding:14px;margin:10px 0}
+.hy-notices article p{font-size:.82rem;line-height:1.8;margin:7px 0;color:var(--hy-muted)}
+.hy-notices article small{color:var(--hy-green)}
+.hy-empty{padding:36px 15px;text-align:center;color:var(--hy-muted);background:var(--hy-surface);border-radius:14px}
+.hy-page-leaving{opacity:.9;transition:opacity .12s}
+:root[data-theme="dark"]{--hy-bg:#111512;--hy-surface:#1a201c;--hy-surface-soft:#252d27;--hy-ink:#edf2ee;--hy-muted:#a0ada4;--hy-border:#303a33;--hy-green:#8eb8a2;--hy-green-deep:#c6ddce;--hy-green-tint:#28382f;--hy-gold:#d0b16d;--hy-shadow:0 1px 3px rgba(0,0,0,.2)}
+:root[data-theme="dark"] html,:root[data-theme="dark"] body{background:var(--hy-bg);color:var(--hy-ink)}
+@media(min-width:600px){.hy-panel-card{max-width:520px;left:50%;right:auto;width:100%;transform:translate(-50%,105%);border-radius:22px 22px 0 0}.hy-panel.open .hy-panel-card{transform:translate(-50%,0)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

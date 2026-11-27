@@ -1322,45 +1322,13 @@
 (function () {
   'use strict';
 
-  function setupDrawer() {
-    var drawer = document.querySelector('.app-drawer');
-    var backdrop = document.querySelector('.drawer-backdrop');
-    if (!drawer || !backdrop) return;
-
-    function open() {
-      drawer.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      drawer.setAttribute('aria-hidden', 'false');
-    }
-    function close() {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-      drawer.setAttribute('aria-hidden', 'true');
-    }
-
-    document.querySelectorAll('[data-open-drawer]').forEach(function (el) {
-      el.addEventListener('click', open);
-    });
-    document.querySelectorAll('[data-close-drawer]').forEach(function (el) {
-      el.addEventListener('click', close);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
-    });
-    drawer.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', close);
-    });
-  }
-
   function setupRipples() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var selectors = [
       '.hero-primary','.hero-secondary','.quick-item',
       '.feature-card','.service-card','.nav-item',
-      '.header-menu','.header-auth','.drawer-links a'
+      '.header-auth'
     ];
 
     document.querySelectorAll(selectors.join(',')).forEach(function (el) {
@@ -1407,7 +1375,6 @@
   }
 
   function initProV2() {
-    setupDrawer();
     setupRipples();
     setupScrollReveal();
   }
@@ -1426,7 +1393,7 @@ function uiIcon(name,cls){
     'calendar-clock':'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v3l2 1"/>',
     'gamepad-2':'<path d="M6 11h12a4 4 0 0 1 3.8 5.2l-.6 2a2 2 0 0 1-3.3.8L15 16H9l-2.9 3a2 2 0 0 1-3.3-.8l-.6-2A4 4 0 0 1 6 11Z"/><path d="M7 13v4M5 15h4M16 14h.01M18 16h.01"/>',
     'user-round':'<circle cx="12" cy="8" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
-    'users-round':'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+    'user-round':'<circle cx="12" cy="8" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>','users-round':'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
     'log-in':'<path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-6"/>'
   };
   return '<svg class="'+(cls||'ui-icon')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(p[name]||p.house)+'</svg>';
@@ -1471,9 +1438,7 @@ function buildBottomNav() {
 function bindGlobalNavigation(){
   buildBottomNav();
   Array.prototype.slice.call(document.querySelectorAll('[data-open-login]')).forEach(function(b){b.addEventListener('click',function(){location.href=((window.KanoonApp&&window.KanoonApp.session&&window.KanoonApp.session.getMember())?'profile.html':'login.html')})});
-  var drawer=document.querySelector('.app-drawer'),back=document.querySelector('.drawer-backdrop');
-  Array.prototype.slice.call(document.querySelectorAll('[data-open-drawer]')).forEach(function(b){b.addEventListener('click',function(){if(drawer){drawer.classList.add('open');if(back)back.classList.add('open');document.body.classList.add('drawer-open')}})});
-  Array.prototype.slice.call(document.querySelectorAll('[data-close-drawer]')).forEach(function(b){b.addEventListener('click',function(){if(drawer){drawer.classList.remove('open');if(back)back.classList.remove('open');document.body.classList.remove('drawer-open')}})});
+  /* Mobile navigation is handled by the fixed bottom tab bar. */
 }
 (function(){
   function bootV4Navigation(){
@@ -1484,4 +1449,4 @@ function bindGlobalNavigation(){
 })();
 
 /* Load Android/web progressive experience features on every page. */
-(function(){var s=document.createElement('script');s.src='js/app-enhancements.js?v=1.0.0';s.defer=true;document.head.appendChild(s)})();
+(function(){var s=document.createElement('script');s.src='js/app-enhancements.js?v=1.0.1-svgicons';s.defer=true;document.head.appendChild(s)})();
