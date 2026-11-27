@@ -9,6 +9,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import android.webkit.JavascriptInterface
+import androidx.core.content.ContextCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import android.graphics.Color
@@ -123,12 +124,7 @@ class MainActivity : ComponentActivity() {
         webView.addJavascriptInterface(HalqehBridge(), "HalqehNative")
         setupNetworkMonitoring()
         val updateFilter = android.content.IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-        if (Build.VERSION.SDK_INT >= 33) {
-            registerReceiver(updateReceiver, updateFilter, Context.RECEIVER_NOT_EXPORTED)
-        } else {
-            @Suppress("DEPRECATION")
-            registerReceiver(updateReceiver, updateFilter)
-        }
+        ContextCompat.registerReceiver(this, updateReceiver, updateFilter, ContextCompat.RECEIVER_NOT_EXPORTED)
         updateReceiverRegistered = true
         if (savedInstanceState == null) webView.loadUrl(HOME_URL)
         else webView.restoreState(savedInstanceState)
