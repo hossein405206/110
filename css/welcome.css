@@ -41,3 +41,10 @@
 @keyframes welcomeSpark{0%,100%{transform:scale(.78) rotate(-9deg);opacity:.65}50%{transform:scale(1.12) rotate(12deg);opacity:1}}
 @media(max-width:390px){.welcome-page{padding:18px 12px}.welcome-card{padding:24px 17px 18px;border-radius:25px}.welcome-check-wrap{transform:scale(.9);margin-bottom:11px}.welcome-card h1{font-size:1.42rem}.welcome-copy{font-size:.75rem}.welcome-footer{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.welcome-card,.welcome-check-ring,.welcome-spark,.confetti-piece{animation:none!important}.confetti-piece{display:none}.welcome-primary,.welcome-secondary{transition:none}}
+/* Welcome screen: short entrance, no continuous spark layers or glass blur. */
+.welcome-card{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;animation-duration:.38s!important}
+.welcome-check-ring{animation-duration:.38s!important}
+.welcome-spark{animation:none!important;opacity:.82}
+.welcome-primary,.welcome-secondary{transition:transform .14s ease,background-color .14s ease!important}
+.confetti-piece{will-change:auto!important}
+@media(prefers-reduced-motion:no-preference){.confetti-piece{animation-duration:1.7s!important;animation-delay:0s!important}}
