@@ -123,8 +123,12 @@ class MainActivity : ComponentActivity() {
         webView.addJavascriptInterface(HalqehBridge(), "HalqehNative")
         setupNetworkMonitoring()
         val updateFilter = android.content.IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-        if (Build.VERSION.SDK_INT >= 33) registerReceiver(updateReceiver, updateFilter, Context.RECEIVER_NOT_EXPORTED)
-        else @Suppress("DEPRECATION") registerReceiver(updateReceiver, updateFilter)
+        if (Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(updateReceiver, updateFilter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            @Suppress("DEPRECATION")
+            registerReceiver(updateReceiver, updateFilter)
+        }
         updateReceiverRegistered = true
         if (savedInstanceState == null) webView.loadUrl(HOME_URL)
         else webView.restoreState(savedInstanceState)
