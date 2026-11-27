@@ -52,7 +52,7 @@
     try {
       var ping = await api().get({ action: 'ping' });
       var actual = String(ping && ping.version || '');
-      if (!actual || actual !== expectedBackendVersion()) {
+      if (!actual || (actual !== expectedBackendVersion() && !(app && app.config && (app.config.BACKEND_COMPATIBLE_VERSIONS || []).indexOf(actual) >= 0))) {
         setBackendNotice(backendVersionMessage(actual));
         return false;
       }
