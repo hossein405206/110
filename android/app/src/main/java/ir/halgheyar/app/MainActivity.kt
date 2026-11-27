@@ -174,7 +174,7 @@ class MainActivity : ComponentActivity() {
                         .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                         .setAllowedOverMetered(true)
                         .setAllowedOverRoaming(false)
-                        .setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, "halqeh-yar-update.apk")
+                        .setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, "halqeh-yar-update-${System.currentTimeMillis()}.apk")
                     updateDownloadId = (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
                     Toast.makeText(this@MainActivity, "دریافت نسخه جدید آغاز شد؛ پس از پایان، پنجره نصب باز می‌شود.", Toast.LENGTH_LONG).show()
                 } catch (_: Exception) {
