@@ -49,6 +49,7 @@ class MainActivity : ComponentActivity() {
     private var networkCallback: ConnectivityManager.NetworkCallback? = null
     private var updateDownloadId: Long = -1L
     private var updateReceiverRegistered = false
+    private val updatePreferences by lazy { getSharedPreferences("halqeh_updates", MODE_PRIVATE) }
     private val updateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action != DownloadManager.ACTION_DOWNLOAD_COMPLETE) return
@@ -67,6 +68,15 @@ class MainActivity : ComponentActivity() {
     companion object {
         private const val APP_HOST = "appassets.androidplatform.net"
         private const val HOME_URL = "https://$APP_HOST/assets/site/index.html"
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val pendingUrl = updatePreferences.getString("pending_update_url", null)
+        if (!pendingUrl.isNullOrBlank() && (Build.VERSION.SDK_INT < 26 || packageManager.canRequestPackageInstalls())) {
+            updatePreferences.edit().remove("pending_update_url").apply()
+            beginApkDownload(pendingUrl)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -156,26 +166,14 @@ class MainActivity : ComponentActivity() {
                     return@runOnUiThread
                 }
                 if (Build.VERSION.SDK_INT >= 26 && !packageManager.canRequestPackageInstalls()) {
-                    Toast.makeText(this@MainActivity, "برای نصب به‌روزرسانی، اجازه نصب برنامه از این منبع را فعال کن.", Toast.LENGTH_LONG).show()
+                    updatePreferences.edit().putString("pending_update_url", url).apply()
+                    Toast.makeText(this@MainActivity, "اجازه نصب را فعال کن؛ دریافت نسخه پس از بازگشت خودکار آغاز می‌شود.", Toast.LENGTH_LONG).show()
                     try {
                         startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:$packageName")))
                     } catch (_: Exception) {}
                     return@runOnUiThread
                 }
-                try {
-                    val request = DownloadManager.Request(uri)
-                        .setTitle("به‌روزرسانی حلقه‌یار")
-                        .setDescription("دریافت نسخه جدید برنامه")
-                        .setMimeType("application/vnd.android.package-archive")
-                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                        .setAllowedOverMetered(true)
-                        .setAllowedOverRoaming(false)
-                        .setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, "halqeh-yar-update-${System.currentTimeMillis()}.apk")
-                    updateDownloadId = (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
-                    Toast.makeText(this@MainActivity, "دریافت نسخه جدید آغاز شد؛ پس از پایان، پنجره نصب باز می‌شود.", Toast.LENGTH_LONG).show()
-                } catch (_: Exception) {
-                    Toast.makeText(this@MainActivity, "شروع دریافت نسخه جدید ممکن نشد.", Toast.LENGTH_LONG).show()
-                }
+                beginApkDownload(url)
             }
         }
 
@@ -226,6 +224,23 @@ class MainActivity : ComponentActivity() {
                     (System.currentTimeMillis() % Int.MAX_VALUE).toInt(), notification
                 )
             }
+        }
+    }
+
+    private fun beginApkDownload(url: String) {
+        try {
+            val request = DownloadManager.Request(Uri.parse(url))
+                .setTitle("به‌روزرسانی حلقه‌یار")
+                .setDescription("دریافت نسخه جدید برنامه")
+                .setMimeType("application/vnd.android.package-archive")
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setAllowedOverMetered(true)
+                .setAllowedOverRoaming(false)
+                .setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOWNLOADS, "halqeh-yar-update-${System.currentTimeMillis()}.apk")
+            updateDownloadId = (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
+            Toast.makeText(this, "دریافت نسخه جدید آغاز شد؛ پس از پایان، پنجره نصب باز می‌شود.", Toast.LENGTH_LONG).show()
+        } catch (_: Exception) {
+            Toast.makeText(this, "شروع دریافت نسخه جدید ممکن نشد.", Toast.LENGTH_LONG).show()
         }
     }
 
