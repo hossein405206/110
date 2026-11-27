@@ -230,3 +230,40 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
 .app-quick-card .app-quick-icon.quick-schedule{background:#eaf3ff!important;color:#2468ad!important}
 .app-quick-card .app-quick-icon.quick-camp{background:#edf2ff!important;color:#345da8!important}
 .app-quick-card .app-quick-icon.quick-game{background:#e8f4ff!important;color:#176ba5!important}
+
+
+/* Official HalqehYar identity — shared logo assets */
+.header-brand__mark{
+ display:grid!important;place-items:center!important;
+ width:44px!important;height:44px!important;flex:0 0 44px!important;
+ padding:2px!important;background:#fff!important;border:1px solid #dce8f5!important;
+ border-radius:13px!important;box-shadow:0 4px 12px rgba(21,88,166,.10)!important;
+}
+.header-brand__logo{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important}
+.drawer-head>span{
+ display:grid!important;place-items:center!important;width:48px!important;height:48px!important;
+ padding:4px!important;background:#fff!important;border:1px solid rgba(255,255,255,.35)!important;
+ border-radius:14px!important;overflow:hidden!important;
+}
+.drawer-brand__logo{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important}
+.app-splash-mark{
+ display:grid!important;place-items:center!important;width:100%!important;
+ min-height:0!important;margin:0 auto 8px!important;padding:0!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+}
+.app-splash-logo{display:block!important;width:min(56vw,230px)!important;max-height:245px!important;object-fit:contain!important}
+.app-splash-title{display:none!important}
+.app-splash{background:linear-gradient(180deg,#fff 0%,#f2f6fc 100%)!important}
+.auth-art-emblem{
+ display:grid!important;place-items:center!important;width:180px!important;height:190px!important;
+ margin:0 auto 12px!important;padding:12px!important;border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+}
+.auth-art-logo{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;filter:brightness(0) invert(1)!important}
+.welcome-brand-wrap{width:150px!important;height:150px!important;margin:0 auto 20px!important}
+.welcome-brand-logo{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 9px 16px rgba(21,88,166,.12))}
+@media(max-width:390px){
+ .header-brand__mark{width:40px!important;height:40px!important;flex-basis:40px!important}
+ .app-splash-logo{width:min(62vw,210px)!important}
+ .auth-art-emblem{width:150px!important;height:165px!important}
+}
