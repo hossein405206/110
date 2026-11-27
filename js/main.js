@@ -1157,34 +1157,11 @@
      ══════════════════════════════════════════════════════════════════════ */
 
   function HeaderAuth() {
+    // Profile access lives only in the bottom navigation; the top bar is reserved for notifications.
     var header = DOM.qs('.app-header');
     if (!header) return;
-
-    var existingBtn = DOM.qs('.header-auth', header);
-    var member = Session.getMember();
-    var official = Session.getOfficial();
-    var user = member || official;
-
-    var btn = existingBtn || document.createElement('a');
-    btn.className = 'header-auth';
-
-    if (user) {
-      var firstName = user.firstName || user.name || 'کاربر';
-      var initial = String(firstName).charAt(0);
-      btn.href = 'profile.html';
-      btn.setAttribute('aria-label', 'پروفایل من');
-      if (member && member.profileImage) {
-        btn.innerHTML = '<span class="header-auth__avatar has-image"><img src="' + DOM.escape(member.profileImage) + '" alt="" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit"></span>';
-      } else {
-        btn.innerHTML = '<span class="header-auth__avatar">' + DOM.escape(initial) + '</span>';
-      }
-    } else {
-      btn.href = 'login.html';
-      btn.setAttribute('aria-label', 'ورود / ثبت‌نام');
-      btn.innerHTML = '<span class="header-auth__text">ورود / ثبت‌نام</span>';
-    }
-
-    if (!existingBtn) header.appendChild(btn);
+    var duplicate = DOM.qs('.header-auth', header);
+    if (duplicate) duplicate.remove();
   }
 
   /* ══════════════════════════════════════════════════════════════════════
@@ -1482,7 +1459,7 @@ function buildBottomNav() {
     ['game.html','gamepad-2','بازی'],
     staffPage?['officials.html','users-round','مسئولین']:[member?'profile.html':'login.html',member?'user-round':'log-in',member?'پروفایل':'ورود']
   ];
-  nav.innerHTML=items.map(function(x){var active=path===x[0]?' active':'';return '<a class="nav-item'+active+'" href="'+x[0]+'"><span class="nav-icon">'+uiIcon(x[1],'nav-svg')+'</span><span>'+x[2]+'</span></a>'}).join('');
+  nav.innerHTML=items.map(function(x){var active=path===x[0]?' active':'';var isProfile=x[2]==='پروفایل';var avatar=member&&member.profileImage&&isProfile?'<img class="nav-profile-photo" src="'+DOM.escape(member.profileImage)+'" alt="" loading="lazy">':uiIcon(x[1],'nav-svg');return '<a class="nav-item'+active+(isProfile?' nav-profile-item':'')+'" href="'+x[0]+'"><span class="nav-icon'+(isProfile&&member&&member.profileImage?' has-profile-photo':'')+'">'+avatar+'</span><span>'+x[2]+'</span></a>'}).join('');
 }
 function bindGlobalNavigation(){
   buildBottomNav();
