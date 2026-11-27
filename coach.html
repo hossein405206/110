@@ -19,6 +19,7 @@
 <a class="coach-quick-link" data-permission="events" href="#coachCampsSection"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.5 13h-13L4 7Z"/><path d="M9 7a3 3 0 0 1 6 0M8 11h8"/></svg></span><strong>اردوها</strong><small>هزینه و رسید</small></a>
 <a class="coach-quick-link" data-permission="events" href="#coachActivityReportsSection"><span>۲</span><strong>گزارش فعالیت</strong><small>گالری چندعکسی اردو</small></a>
 <a class="coach-quick-link" data-permission="schedule" href="#coachScheduleSection"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h7M7 17h4"/></svg></span><strong>برنامه هفتگی</strong><small>مرتب از شنبه تا جمعه</small></a>
+<a class="coach-quick-link" data-permission="registrations" href="#coachWeeklySessionsSection"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M7 13h4M7 17h8"/></svg></span><strong>سانس‌های هفتگی</strong><small>ظرفیت، هزینه و رسید</small></a>
 <a class="coach-quick-link" data-permission="registrations" href="#coachRegistrationsSection"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 14h3M8 17h6"/></svg></span><strong>ثبت‌نام‌ها</strong><small>درخواست‌ها</small></a>
 <a class="coach-quick-link" data-permission="reports" href="#coachAttendanceReportsSection"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h4"/></svg></span><strong>گزارش‌ها</strong><small>حضور و غیاب</small></a>
 <a class="coach-quick-link" data-permission="officials" href="#officialStaffPanel"><span class="coach-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-7"/></svg></span><strong>مسئولین</strong><small>کدهای ورود</small></a>
@@ -88,6 +89,27 @@
 <div class="event-editor"><div class="form-grid"><label>نام مسئول<input id="newOfficialName" class="form-control" placeholder="نام و نام خانوادگی"></label><label>شماره همراه مسئول (برای نمایش رنگ نقش در رکوردها، اختیاری)<input id="newOfficialPhone" class="form-control" inputmode="numeric" dir="ltr" maxlength="16" placeholder="09xxxxxxxxx"></label><label>کد مسئول<input id="newOfficialCode" class="form-control" dir="ltr" placeholder="مثلاً ATT-GUIDE"></label><label class="full">نوع مسئولیت<select id="newOfficialRole" class="form-control"><option value="حضور و غیاب - راهنمایی">حضور و غیاب — راهنمایی</option><option value="حضور و غیاب - دبستان">حضور و غیاب — دبستان</option><option value="نظارت">نظارت</option><option value="مسئول اردو">مسئول اردو</option></select></label></div>
 <div class="editor-actions"><button id="addOfficialBtn" class="btn-submit">ثبت مسئول</button></div></div>
 <div id="officialList" class="admin-list"></div></section>
+
+<section class="coach-panel coach-permission-section" id="coachWeeklySessionsSection" data-permission="registrations">
+<div class="panel-head"><div><h3>مدیریت سانس‌های هفتگی</h3><small class="panel-subtitle">زمان، ظرفیت، هزینه و شماره کارت هر سانس را تعیین کن.</small></div></div>
+<div class="event-editor">
+<input id="weeklySessionId" type="hidden">
+<div class="form-grid">
+<label class="full">عنوان سانس<input id="weeklySessionTitle" class="form-control" maxlength="120" placeholder="مثلاً سانس فوتسال پنجشنبه"></label>
+<label>روز<select id="weeklySessionDay" class="form-control"><option value="">انتخاب روز</option><option>شنبه</option><option>یکشنبه</option><option>دوشنبه</option><option>سه‌شنبه</option><option>چهارشنبه</option><option>پنجشنبه</option><option>جمعه</option></select></label>
+<label>ساعت شروع<input id="weeklySessionTime" class="form-control" type="time" required></label>
+<label class="full">مکان<input id="weeklySessionLocation" class="form-control" maxlength="160" placeholder="نشانی یا نام سالن"></label>
+<label>هزینه (تومان)<input id="weeklySessionCost" class="form-control" inputmode="numeric" dir="ltr" placeholder="۰ برای رایگان"></label>
+<label>ظرفیت (نفر)<input id="weeklySessionCapacity" class="form-control" type="number" min="1" max="100000" step="1" placeholder="مثلاً ۲۰"></label>
+<label class="full">شماره کارت مقصد<input id="weeklySessionCard" class="form-control" dir="ltr" inputmode="numeric" maxlength="30" placeholder="برای سانس‌های پولی الزامی است"></label>
+<label>پایان ثبت‌نام<input id="weeklySessionDeadline" class="form-control" type="date"></label>
+</div>
+<div class="editor-actions"><button type="button" id="saveWeeklySessionBtn" class="btn-submit">ثبت سانس</button><button type="button" id="clearWeeklySessionBtn" class="btn-secondary">پاک‌کردن فرم</button></div>
+</div>
+<div id="weeklySessionsAdmin" class="admin-list"><div class="empty"><p>سانس‌ها پس از ورود بارگذاری می‌شوند.</p></div></div>
+<div class="panel-head" style="margin-top:22px"><div><h3>رسیدهای پرداخت سانس‌ها</h3><small class="panel-subtitle">رسید را مشاهده و پس از بررسی تأیید یا رد کن.</small></div><button type="button" id="refreshWeeklyReceipts" class="mini-action">به‌روزرسانی</button></div>
+<div id="weeklySessionReceiptsAdmin" class="admin-list"><div class="empty"><p>رسیدها پس از ورود بارگذاری می‌شوند.</p></div></div>
+</section>
 
 <section class="coach-panel coach-permission-section" id="coachScheduleSection" data-permission="schedule"><div class="panel-head"><div><h3>مدیریت برنامه هفتگی</h3></div><button id="newScheduleBtn" class="mini-action">＋ برنامه جدید</button></div>
 <div id="scheduleEditor" class="event-editor hidden"><input id="scheduleId" type="hidden"><div class="form-grid"><label>روز<select id="scheduleDay" class="form-control"><option value="">انتخاب روز</option><option>شنبه</option><option>یک‌شنبه</option><option>دوشنبه</option><option>سه‌شنبه</option><option>چهارشنبه</option><option>پنج‌شنبه</option><option>جمعه</option></select></label><label>عنوان برنامه<input id="scheduleTitle" class="form-control" placeholder="مثلاً جلسه حلقه"></label><label>دسته برنامه<select id="scheduleCategory" class="form-control"><option value="حلقه">حلقه</option><option value="بازی">بازی</option></select></label><label>گروه برنامه<select id="scheduleAudience" class="form-control"><option value="راهنمایی">راهنمایی</option><option value="دبستان">دبستان</option><option value="هر دو">هر دو گروه</option></select></label></div><div class="editor-actions"><button id="saveScheduleBtn" class="btn-submit">ذخیره برنامه</button><button id="cancelScheduleBtn" class="btn-secondary">انصراف</button></div></div><div id="scheduleAdmin" class="admin-list"></div></section>
