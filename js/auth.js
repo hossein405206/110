@@ -65,27 +65,12 @@ const ALI_WISDOMS = [
 
 ];
 
-function typeText(el,text,done){
- if(!el)return;
- el.textContent='';
- var i=0;
- function step(){
-  if(i<text.length){el.textContent+=text.charAt(i++);setTimeout(step,32);}
-  else if(done)done();
- }
- step();
-}
 function showWisdom(){
  var a=$('#aliWisdomArabic'),m=$('#aliWisdomMeaning'),s=$('#aliWisdomSource');
  if(!a||!m||!s)return;
  var item=ALI_WISDOMS[Math.floor(Math.random()*ALI_WISDOMS.length)];
  a.classList.remove('is-typing');
- m.textContent='';s.textContent='';
- typeText(a,'« '+item.a+' »',function(){
-  a.classList.add('is-typing');
-  typeText(m,item.m);
-  s.textContent=item.s;
- });
+ a.textContent='« '+item.a+' »';m.textContent=item.m;s.textContent=item.s;
 }
 var $=function(s){return document.querySelector(s);};
 function api(){return window.KanoonApp&&window.KanoonApp.api;}
