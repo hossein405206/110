@@ -201,10 +201,11 @@ function weeklySessionCounts_(){
   });
   return counts;
 }
-function listWeeklySessionsPublic_(){
+function listWeeklySessionsPublic_(includeInactive){
   var counts=weeklySessionCounts_(),today=currentDate();
   return {ok:true,items:getSheetObjects('سانس‌ها').filter(function(r){
-    if(!truthy(r.active))return false;
+    if(!includeInactive&&!truthy(r.active))return false;
+    if(includeInactive)return true;
     var deadline=String(r.registrationDeadline||'').trim();
     return !deadline||(isValidIsoDate_(deadline)&&deadline>=today);
   }).map(function(r){
@@ -400,7 +401,7 @@ function isPostOnlyAuthenticatedReadAction_(action) {
     'listCoaches', 'listOfficialsManage', 'getRingRegistration',
     'getMyGameRole', 'getGameWallet', 'getPublicMemberProfile', 'listMembers', 'getAttendanceToday', 'getAttendanceForDate',
     'getAttendanceMemberHistory', 'listMonthlyAttendance', 'listWarnings', 'listRegistrations', 'listCampPaymentReceipts',
-    'getDashboard', 'listWeeklySessions', 'listWeeklySessionReceipts'
+    'getDashboard', 'listWeeklySessions', 'listWeeklySessionsManage', 'listWeeklySessionReceipts'
   ].indexOf(String(action || '')) >= 0;
 }
 
@@ -443,6 +444,7 @@ function handleGet(p, allowPostOnlyAuthenticatedRead) {
 
   if (action === 'listSchedule') { return listSchedulePublic(); }
   if (action === 'listWeeklySessions') { requireToken(p.token, ['member']); return listWeeklySessionsPublic_(); }
+  if (action === 'listWeeklySessionsManage') { requireCoachPermission(p.token, 'registrations'); return listWeeklySessionsPublic_(true); }
   if (action === 'listWeeklySessionReceipts') { requireCoachPermission(p.token, 'registrations'); return {ok:true, items:listWeeklySessionReceipts_()}; }
 
   if (action === 'listCoaches') {
