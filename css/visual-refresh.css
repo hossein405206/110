@@ -267,3 +267,125 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
  .app-splash-logo{width:min(62vw,210px)!important}
  .auth-art-emblem{width:150px!important;height:165px!important}
 }
+
+
+/* 110 — contrast, true dark surfaces and low-cost motion pass */
+.app-topbar,.bottom-nav{
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+.app-event-carousel .home-event-slide img{transition:none!important}
+.app-quick-card,.schedule-card,.schedule-filter,.audience-card,.app-auth-start,.btn-submit{
+ transition:transform .14s ease,background-color .14s ease,border-color .14s ease!important;
+}
+.app-drawer{
+ background:linear-gradient(165deg,#174f8d 0%,#0c2e55 100%)!important;
+ color:#f5f8ff!important;
+}
+.app-drawer .drawer-head strong,.app-drawer .drawer-head small,
+.app-drawer .drawer-close,.app-drawer .drawer-links a{
+ color:#f2f7ff!important;
+}
+.app-drawer .drawer-head small{color:#c4d9f1!important}
+.app-drawer .drawer-links a:hover,.app-drawer .drawer-links a:focus-visible,
+.app-drawer .drawer-links a[aria-current="page"]{
+ color:#fff!important;background:rgba(255,255,255,.14)!important;
+}
+.app-drawer .drawer-close{background:rgba(255,255,255,.10)!important;border:1px solid rgba(255,255,255,.18)!important}
+
+/* Light mode: ensure all text and controls have readable contrast. */
+:root:not([data-theme="dark"]) .app-drawer .drawer-links a{color:#f2f7ff!important}
+:root:not([data-theme="dark"]) .app-drawer .drawer-head strong{color:#fff!important}
+:root:not([data-theme="dark"]) .app-drawer .drawer-head small{color:#c4d9f1!important}
+
+/* Dark mode uses charcoal surfaces instead of white cards. */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .app-container,
+:root[data-theme="dark"] .app-shell,
+:root[data-theme="dark"] .home-app{
+ background:#090b0e!important;color:#e8eaed!important;
+}
+:root[data-theme="dark"] .app-topbar,
+:root[data-theme="dark"] .bottom-nav,
+:root[data-theme="dark"] .app-drawer{
+ background:#111419!important;border-color:#252a31!important;color:#e8eaed!important;
+ box-shadow:none!important;
+}
+:root[data-theme="dark"] .app-drawer{background:#111923!important}
+:root[data-theme="dark"] .app-drawer .drawer-links a{color:#e5edf6!important}
+:root[data-theme="dark"] .app-drawer .drawer-links a:hover,
+:root[data-theme="dark"] .app-drawer .drawer-links a:focus-visible{background:#1d2b3a!important;color:#fff!important}
+:root[data-theme="dark"] .app-events-section,
+:root[data-theme="dark"] .home-week-strip,
+:root[data-theme="dark"] .app-wisdom-primary,
+:root[data-theme="dark"] .app-quick-card,
+:root[data-theme="dark"] .app-auth-welcome,
+:root[data-theme="dark"] .app-auth-form-wrap,
+:root[data-theme="dark"] .auth-step,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .activity-card,
+:root[data-theme="dark"] .schedule-card,
+:root[data-theme="dark"] .audience-card,
+:root[data-theme="dark"] .schedule-empty,
+:root[data-theme="dark"] .schedule-back,
+:root[data-theme="dark"] .hy-panel-card,
+:root[data-theme="dark"] .hy-notices{
+ background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important;
+ box-shadow:none!important;
+}
+:root[data-theme="dark"] .app-events-section .app-section-heading>a,
+:root[data-theme="dark"] .schedule-filter,
+:root[data-theme="dark"] .schedule-day-group>h3{
+ background:#1b2631!important;color:#dce8f5!important;border-color:#303d49!important;
+}
+:root[data-theme="dark"] .schedule-filter.is-active{
+ background:#174f8d!important;color:#fff!important;border-color:#4d83bb!important;
+}
+:root[data-theme="dark"] .schedule-card h3,
+:root[data-theme="dark"] .schedule-day-group>h3,
+:root[data-theme="dark"] .schedule-selected-audience,
+:root[data-theme="dark"] .audience-card strong,
+:root[data-theme="dark"] .schedule-empty strong,
+:root[data-theme="dark"] .app-auth-entry h1,
+:root[data-theme="dark"] .app-auth-form-head h2,
+:root[data-theme="dark"] .app-auth-form-wrap label,
+:root[data-theme="dark"] .hy-panel-card h2,
+:root[data-theme="dark"] .hy-panel-card b{
+ color:#e8edf3!important;
+}
+:root[data-theme="dark"] .schedule-card p,
+:root[data-theme="dark"] .audience-card small,
+:root[data-theme="dark"] .schedule-empty p,
+:root[data-theme="dark"] .app-auth-entry p,
+:root[data-theme="dark"] .app-auth-note,
+:root[data-theme="dark"] .hy-panel-card small,
+:root[data-theme="dark"] .hy-privacy-note{
+ color:#aab6c2!important;
+}
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .form-control,
+:root[data-theme="dark"] .app-auth-form-wrap input{
+ background:#0f141a!important;color:#edf2f7!important;border-color:#303a45!important;
+}
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder{color:#84919e!important}
+:root[data-theme="dark"] .btn-secondary,
+:root[data-theme="dark"] .schedule-back,
+:root[data-theme="dark"] .app-auth-form-head button{
+ background:#1b2732!important;color:#dce9f7!important;border-color:#334455!important;
+}
+:root[data-theme="dark"] .app-footer{color:#8d99a6!important}
+:root[data-theme="dark"] .app-splash{background:#090b0e!important}
+:root[data-theme="dark"] .app-splash-sub{color:#aebdca!important}
+:root[data-theme="dark"] .app-quick-card .app-quick-icon{background:#1b2a39!important;color:#8eb9e6!important}
+:root[data-theme="dark"] .app-community-card{background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important}
+:root[data-theme="dark"] .app-community-card h2,
+:root[data-theme="dark"] .app-community-card p{color:#e8eaed!important}
+:root[data-theme="dark"] .bottom-nav .nav-item{color:#9aa6b2!important}
+:root[data-theme="dark"] .bottom-nav .nav-item.active{color:#8db9e6!important}
+:root[data-theme="dark"] .bottom-nav .nav-item.active .nav-icon{background:#1b2a39!important}
+:root[data-theme="dark"] .app-event-carousel .event-empty{background:#14191f!important;color:#aab6c2!important;border-color:#29323c!important}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
