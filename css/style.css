@@ -3111,3 +3111,14 @@ a,button{touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+
+/* Final semantic palette mapping for the shared app shell and utility panels. */
+:root{
+  --hy-paper:#f5f6f2;
+  --hy-card:#ffffff;
+  --hy-teal:#176b61;
+  --hy-teal2:#2d8a79;
+  --hy-gold:#c49a50;
+  --hy-shadow:0 10px 28px rgba(25,62,54,.075);
+}
