@@ -389,3 +389,52 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
 @media(prefers-reduced-motion:reduce){
  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+
+/* Coach workspace dark-mode surfaces and readable hierarchy */
+:root[data-theme="dark"] .coach-panel,
+:root[data-theme="dark"] .coach-stat,
+:root[data-theme="dark"] .coach-quick-link,
+:root[data-theme="dark"] .admin-item,
+:root[data-theme="dark"] .event-editor,
+:root[data-theme="dark"] .permission-item,
+:root[data-theme="dark"] .feedback-item,
+:root[data-theme="dark"] .prize-card,
+:root[data-theme="dark"] .report-row{
+ background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important;box-shadow:none!important;
+}
+:root[data-theme="dark"] .coach-panel h3,
+:root[data-theme="dark"] .coach-stat strong,
+:root[data-theme="dark"] .coach-quick-link strong,
+:root[data-theme="dark"] .admin-item-main strong,
+:root[data-theme="dark"] .feedback-item>p,
+:root[data-theme="dark"] .prize-card-intro strong{
+ color:#e8edf3!important;
+}
+:root[data-theme="dark"] .coach-quick-link small,
+:root[data-theme="dark"] .coach-stat span,
+:root[data-theme="dark"] .admin-item-main small,
+:root[data-theme="dark"] .panel-subtitle,
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .feedback-item__top small,
+:root[data-theme="dark"] .prize-card-intro p{
+ color:#aab6c2!important;
+}
+:root[data-theme="dark"] .admin-actions button,
+:root[data-theme="dark"] .mini-action,
+:root[data-theme="dark"] .btn-secondary{
+ background:#202b36!important;color:#dce8f5!important;border:1px solid #354351!important;
+}
+:root[data-theme="dark"] .admin-actions button.danger{
+ background:#3a2025!important;color:#ffb8bd!important;border-color:#63343b!important;
+}
+:root[data-theme="dark"] .coach-stat:after{display:none!important}
+:root[data-theme="dark"] .coach-account-panel{background:#14191f!important}
+:root[data-theme="dark"] .coach-role-badge{filter:none!important}
+:root[data-theme="dark"] .weekly-receipt-modal section{background:#14191f!important;color:#e8eaed!important}
+.weekly-receipt-modal{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:18px}
+.weekly-receipt-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78)}
+.weekly-receipt-modal section{position:relative;z-index:1;width:min(100%,520px);max-height:88vh;overflow:auto;background:#fff;border-radius:18px;padding:14px}
+.weekly-receipt-modal section>button{float:left;border:0;border-radius:10px;padding:5px 12px;background:#e8f1fc;color:#1558a6;font-size:20px}
+.weekly-receipt-modal h3{font-size:14px;margin:8px 0 14px}
+.weekly-receipt-modal img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;border-radius:10px}
