@@ -440,3 +440,66 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
 .weekly-receipt-modal img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;border-radius:10px}
 
 .hy-fab svg,.hy-icon-btn svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+
+/* Dark palette audit: no bright white panels remain in dark mode. */
+:root[data-theme="dark"] .event-hero,
+:root[data-theme="dark"] .event-card,
+:root[data-theme="dark"] .home-wisdom,
+:root[data-theme="dark"] .quick-strip,
+:root[data-theme="dark"] .quick-item,
+:root[data-theme="dark"] .feature-card,
+:root[data-theme="dark"] .service-card,
+:root[data-theme="dark"] .app-featured-hero,
+:root[data-theme="dark"] .profile-card,
+:root[data-theme="dark"] .profile-panel,
+:root[data-theme="dark"] .profile-stat,
+:root[data-theme="dark"] .game-card,
+:root[data-theme="dark"] .game-panel,
+:root[data-theme="dark"] .leaderboard-card,
+:root[data-theme="dark"] .registration-card,
+:root[data-theme="dark"] .camp-registration-card,
+:root[data-theme="dark"] .contact-card,
+:root[data-theme="dark"] .feedback-card,
+:root[data-theme="dark"] .contact-form,
+:root[data-theme="dark"] .feedback-form{
+ background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important;box-shadow:none!important;
+}
+:root[data-theme="dark"] .home-wisdom__arabic,
+:root[data-theme="dark"] .home-wisdom__meaning,
+:root[data-theme="dark"] .home-wisdom__source,
+:root[data-theme="dark"] .section-heading h2,
+:root[data-theme="dark"] .event-head h2,
+:root[data-theme="dark"] .feature-info h3,
+:root[data-theme="dark"] .feature-info p,
+:root[data-theme="dark"] .service-copy strong,
+:root[data-theme="dark"] .profile-card h2,
+:root[data-theme="dark"] .profile-panel h3{
+ color:#e5edf6!important;
+}
+:root[data-theme="dark"] .home-footer,
+:root[data-theme="dark"] .home-footer p,
+:root[data-theme="dark"] .service-copy small{color:#9ba8b5!important}
+:root[data-theme="dark"] .welcome-body{background:#090b0e!important;color:#e8eaed!important}
+:root[data-theme="dark"] .welcome-card{
+ background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important;
+ box-shadow:none!important;
+}
+:root[data-theme="dark"] .welcome-card h1,
+:root[data-theme="dark"] .welcome-copy,
+:root[data-theme="dark"] .welcome-footer{color:#e2e8ef!important}
+:root[data-theme="dark"] .welcome-eyebrow{background:#1b2b39!important;color:#a9d2f7!important}
+:root[data-theme="dark"] .welcome-secondary{background:#202a34!important;color:#e2e8ef!important;border-color:#354351!important}
+:root[data-theme="dark"] .welcome-divider span{background:#34404c!important}
+:root[data-theme="dark"] .app-container .form-section,
+:root[data-theme="dark"] .app-container .form-card,
+:root[data-theme="dark"] .app-container .content-card,
+:root[data-theme="dark"] .app-container .empty-state{
+ background:#14191f!important;color:#e8eaed!important;border-color:#29323c!important;box-shadow:none!important;
+}
+:root[data-theme="dark"] .app-container .form-section h2,
+:root[data-theme="dark"] .app-container .form-card h2,
+:root[data-theme="dark"] .app-container .content-card h2{color:#e5edf6!important}
+:root[data-theme="dark"] .app-container .form-section p,
+:root[data-theme="dark"] .app-container .form-card p,
+:root[data-theme="dark"] .app-container .content-card p{color:#aab6c2!important}
