@@ -8,7 +8,11 @@ const pref=read();
 if(pref.theme==='dark'||pref.theme==='light')document.documentElement.dataset.theme=pref.theme;
 if(pref.scale)document.documentElement.style.setProperty('--app-font-scale',String(pref.scale));
 document.documentElement.classList.add('halqeyar-app-ready');if(window.HalqehNative&&window.HalqehNative.setSystemBarsDark)window.HalqehNative.setSystemBarsDark(document.documentElement.dataset.theme==='dark');
-const icons={settings:'⚙',bell:'♢',share:'↗',sun:'☼',moon:'☾',close:'×'};
+const icons={
+ settings:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1a1.8 1.8 0 0 1-2.5 2.5l-.1-.1a1.8 1.8 0 0 0-3 .9v.2a1.8 1.8 0 0 1-3.6 0v-.2a1.8 1.8 0 0 0-3-.9l-.1.1a1.8 1.8 0 0 1-2.5-2.5l.1-.1a1.8 1.8 0 0 0-.9-3H3.7a1.8 1.8 0 0 1 0-3.6h.2a1.8 1.8 0 0 0 .9-3l-.1-.1a1.8 1.8 0 0 1 2.5-2.5l.1.1a1.8 1.8 0 0 0 3-.9v-.2a1.8 1.8 0 0 1 3.6 0v.2a1.8 1.8 0 0 0 3 .9l.1-.1a1.8 1.8 0 0 1 2.5 2.5l-.1.1a1.8 1.8 0 0 0 .9 3h.2a1.8 1.8 0 0 1 0 3.6h-.2a1.8 1.8 0 0 0-.9 3Z"/></svg>',
+ bell:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>',
+ share:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"/></svg>'
+};
 function toast(msg){let el=document.querySelector('.hy-toast');if(!el){el=document.createElement('div');el.className='hy-toast';document.body.appendChild(el)}el.textContent=msg;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2600)}
 function nativeShare(text){if(window.HalqehNative&&window.HalqehNative.shareText){window.HalqehNative.shareText(text);return}if(navigator.share)navigator.share({title:'حلقه‌یار',text}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(text).then(()=>toast('متن کپی شد'))}
 function getNotices(){try{return JSON.parse(localStorage.getItem('hy.notice.list')||'[]')}catch(e){return []}}
@@ -18,8 +22,29 @@ function setTheme(t){const actual=t==='system'?(matchMedia('(prefers-color-schem
 let scale=Number(pref.scale)||1;function fontScale(dir){scale=Math.min(1.2,Math.max(.9,scale+(dir==='+'?.05:-.05)));document.documentElement.style.setProperty('--app-font-scale',scale);save({scale});const v=document.getElementById('hy-font-value');if(v)v.textContent=Math.round(scale*100)+'٪'}
 function showNotices(){let n=document.querySelector('.hy-notices');if(!n){n=document.createElement('div');n.className='hy-notices';document.body.appendChild(n)}const a=getNotices();n.innerHTML='<div class="hy-notices-head"><b>مرکز اعلان‌ها</b><button data-close-notices>×</button></div>'+(a.length?a.map(x=>'<article><b>'+escapeHtml(x.title)+'</b><p>'+escapeHtml(x.body)+'</p><small>'+escapeHtml(x.date)+'</small></article>').join(''):'<div class="hy-empty">فعلاً اعلان تازه‌ای وجود ندارد</div>');n.classList.add('open');n.onclick=e=>{if(e.target.closest('[data-close-notices]'))n.classList.remove('open')}}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function checkUpdate(){toast('در حال بررسی نسخه جدید…');try{const r=await fetch('https://api.github.com/repos/hossein405206/110/releases/latest',{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw Error();const d=await r.json();if(d.tag_name){addNotice('نسخه جدید حلقه‌یار', 'نسخه '+d.tag_name+' منتشر شده است');toast('نسخه منتشرشده: '+d.tag_name);if(d.html_url)nativeShare('نسخه جدید حلقه‌یار: '+d.html_url)}else toast('نسخه جدیدی پیدا نشد')}catch(e){toast('بررسی نسخه انجام نشد؛ اتصال یا انتشار را بررسی کن')}}
-function mount(){if(document.querySelector('.hy-toolbar'))return;const bar=document.createElement('div');bar.className='hy-toolbar';bar.innerHTML='<button class="hy-fab" data-hy-settings aria-label="تنظیمات" title="تنظیمات">'+icons.settings+'</button><button class="hy-fab" data-hy-notice aria-label="اعلان‌ها" title="اعلان‌ها">'+icons.bell+'</button><button class="hy-fab" data-hy-share-top aria-label="اشتراک‌گذاری" title="اشتراک‌گذاری">'+icons.share+'</button>';document.body.appendChild(bar);bar.addEventListener('click',e=>{if(e.target.closest('[data-hy-settings]'))panel().classList.add('open');if(e.target.closest('[data-hy-notice]'))showNotices();if(e.target.closest('[data-hy-share-top]'))nativeShare('حلقه‌یار؛ مسجد امام رضا (ع) — حلقه شهید هادی ذوالفقاری')});panel();document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&/^(index|activities|schedule|game|profile|leaderboard)\.html/.test(href))a.addEventListener('click',()=>{document.body.classList.add('hy-page-leaving')})});}
+function compareVersions(a,b){const x=String(a||'0').replace(/^v/i,'').split('.').map(Number),y=String(b||'0').replace(/^v/i,'').split('.').map(Number);for(let i=0;i<Math.max(x.length,y.length);i++){const d=(x[i]||0)-(y[i]||0);if(d)return d>0?1:-1}return 0}
+async function checkUpdate(){
+ toast('در حال بررسی نسخه جدید…');
+ try{
+  const r=await fetch('https://api.github.com/repos/hossein405206/110/releases/latest',{headers:{Accept:'application/vnd.github+json'}});
+  if(!r.ok)throw Error('RELEASE_LOOKUP_FAILED');
+  const d=await r.json(),latest=String(d.tag_name||'').replace(/^v/i,'');
+  if(!latest){toast('هنوز نسخه انتشار عمومی ثبت نشده است');return}
+  const native=window.HalqehNative&&typeof window.HalqehNative.getAppVersion==='function';
+  const current=native?String(window.HalqehNative.getAppVersion()||'1.0.0'):'0.0.0';
+  if(native&&compareVersions(latest,current)<=0){toast('حلقه‌یار به‌روز است · نسخه '+latest);return}
+  const apk=(d.assets||[]).find(x=>/\.apk$/i.test(String(x.name||''))&&x.browser_download_url);
+  if(native&&apk&&typeof window.HalqehNative.downloadAndInstall==='function'){
+   if(confirm('نسخه '+latest+' آماده است. دانلود و نصب به‌روزرسانی انجام شود؟')){
+    window.HalqehNative.downloadAndInstall(apk.browser_download_url);
+   }
+   return;
+  }
+  if(d.html_url){toast('نسخه '+latest+' منتشر شده است');window.location.href=d.html_url;return}
+  toast('نسخه جدید پیدا نشد');
+ }catch(e){toast('بررسی نسخه انجام نشد؛ اتصال یا انتشار را بررسی کن')}
+}
+function mount(){const page=(location.pathname.split('/').pop()||'index.html').toLowerCase();if(page!=='index.html'&&page!=='')return;if(document.querySelector('.hy-toolbar'))return;const bar=document.createElement('div');bar.className='hy-toolbar';bar.innerHTML='<button class="hy-fab" data-hy-settings aria-label="تنظیمات" title="تنظیمات">'+icons.settings+'</button><button class="hy-fab" data-hy-notice aria-label="اعلان‌ها" title="اعلان‌ها">'+icons.bell+'</button><button class="hy-fab" data-hy-share-top aria-label="اشتراک‌گذاری" title="اشتراک‌گذاری">'+icons.share+'</button>';document.body.appendChild(bar);bar.addEventListener('click',e=>{if(e.target.closest('[data-hy-settings]'))panel().classList.add('open');if(e.target.closest('[data-hy-notice]'))showNotices();if(e.target.closest('[data-hy-share-top]'))nativeShare('حلقه‌یار؛ مسجد امام رضا (ع) — حلقه شهید هادی ذوالفقاری')});panel();document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&/^(index|activities|schedule|game|profile|leaderboard)\.html/.test(href))a.addEventListener('click',()=>{document.body.classList.add('hy-page-leaving')})});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 window.HalqehExperience={addNotice,showNotices,checkUpdate};
 })();
