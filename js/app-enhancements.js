@@ -44,7 +44,12 @@ async function checkUpdate(){
   toast('نسخه جدید پیدا نشد');
  }catch(e){toast('بررسی نسخه انجام نشد؛ اتصال یا انتشار را بررسی کن')}
 }
-function mount(){const page=(location.pathname.split('/').pop()||'index.html').toLowerCase();if(page!=='index.html'&&page!=='')return;if(document.querySelector('.hy-toolbar'))return;const bar=document.createElement('div');bar.className='hy-toolbar';bar.innerHTML='<button class="hy-fab" data-hy-settings aria-label="تنظیمات" title="تنظیمات">'+icons.settings+'</button><button class="hy-fab" data-hy-notice aria-label="اعلان‌ها" title="اعلان‌ها">'+icons.bell+'</button><button class="hy-fab" data-hy-share-top aria-label="اشتراک‌گذاری" title="اشتراک‌گذاری">'+icons.share+'</button>';document.body.appendChild(bar);bar.addEventListener('click',e=>{if(e.target.closest('[data-hy-settings]'))panel().classList.add('open');if(e.target.closest('[data-hy-notice]'))showNotices();if(e.target.closest('[data-hy-share-top]'))nativeShare('حلقه‌یار؛ مسجد امام رضا (ع) — حلقه شهید هادی ذوالفقاری')});panel();document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&/^(index|activities|schedule|game|profile|leaderboard)\.html/.test(href))a.addEventListener('click',()=>{document.body.classList.add('hy-page-leaving')})});}
+function mount(){const page=(location.pathname.split('/').pop()||'index.html').toLowerCase();if(page!=='index.html'&&page!=='')return;
+ const notice=document.querySelector('[data-hy-notice]');if(notice)notice.addEventListener('click',showNotices);
+ document.querySelectorAll('[data-hy-settings]').forEach(btn=>btn.addEventListener('click',()=>{const drawer=document.querySelector('.app-drawer'),back=document.querySelector('.drawer-backdrop');if(drawer)drawer.classList.remove('open');if(back)back.classList.remove('open');document.body.classList.remove('drawer-open');panel().classList.add('open')}));
+ document.querySelectorAll('[data-hy-share-drawer]').forEach(btn=>btn.addEventListener('click',()=>{const drawer=document.querySelector('.app-drawer'),back=document.querySelector('.drawer-backdrop');if(drawer)drawer.classList.remove('open');if(back)back.classList.remove('open');document.body.classList.remove('drawer-open');nativeShare('حلقه‌یار؛ مسجد امام رضا (ع) — حلقه شهید هادی ذوالفقاری')}));
+ document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&/^(index|activities|schedule|game|profile|leaderboard)\.html/.test(href))a.addEventListener('click',()=>{document.body.classList.add('hy-page-leaving')})});
+}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 window.HalqehExperience={addNotice,showNotices,checkUpdate};
 })();
