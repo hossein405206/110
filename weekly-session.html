@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#1558a6"><title>سانس هفتگی | حلقه‌یار</title>
 <link rel="stylesheet" href="css/style.css?v=110-visual-2">
 <link rel="stylesheet" href="css/islamic-design.css?v=6.14.0-reference-redesign">
-<link rel="stylesheet" href="css/visual-refresh.css?v=110-performance-2">
+<link rel="stylesheet" href="css/visual-refresh.css?v=110-performance-3">
 <link rel="icon" type="image/svg+xml" href="images/halqeh-yar-mark.svg">
 <style>
 .weekly-booking{max-width:520px;margin:0 auto;padding:18px 16px 110px}
@@ -50,7 +50,7 @@
 :root[data-theme="dark"] .payment-card button{background:#263d55;color:#dcecff}
 :root[data-theme="dark"] .booking-status{background:#172b40;color:#c8e1fa}
 </style>
-</head>
+<script>(function(){try{var p=JSON.parse(localStorage.getItem('halqeyar.preferences.v1')||'{}'),t=p.theme;if(t==='system')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}})();</script></head>
 <body>
 <div class="app-container app-shell">
 <main class="weekly-booking">
@@ -132,5 +132,5 @@ $('uploadReceipt').addEventListener('click',async function(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
 })();
 </script>
-</body>
+<script src="js/app-enhancements.js?v=1.1.0" defer></script></body>
 </html>
