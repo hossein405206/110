@@ -179,3 +179,35 @@ input:focus,select:focus,textarea:focus{border-color:#4b9781!important;box-shado
  .home-app .app-events-section{margin-inline:0!important}
  .home-app .app-event-carousel .home-event-slide{flex-basis:320px!important}
 }
+
+
+/* 110 — Blue application theme. Presentation only. */
+:root{
+ --v-bg:#f2f6fc;--v-paper:#ffffff;--v-ink:#172b45;--v-muted:#687b91;
+ --v-green:#1558a6;--v-green-2:#2874c7;--v-gold:#e0b65e;--v-line:#dce6f2;
+ --v-shadow:0 14px 38px rgba(23,62,112,.09);
+ --v-shadow-soft:0 5px 18px rgba(23,62,112,.06);
+}
+html,body,.app-shell,.app-container,.home-app{background:#f2f6fc!important;color:#172b45!important}
+.app-topbar,.bottom-nav{background:rgba(255,255,255,.96)!important;border-color:#dce6f2!important}
+.header-brand__mark{background:linear-gradient(145deg,#2874c7,#124a91)!important;color:#fff!important}
+.header-brand strong{color:#17385f!important}
+.app-section-heading h2,.section-heading h2{color:#17385f!important}
+.app-section-heading:after{background:#e0b65e!important}
+.app-events-section{background:linear-gradient(145deg,#fff 0%,#edf4fc 100%)!important;border-color:#d9e6f5!important}
+.app-events-section .app-section-heading>div>span{color:#2874c7!important}
+.app-events-section .app-section-heading>a{border-color:#d6e4f4!important;background:#fff!important;color:#205b9e!important}
+.app-event-carousel .home-event-slide{background:#174b83!important}
+.app-wisdom-primary{background:linear-gradient(145deg,#fff,#edf4fc)!important;border-color:#dce7f4!important}
+.app-quick-card,.home-week-strip,.card,.activity-card{background:#fff!important;border-color:#dce6f2!important}
+.app-quick-card .app-quick-icon{background:#e8f1fc!important;color:#1d63ad!important}
+.btn-submit,.app-auth-start{background:linear-gradient(135deg,#2874c7,#124a91)!important;box-shadow:0 8px 18px rgba(21,88,166,.18)!important}
+.btn-secondary{background:#f2f7fd!important;border-color:#d8e5f4!important;color:#205b9e!important}
+input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shadow:0 0 0 4px rgba(40,116,199,.13)!important}
+.bottom-nav .nav-item.active{color:#1558a6!important}
+.bottom-nav .nav-item.active .nav-icon{background:#e8f1fc!important}
+.app-drawer{background:linear-gradient(165deg,#174f8d,#0c2e55)!important}
+.drawer-head>span{background:linear-gradient(145deg,#e7c779,#c49a43)!important;color:#17385f!important}
+.app-auth-art{background:radial-gradient(circle at 50% 40%,#438bd0,#1a5b9e 55%,#103966)!important}
+.app-auth-entry h1,.app-auth-form-head h2{color:#174f8d!important}
+:focus-visible{outline-color:rgba(40,116,199,.6)!important}
