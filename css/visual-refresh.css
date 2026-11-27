@@ -211,3 +211,22 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
 .app-auth-art{background:radial-gradient(circle at 50% 40%,#438bd0,#1a5b9e 55%,#103966)!important}
 .app-auth-entry h1,.app-auth-form-head h2{color:#174f8d!important}
 :focus-visible{outline-color:rgba(40,116,199,.6)!important}
+
+
+/* Professional consistent outline icons for homepage shortcuts */
+.app-quick-card .app-quick-icon{
+ display:grid!important;place-items:center!important;
+ width:52px!important;height:52px!important;flex:0 0 52px!important;
+ border-radius:16px!important;background:#e8f1fc!important;
+ color:#1558a6!important;
+}
+.app-quick-card .app-quick-icon .page-icon{
+ display:block!important;width:27px!important;height:27px!important;
+ stroke:currentColor!important;stroke-width:1.8!important;
+ fill:none!important;stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+.app-quick-card{gap:10px!important}
+.app-quick-card .app-quick-icon.quick-members{background:#e8f1fc!important;color:#1558a6!important}
+.app-quick-card .app-quick-icon.quick-schedule{background:#eaf3ff!important;color:#2468ad!important}
+.app-quick-card .app-quick-icon.quick-camp{background:#edf2ff!important;color:#345da8!important}
+.app-quick-card .app-quick-icon.quick-game{background:#e8f4ff!important;color:#176ba5!important}
