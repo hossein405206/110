@@ -55,6 +55,8 @@ var HEADERS = {
   'اخطارها': ['date','responsibility','memberId','memberName','reason','officialCode','createdAt'],
   'بازی': ['weekKey','memberId','playerName','score','updatedAt'],
   'برنامه': ['id','day','title','time','location','active','sort','createdAt','updatedAt','category','audience'],
+  'سانس‌ها': ['id','title','day','time','location','cost','cardNumber','capacity','registrationDeadline','active','createdAt','updatedAt'],
+  'ثبت‌نام سانس': ['id','sessionId','firstName','lastName','phone','status','paymentStatus','receiptPhotoUrl','receiptUploadToken','createdAt','updatedAt'],
   'بازخوردها': ['id','name','phone','category','message','status','createdAt'],
   'ثبت‌نام حلقه': ['id','memberId','firstName','lastName','phone','nationalCode','birthDate','fatherName','fatherPhone','address','school','grade','guardianName','emergencyPhone','status','createdAt','updatedAt'],
   'گزارش خطاها': ['timestamp','requestId','method','action','category','message','stack']
@@ -64,7 +66,7 @@ var HEADERS = {
 /* HTTP                                                                      */
 /* -------------------------------------------------------------------------- */
 
-var APP_VERSION = '4.45.0-ring-registration-identity';
+var APP_VERSION = '4.46.0-weekly-sessions';
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
@@ -190,6 +192,153 @@ function listSchedulePublic(){
   });
   return {ok:true,items:rows};
 }
+function weeklySessionCounts_(){
+  var counts={};
+  getSheetObjects('ثبت‌نام سانس').forEach(function(r){
+    var id=String(r.sessionId||'').trim(),status=String(r.status||'').trim();
+    if(!id||status==='رد شد'||status==='لغو شد')return;
+    counts[id]=(counts[id]||0)+1;
+  });
+  return counts;
+}
+function listWeeklySessionsPublic_(){
+  var counts=weeklySessionCounts_(),today=currentDate();
+  return {ok:true,items:getSheetObjects('سانس‌ها').filter(function(r){
+    if(!truthy(r.active))return false;
+    var deadline=String(r.registrationDeadline||'').trim();
+    return !deadline||!isValidIsoDate_(deadline)||deadline>=today;
+  }).map(function(r){
+    var id=String(r.id||''),capacity=Number(r.capacity||0),count=Number(counts[id]||0);
+    return {id:id,title:String(r.title||''),day:String(r.day||''),time:String(r.time||''),
+      location:String(r.location||''),cost:Number(r.cost||0),cardNumber:String(r.cardNumber||''),
+      capacity:capacity,registrationCount:count,isFull:capacity>0&&count>=capacity,
+      registrationDeadline:String(r.registrationDeadline||'')};
+  })};
+}
+function saveWeeklySession_(p){
+  requireCoachPermission(p.token,'registrations');
+  var title=String(p.title||'').trim(),day=String(p.day||'').trim(),time=String(p.time||'').trim();
+  var location=String(p.location||'').trim();
+  var costText=normalizeIranDigits(String(p.cost==null?'':p.cost)).replace(/[\\s,،٬]/g,'');
+  var cost=Number(costText||0),card=normalizeIranDigits(String(p.cardNumber||'')).replace(/[\\s-]/g,'');
+  var capText=normalizeIranDigits(String(p.capacity==null?'':p.capacity)).replace(/[\\s,،٬]/g,'');
+  var capacity=Number(capText||0),deadline=String(p.registrationDeadline||'').trim(),id=String(p.id||'').trim();
+  if(!title||title.length>120)throw new Error('عنوان سانس را وارد کن (حداکثر ۱۲۰ نویسه)');
+  if(!day||day.length>30)throw new Error('روز سانس را وارد کن');
+  if(!time||!/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))throw new Error('ساعت سانس را به شکل ۱۸:۳۰ وارد کن');
+  if(location.length>160)throw new Error('مکان سانس بیش از حد طولانی است');
+  if(!isFinite(cost)||cost<0||cost>10000000000)throw new Error('هزینه سانس معتبر نیست');
+  if(cost>0&&!/^\\d{16,26}$/.test(card))throw new Error('شماره کارت یا شبای مقصد را درست وارد کن');
+  if(!Number.isInteger(capacity)||capacity<1||capacity>100000)throw new Error('ظرفیت باید عددی بین ۱ تا ۱۰۰٬۰۰۰ نفر باشد');
+  if(deadline&&!isValidIsoDate_(deadline))throw new Error('مهلت ثبت‌نام معتبر نیست');
+  if(deadline&&deadline<currentDate())throw new Error('مهلت ثبت‌نام نمی‌تواند در گذشته باشد');
+  var sheet=getSheet('سانس‌ها'),pos=id?findRow(sheet,'id',id):0,rows=getSheetObjects('سانس‌ها');
+  if(id&&!pos)throw new Error('سانس برای ویرایش پیدا نشد');
+  if(pos){
+    var old=rows.filter(function(r){return String(r.id)===id;})[0]||{};
+    if(Number(weeklySessionCounts_()[id]||0)>capacity)throw new Error('ظرفیت جدید از تعداد ثبت‌نام‌های فعلی کمتر است');
+  }
+  var obj={id:id||uid('WEEK'),title:title,day:day,time:time,location:location,cost:cost,
+    cardNumber:cost?card:'',capacity:capacity,registrationDeadline:deadline,active:p.active!==false,
+    createdAt:String((pos&&rows.filter(function(r){return String(r.id)===id;})[0]||{}).createdAt||nowIso()),updatedAt:nowIso()};
+  var values=rowToArray('سانس‌ها',obj);
+  if(pos)sheet.getRange(pos,1,1,values.length).setValues([values]);else sheet.appendRow(values);
+  return {ok:true,item:obj};
+}
+function deleteWeeklySession_(p){
+  requireCoachPermission(p.token,'registrations');
+  var id=String(p.id||'').trim(),sheet=getSheet('سانس‌ها'),pos=findRow(sheet,'id',id);
+  if(!id||!pos)throw new Error('سانس پیدا نشد');
+  sheet.getRange(pos,HEADERS['سانس‌ها'].indexOf('active')+1).setValue(false);
+  sheet.getRange(pos,HEADERS['سانس‌ها'].indexOf('updatedAt')+1).setValue(nowIso());
+  return {ok:true,id:id};
+}
+function registerWeeklySession_(p){
+  var auth=requireToken(p.token,['member']),phone=normalizeIranMobile_(auth.subject);
+  var first=String(p.firstName||'').trim(),last=String(p.lastName||'').trim(),sessionId=String(p.sessionId||'').trim();
+  if(!first||first.length>60||!last||last.length>80)throw new Error('نام و نام خانوادگی را کامل وارد کن');
+  if(!/^09\\d{9}$/.test(phone))throw new Error('شماره همراه حساب معتبر نیست');
+  if(!sessionId)throw new Error('سانس موردنظر را انتخاب کن');
+  var lock=LockService.getScriptLock();lock.waitLock(30000);
+  try{
+    var session=listWeeklySessionsPublic_().items.filter(function(x){return x.id===sessionId;})[0];
+    if(!session)throw new Error('این سانس فعال نیست یا مهلت ثبت‌نام آن تمام شده است');
+    if(session.isFull)throw new Error('ظرفیت این سانس تکمیل شده است');
+    var existing=getSheetObjects('ثبت‌نام سانس').filter(function(r){
+      return String(r.sessionId)===sessionId&&normalizeIranMobile_(r.phone)===phone&&String(r.status)!=='رد شد'&&String(r.status)!=='لغو شد';
+    })[0];
+    if(existing)throw new Error('برای این سانس قبلاً درخواست ثبت کرده‌ای');
+    var paid=session.cost>0,token=paid?Utilities.getUuid()+'-'+Utilities.getUuid():'';
+    var row={id:uid('WREG'),sessionId:sessionId,firstName:first,lastName:last,phone:phone,
+      status:paid?'در انتظار پرداخت':'تایید شد',paymentStatus:paid?'منتظر ارسال رسید':'پرداخت لازم نیست',
+      receiptPhotoUrl:'',receiptUploadToken:token,createdAt:nowIso(),updatedAt:nowIso()};
+    getSheet('ثبت‌نام سانس').appendRow(rowToArray('ثبت‌نام سانس',row));
+    return {ok:true,id:row.id,status:row.status,receiptUploadToken:token,
+      session:{id:session.id,title:session.title,day:session.day,time:session.time,location:session.location,
+        cost:session.cost,cardNumber:session.cardNumber,capacity:session.capacity}};
+  }finally{lock.releaseLock();}
+}
+function uploadWeeklySessionReceipt_(p){
+  var id=String(p.registrationId||'').trim(),token=String(p.receiptUploadToken||'').trim();
+  if(!id||!token)throw new Error('اطلاعات امن ارسال رسید ناقص است');
+  var sheet=getSheet('ثبت‌نام سانس'),pos=findRow(sheet,'id',id);
+  if(!pos)throw new Error('درخواست سانس پیدا نشد');
+  var width=HEADERS['ثبت‌نام سانس'].length,values=sheet.getRange(pos,1,1,width).getValues()[0];
+  var ti=HEADERS['ثبت‌نام سانس'].indexOf('receiptUploadToken'),si=HEADERS['ثبت‌نام سانس'].indexOf('status');
+  if(String(values[ti]||'')!==token)throw new Error('مجوز ارسال رسید معتبر نیست');
+  if(String(values[si]||'')!=='در انتظار پرداخت')throw new Error('این درخواست در انتظار پرداخت نیست');
+  var base64=String(p.receiptBase64||''),mime=String(p.receiptMimeType||'image/jpeg').toLowerCase();
+  if(!base64)throw new Error('تصویر رسید پرداخت را انتخاب کن');
+  var uploaded=uploadConsentPhotoPrivate(base64,mime,'weekly-session-payment-'+Date.now());
+  values[HEADERS['ثبت‌نام سانس'].indexOf('receiptPhotoUrl')]=uploaded.url;
+  values[ti]='';values[si]='در انتظار تایید رسید';
+  values[HEADERS['ثبت‌نام سانس'].indexOf('paymentStatus')]='در انتظار تایید رسید';
+  values[HEADERS['ثبت‌نام سانس'].indexOf('updatedAt')]=nowIso();
+  sheet.getRange(pos,1,1,width).setValues([values]);
+  return {ok:true,status:'در انتظار تایید رسید'};
+}
+function listWeeklySessionReceipts_(){
+  var sessions={};getSheetObjects('سانس‌ها').forEach(function(s){sessions[String(s.id||'')]={title:String(s.title||''),cost:Number(s.cost||0)};});
+  return getSheetObjects('ثبت‌نام سانس').filter(function(r){
+    return sessions[String(r.sessionId||'')]&&sessions[String(r.sessionId||'')].cost>0&&String(r.status||'')!=='رد شد';
+  }).map(function(r){var s=sessions[String(r.sessionId||'')]||{};return {
+    id:String(r.id||''),sessionId:String(r.sessionId||''),sessionTitle:s.title||'',cost:s.cost||0,
+    firstName:String(r.firstName||''),lastName:String(r.lastName||''),phone:String(r.phone||''),
+    status:String(r.status||''),paymentStatus:String(r.paymentStatus||''),hasReceipt:!!r.receiptPhotoUrl,createdAt:String(r.createdAt||'')
+  };}).sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt));});
+}
+function getWeeklySessionReceipt_(p){
+  requireCoachPermission(p.token,'registrations');
+  var id=String(p.id||'').trim(),row=getSheetObjects('ثبت‌نام سانس').filter(function(r){return String(r.id||'')===id;})[0];
+  if(!row)throw new Error('درخواست سانس پیدا نشد');
+  var url=String(row.receiptPhotoUrl||''),match=/[?&]id=([A-Za-z0-9_-]{10,})/.exec(url);
+  if(!match)throw new Error('برای این درخواست رسیدی ارسال نشده است');
+  var file=DriveApp.getFileById(match[1]);
+  if(file.isTrashed()||!/^weekly-session-payment-/i.test(String(file.getName()||'')))throw new Error('فایل رسید معتبر نیست');
+  var parents=file.getParents(),inside=false;while(parents.hasNext()){if(parents.next().getId()===CFG.DRIVE_FOLDER_ID){inside=true;break;}}
+  if(!inside)throw new Error('فایل رسید در پوشه خصوصی برنامه نیست');
+  file.setSharing(DriveApp.Access.PRIVATE,DriveApp.Permission.NONE);
+  if(file.getSharingAccess()!==DriveApp.Access.PRIVATE)throw new Error('دسترسی خصوصی فایل تأیید نشد');
+  var blob=file.getBlob(),bytes=blob.getBytes();
+  if(!bytes||!bytes.length||bytes.length>5*1024*1024)throw new Error('حجم رسید بیش از حد مجاز است');
+  return {ok:true,mimeType:String(blob.getContentType()||'image/jpeg'),base64:Utilities.base64Encode(bytes)};
+}
+function setWeeklySessionPaymentStatus_(p){
+  requireCoachPermission(p.token,'registrations');
+  var id=String(p.id||'').trim(),next=String(p.status||'').trim();
+  if(['تایید پرداخت','رد پرداخت'].indexOf(next)<0)throw new Error('وضعیت پرداخت معتبر نیست');
+  var sheet=getSheet('ثبت‌نام سانس'),pos=findRow(sheet,'id',id);
+  if(!pos)throw new Error('درخواست سانس پیدا نشد');
+  var width=HEADERS['ثبت‌نام سانس'].length,values=sheet.getRange(pos,1,1,width).getValues()[0];
+  var receiptIndex=HEADERS['ثبت‌نام سانس'].indexOf('receiptPhotoUrl');
+  if(!values[receiptIndex])throw new Error('برای این درخواست رسیدی ارسال نشده است');
+  values[HEADERS['ثبت‌نام سانس'].indexOf('paymentStatus')]=next;
+  values[HEADERS['ثبت‌نام سانس'].indexOf('status')]=next==='تایید پرداخت'?'تایید شد':'رد شد';
+  values[HEADERS['ثبت‌نام سانس'].indexOf('updatedAt')]=nowIso();
+  sheet.getRange(pos,1,1,width).setValues([values]);
+  return {ok:true,id:id,paymentStatus:next};
+}
+
 function saveSchedule(p){
   requireCoachPermission(p.token,'schedule');
   var sheet=getSheet('برنامه'), id=String(p.id||Utilities.getUuid()), rows=getSheetObjects('برنامه'), pos=findRowById('برنامه',id);
@@ -251,7 +400,7 @@ function isPostOnlyAuthenticatedReadAction_(action) {
     'listCoaches', 'listOfficialsManage', 'getRingRegistration',
     'getMyGameRole', 'getGameWallet', 'getPublicMemberProfile', 'listMembers', 'getAttendanceToday', 'getAttendanceForDate',
     'getAttendanceMemberHistory', 'listMonthlyAttendance', 'listWarnings', 'listRegistrations', 'listCampPaymentReceipts',
-    'getDashboard'
+    'getDashboard', 'listWeeklySessions', 'listWeeklySessionReceipts'
   ].indexOf(String(action || '')) >= 0;
 }
 
@@ -293,6 +442,8 @@ function handleGet(p, allowPostOnlyAuthenticatedRead) {
   }
 
   if (action === 'listSchedule') { return listSchedulePublic(); }
+  if (action === 'listWeeklySessions') { requireToken(p.token, ['member']); return listWeeklySessionsPublic_(); }
+  if (action === 'listWeeklySessionReceipts') { requireCoachPermission(p.token, 'registrations'); return {ok:true, items:listWeeklySessionReceipts_()}; }
 
   if (action === 'listCoaches') {
     var coachAuthGet = requireToken(p.token, ['coach']);
@@ -587,6 +738,12 @@ function handlePost(p) {
   if (action === 'setFeedbackStatus') return setFeedbackStatus(p);
 
   if (action === 'saveCamp') return saveCamp(p);
+  if (action === 'saveWeeklySession') return saveWeeklySession_(p);
+  if (action === 'deleteWeeklySession') return deleteWeeklySession_(p);
+  if (action === 'registerWeeklySession') return registerWeeklySession_(p);
+  if (action === 'uploadWeeklySessionReceipt') return uploadWeeklySessionReceipt_(p);
+  if (action === 'getWeeklySessionReceipt') return getWeeklySessionReceipt_(p);
+  if (action === 'setWeeklySessionPaymentStatus') return setWeeklySessionPaymentStatus_(p);
   if (action === 'saveCampConsentUrl') return saveCampConsentUrl_(p);
   if (action === 'buyGameCosmetic') return buyGameCosmetic_(p);
   if (action === 'equipGameCosmetic') return equipGameCosmetic_(p);
