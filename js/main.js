@@ -335,6 +335,21 @@
     }
   };
 
+  /* ورود اجباری به محیط داخلی برنامه؛ صفحات ورود نقش‌ها مستثنا هستند. */
+  function AuthGate() {
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var publicPages = ['login.html', 'welcome.html', 'coach.html', 'officials.html', 'camp-official.html'];
+    if (publicPages.indexOf(page) >= 0) return true;
+    var member = Session.getMember();
+    var official = Session.getOfficial();
+    var hasMember = !!(member && typeof member.token === 'string' && member.token.length > 20);
+    var hasOfficial = !!(official && typeof official.token === 'string' && official.token.length > 20);
+    if (hasMember || hasOfficial) return true;
+    var returnTo = page + (location.search || '') + (location.hash || '');
+    location.replace('login.html?return=' + encodeURIComponent(returnTo));
+    return false;
+  }
+
   /* ══════════════════════════════════════════════════════════════════════
      Navigation — هایلایت نوار پایین
      ══════════════════════════════════════════════════════════════════════ */
@@ -1179,6 +1194,7 @@
   var App = {
     version: CONFIG.VERSION,
     init: function () {
+      if (!AuthGate()) return;
       Logger.info('نسخه ' + this.version + ' در حال راه‌اندازی...');
       Logger.info('API_URL:', CONFIG.API_URL);
 
