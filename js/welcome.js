@@ -16,7 +16,7 @@
     if(reduceMotion)return;
     var old=layer.querySelectorAll('.confetti-piece');
     Array.prototype.forEach.call(old,function(el){el.remove();});
-    var total=124;
+    var total=36;
     for(var i=0;i<total;i++){
       var corner=cornerStarts[i%cornerStarts.length];
       var piece=document.createElement('span');
