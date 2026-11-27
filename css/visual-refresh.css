@@ -503,3 +503,38 @@ input:focus,select:focus,textarea:focus{border-color:#4389d2!important;box-shado
 :root[data-theme="dark"] .app-container .form-section p,
 :root[data-theme="dark"] .app-container .form-card p,
 :root[data-theme="dark"] .app-container .content-card p{color:#aab6c2!important}
+
+/* Header hierarchy and brand contrast: unmistakable logo tile, notifications at the far left. */
+.home-app .app-header{display:flex!important;align-items:center!important;gap:10px!important}
+.header-brand__mark{
+ width:52px!important;height:52px!important;flex:0 0 52px!important;padding:5px!important;
+ background:linear-gradient(145deg,#f5f9ff 0%,#dceafa 100%)!important;
+ border:1px solid #9ebcde!important;border-radius:16px!important;
+ box-shadow:0 3px 12px rgba(13,55,105,.18),inset 0 1px 0 #fff!important;
+}
+.header-brand__logo{width:100%!important;height:100%!important;object-fit:contain!important}
+.header-notice{
+ position:relative!important;display:grid!important;place-items:center!important;flex:0 0 42px!important;
+ width:42px!important;height:42px!important;padding:0!important;border-radius:14px!important;
+ color:#174f8d!important;background:#eaf2fc!important;border:1px solid #c8d9ee!important;
+ box-shadow:0 3px 10px rgba(18,62,112,.10)!important;cursor:pointer!important;
+}
+.header-notice svg{width:22px!important;height:22px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+.header-notice__dot{position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:#d64b4b;border:1.5px solid #eaf2fc}
+:root[data-theme="dark"] .header-notice{background:#1d2a38!important;color:#b9d8f7!important;border-color:#34475c!important}
+:root[data-theme="dark"] .header-notice__dot{border-color:#1d2a38}
+.bottom-nav .nav-profile-photo{display:block;width:29px;height:29px;object-fit:cover;border-radius:50%;border:2px solid currentColor;box-sizing:border-box}
+.bottom-nav .nav-icon.has-profile-photo{width:34px;height:34px;display:grid;place-items:center;background:transparent!important;border-radius:50%!important}
+.bottom-nav .nav-profile-item.active .nav-profile-photo{border-color:#1558a6;box-shadow:0 0 0 2px rgba(21,88,166,.13)}
+:root[data-theme="dark"] .bottom-nav .nav-profile-item.active .nav-profile-photo{border-color:#8db9e6;box-shadow:0 0 0 2px rgba(141,185,230,.16)}
+.drawer-tools{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);display:grid;gap:5px}
+.drawer-tools button{width:100%;display:flex;align-items:center;gap:12px;padding:12px 13px;border:0;border-radius:13px;background:rgba(255,255,255,.075);color:#f2f7ff;text-align:right;font:inherit;font-size:.76rem;cursor:pointer}
+.drawer-tools button>span:nth-child(2){flex:1}
+.drawer-tools button b{font-size:1.1rem;color:#c4d9f1;font-weight:500}
+.drawer-tool-icon{width:24px;height:24px;display:grid;place-items:center;color:#c9def5}
+.drawer-tool-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.drawer-tools button:active{background:rgba(255,255,255,.15)}
+@media(max-width:390px){
+ .header-brand__mark{width:46px!important;height:46px!important;flex-basis:46px!important}
+ .header-notice{width:39px!important;height:39px!important;flex-basis:39px!important}
+}
