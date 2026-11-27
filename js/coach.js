@@ -436,7 +436,7 @@ function setupCamps(){
    try{
     var ping=await api().get({action:'ping'});
     var expectedBackend=window.KanoonApp&&window.KanoonApp.config&&window.KanoonApp.config.BACKEND_VERSION;
-   if(!ping||!expectedBackend||ping.version!==expectedBackend)throw new Error('ابتدا نسخهٔ مورد انتظار Apps Script را منتشر کن.');
+   if(!ping||!expectedBackend||(ping.version!==expectedBackend&&!(window.KanoonApp.config.BACKEND_COMPATIBLE_VERSIONS||[]).includes(ping.version)))throw new Error('ابتدا نسخهٔ مورد انتظار Apps Script را منتشر کن.');
     await api().post({action:'saveCampConsentUrl',token:state.token,url:url});
     toast(url?'لینک رضایت‌نامه ذخیره شد ✓':'لینک رضایت‌نامه پاک شد');
    }catch(e){toast(e.message||'ذخیرهٔ لینک ناموفق بود',1);}
@@ -462,7 +462,7 @@ function setupCamps(){
   try{
    var backendVersion=await api().get({action:'ping'});
    var expectedBackend=window.KanoonApp&&window.KanoonApp.config&&window.KanoonApp.config.BACKEND_VERSION;
-   if(!backendVersion||!expectedBackend||backendVersion.version!==expectedBackend)throw new Error('ابتدا نسخهٔ مورد انتظار فایل Apps Script باید منتشر شود.');
+   if(!backendVersion||!expectedBackend||(backendVersion.version!==expectedBackend&&!(window.KanoonApp.config.BACKEND_COMPATIBLE_VERSIONS||[]).includes(backendVersion.version)))throw new Error('ابتدا نسخهٔ مورد انتظار فایل Apps Script باید منتشر شود.');
    await api().post({action:'saveCamp',token:state.token,id:state.editingCampId||'',title:title,cardNumber:cardNumber,cost:cost||0,registrationDeadline:registrationDeadline,capacity:Number(capacity)});
    toast(state.editingCampId?'تغییرات اردو ذخیره شد ✓':'اردو با ظرفیت مشخص‌شده ثبت شد ✓');
    state.editingCampId='';save.textContent='ثبت اردو';
