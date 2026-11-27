@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1558a6"><title>سانس هفتگی | حلقه‌یار</title>
+<link rel="stylesheet" href="css/style.css?v=110-visual-2">
+<link rel="stylesheet" href="css/islamic-design.css?v=6.14.0-reference-redesign">
+<link rel="stylesheet" href="css/visual-refresh.css?v=110-performance-2">
+<link rel="icon" type="image/svg+xml" href="images/halqeh-yar-mark.svg">
+<style>
+.weekly-booking{max-width:520px;margin:0 auto;padding:18px 16px 110px}
+.weekly-booking-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.weekly-booking-head a{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:#e8f1fc;color:#1558a6;font-size:22px;text-decoration:none}
+.weekly-booking-head h1{font-size:20px;margin:0;color:#17385f}.weekly-booking-head p{font-size:11px;color:#718096;margin:3px 0 0}
+.booking-intro{padding:18px;border-radius:22px;background:linear-gradient(135deg,#174f8d,#2874c7);color:#fff;margin-bottom:18px}
+.booking-intro strong{display:block;font-size:16px;margin-bottom:5px}.booking-intro p{font-size:11px;line-height:1.9;color:#e4efff;margin:0}
+.booking-section-title{font-size:14px;font-weight:900;color:#17385f;margin:22px 2px 11px}
+.session-list{display:grid;gap:10px}
+.session-option{display:flex;align-items:center;gap:12px;width:100%;padding:14px;text-align:right;border:1px solid #dce6f2;border-radius:17px;background:#fff;color:#20364f;cursor:pointer}
+.session-option[aria-pressed="true"]{border:2px solid #2874c7;background:#f0f6ff;box-shadow:0 5px 16px rgba(21,88,166,.09)}
+.session-option:disabled{opacity:.5;cursor:not-allowed}
+.session-radio{width:19px;height:19px;flex:0 0 19px;border:2px solid #a8bad0;border-radius:50%}
+.session-option[aria-pressed="true"] .session-radio{border:6px solid #2874c7}
+.session-main{flex:1;min-width:0}.session-main strong{display:block;font-size:13px}.session-main small{display:block;color:#718096;font-size:10px;margin-top:4px}
+.session-cost{font-size:12px;font-weight:900;color:#1558a6;white-space:nowrap}
+.booking-form,.payment-panel{padding:17px;border:1px solid #dce6f2;border-radius:20px;background:#fff;margin-top:16px}
+.booking-field{display:grid;gap:6px;margin-bottom:13px}.booking-field label{font-size:11px;font-weight:800;color:#425a75}
+.booking-field input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #dce6f2;border-radius:12px;background:#f8fbff;color:#1d3148;font:inherit;font-size:13px}
+.booking-field input[readonly]{background:#edf2f7;color:#62758a}
+.booking-submit,.receipt-submit{width:100%;border:0;border-radius:13px;padding:13px;background:linear-gradient(135deg,#2874c7,#124a91);color:#fff;font:800 13px inherit;cursor:pointer}
+.booking-submit:disabled,.receipt-submit:disabled{opacity:.55;cursor:wait}
+.booking-hint,.booking-status{font-size:11px;line-height:1.9;color:#6c7d91;margin:10px 0 0}
+.booking-status{padding:11px 12px;border-radius:12px;background:#edf4fc;color:#205b9e}
+.payment-panel h2{font-size:15px;color:#17385f;margin:0 0 8px}
+.payment-total{font-size:19px;font-weight:900;color:#1558a6;margin:10px 0}
+.payment-card{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;background:#f2f6fc;border:1px dashed #b7cce4;border-radius:12px;direction:ltr}
+.payment-card code{font-size:13px;font-weight:800;color:#1c3e66;overflow-wrap:anywhere}
+.payment-card button{border:0;background:#dceafa;color:#1558a6;border-radius:9px;padding:7px 10px;font:700 10px inherit}
+.file-input{width:100%;padding:11px;border:1px dashed #a9bfd8;border-radius:12px;background:#f7faff;color:#51677f;font:inherit;font-size:11px}
+.empty-sessions{padding:24px 16px;text-align:center;border:1px dashed #c8d8e9;border-radius:18px;background:#fff;color:#65788d;font-size:12px;line-height:2}
+:root[data-theme="dark"] .weekly-booking-head h1,:root[data-theme="dark"] .booking-section-title,:root[data-theme="dark"] .booking-form label,:root[data-theme="dark"] .payment-panel h2{color:#e5edf6}
+:root[data-theme="dark"] .session-option,:root[data-theme="dark"] .booking-form,:root[data-theme="dark"] .payment-panel,:root[data-theme="dark"] .empty-sessions{background:#14191f;color:#e8eaed;border-color:#29323c;box-shadow:none}
+:root[data-theme="dark"] .session-main small,:root[data-theme="dark"] .weekly-booking-head p,:root[data-theme="dark"] .booking-hint{color:#aab6c2}
+:root[data-theme="dark"] .session-option[aria-pressed="true"]{background:#172b40;border-color:#4389d2}
+:root[data-theme="dark"] .booking-field label{color:#c4d0dc}
+:root[data-theme="dark"] .booking-field input,:root[data-theme="dark"] .file-input{background:#0f141a;color:#edf2f7;border-color:#303a45}
+:root[data-theme="dark"] .booking-field input[readonly]{background:#1b2732;color:#b9c7d4}
+:root[data-theme="dark"] .payment-card{background:#1b2732;border-color:#35495d}
+:root[data-theme="dark"] .payment-card code{color:#dbe9f8}
+:root[data-theme="dark"] .payment-card button{background:#263d55;color:#dcecff}
+:root[data-theme="dark"] .booking-status{background:#172b40;color:#c8e1fa}
+</style>
+</head>
+<body>
+<div class="app-container app-shell">
+<main class="weekly-booking">
+<header class="weekly-booking-head"><a href="index.html" aria-label="بازگشت">→</a><div><h1>سانس هفتگی</h1><p>انتخاب زمان و ثبت درخواست</p></div></header>
+<section class="booking-intro"><strong>انتخاب سانس</strong><p>سانس موردنظرت را انتخاب کن. مبلغ، ظرفیت و اطلاعات پرداخت هر سانس پیش از ثبت درخواست نمایش داده می‌شود.</p></section>
+<div class="booking-section-title">سانس‌های فعال</div>
+<div id="sessionList" class="session-list"><div class="empty-sessions">در حال دریافت سانس‌ها…</div></div>
+<form id="bookingForm" class="booking-form" hidden>
+<div class="booking-section-title" style="margin-top:0">اطلاعات ثبت‌نام</div>
+<div class="booking-field"><label for="firstName">نام</label><input id="firstName" name="firstName" maxlength="60" autocomplete="given-name" required></div>
+<div class="booking-field"><label for="lastName">نام خانوادگی</label><input id="lastName" name="lastName" maxlength="80" autocomplete="family-name" required></div>
+<div class="booking-field"><label for="phone">شماره همراه حساب</label><input id="phone" name="phone" readonly dir="ltr"></div>
+<button class="booking-submit" id="registerButton" type="submit">ثبت درخواست سانس</button>
+<p class="booking-hint">ثبت درخواست به معنی رزرو قطعی نیست؛ در سانس‌های دارای هزینه، تأیید پس از بررسی رسید پرداخت انجام می‌شود.</p>
+</form>
+<section id="paymentPanel" class="payment-panel" hidden>
+<h2>پرداخت و ارسال رسید</h2><p class="booking-hint" id="paymentDescription"></p>
+<div class="payment-total" id="paymentCost"></div>
+<div class="booking-field"><label>شماره کارت مقصد</label><div class="payment-card"><code id="cardNumber"></code><button type="button" id="copyCard">کپی شماره</button></div></div>
+<div class="booking-field"><label for="receiptFile">تصویر رسید پرداخت (حداکثر ۵ مگابایت)</label><input class="file-input" id="receiptFile" type="file" accept="image/jpeg,image/png,image/webp"></div>
+<button class="receipt-submit" id="uploadReceipt" type="button">ارسال رسید پرداخت</button>
+</section>
+<div id="bookingStatus" class="booking-status" role="status" aria-live="polite" hidden></div>
+</main>
+</div>
+<script src="js/main.js?v=5.92.0" defer></script>
+<script>
+(function(){
+'use strict';
+var sessions=[],selected=null,registration=null,uploadToken='',member=null;
+var $=function(id){return document.getElementById(id)};
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function money(v){return Number(v||0).toLocaleString('fa-IR')+' تومان'}
+function status(message,error){var el=$('bookingStatus');el.hidden=false;el.textContent=message;el.style.background=error?'#fff0f0':'';el.style.color=error?'#a22':''}
+function api(){return window.KanoonApp&&window.KanoonApp.api}
+function render(){
+ var root=$('sessionList');
+ if(!sessions.length){root.innerHTML='<div class="empty-sessions">در حال حاضر سانس فعالی برای ثبت‌نام تعریف نشده است.</div>';return}
+ root.innerHTML=sessions.map(function(s){var disabled=s.isFull;return '<button type="button" class="session-option" data-session="'+esc(s.id)+'" aria-pressed="'+(selected&&selected.id===s.id?'true':'false')+'" '+(disabled?'disabled':'')+'><span class="session-radio"></span><span class="session-main"><strong>'+esc(s.title)+'</strong><small>'+esc(s.day)+' · '+esc(s.time)+(s.location?' · '+esc(s.location):'')+'</small><small>'+((s.capacity>0)?'ظرفیت باقی‌مانده: '+Math.max(0,s.capacity-s.registrationCount).toLocaleString('fa-IR'):'ظرفیت نامحدود')+(disabled?' · تکمیل ظرفیت':'')+'</small></span><span class="session-cost">'+(s.cost>0?money(s.cost):'رایگان')+'</span></button>'}).join('');
+ root.querySelectorAll('[data-session]').forEach(function(btn){btn.addEventListener('click',function(){selected=sessions.find(function(s){return s.id===btn.getAttribute('data-session')})||null;render();$('bookingForm').hidden=!selected;$('paymentPanel').hidden=true;$('bookingStatus').hidden=true;});});
+}
+function load(){
+ if(!api()||!window.KanoonApp.session){setTimeout(load,60);return}
+ member=window.KanoonApp.session.getMember()||{};
+ if(!member.token){location.replace('login.html?return=weekly-session.html');return}
+ $('firstName').value=member.firstName||'';
+ $('lastName').value=member.lastName||'';
+ $('phone').value=member.phone||'';
+ api().post({action:'listWeeklySessions',token:member.token}).then(function(r){sessions=r.items||[];render()}).catch(function(e){$('sessionList').innerHTML='<div class="empty-sessions">فهرست سانس‌ها دریافت نشد.<br>'+esc(e.message||'پس از به‌روزرسانی سرور دوباره تلاش کن')+'</div>'});
+}
+$('bookingForm').addEventListener('submit',async function(e){
+ e.preventDefault();if(!selected||!member||!member.token)return;
+ var btn=$('registerButton');btn.disabled=true;btn.textContent='در حال ثبت درخواست…';
+ try{
+  var r=await api().post({action:'registerWeeklySession',token:member.token,sessionId:selected.id,firstName:$('firstName').value.trim(),lastName:$('lastName').value.trim()});
+  registration=r;uploadToken=r.receiptUploadToken||'';
+  if(Number(r.session&&r.session.cost||0)>0){
+   $('paymentPanel').hidden=false;$('paymentDescription').textContent='درخواستت ثبت شد. پس از پرداخت، تصویر رسید را همین‌جا ارسال کن.';
+   $('paymentCost').textContent=money(r.session.cost);$('cardNumber').textContent=r.session.cardNumber||'شماره کارت هنوز ثبت نشده';
+   $('uploadReceipt').disabled=!r.session.cardNumber||!uploadToken;
+   status('درخواست ثبت شد؛ پس از ارسال و بررسی رسید، وضعیت نهایی اعلام می‌شود.');
+  }else{
+   $('paymentPanel').hidden=true;status('درخواستت با موفقیت ثبت شد.');
+  }
+  btn.textContent='درخواست ثبت شد';
+ }catch(err){status(err.message||'ثبت درخواست انجام نشد',true);btn.disabled=false;btn.textContent='ثبت درخواست سانس';}
+});
+$('copyCard').addEventListener('click',function(){var v=$('cardNumber').textContent;if(navigator.clipboard&&v){navigator.clipboard.writeText(v).then(function(){status('شماره کارت کپی شد')}).catch(function(){status('کپی خودکار انجام نشد؛ شماره کارت را دستی کپی کن',true)})}});
+$('uploadReceipt').addEventListener('click',async function(){
+ var file=$('receiptFile').files[0];if(!file||!registration||!uploadToken){status('ابتدا تصویر رسید را انتخاب کن',true);return}
+ if(!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>5*1024*1024){status('فایل باید JPG، PNG یا WebP و حداکثر ۵ مگابایت باشد',true);return}
+ var btn=$('uploadReceipt');btn.disabled=true;btn.textContent='در حال ارسال…';
+ try{
+  var data=await new Promise(function(resolve,reject){var reader=new FileReader();reader.onload=function(){resolve(String(reader.result).split(',')[1]||'')};reader.onerror=reject;reader.readAsDataURL(file)});
+  var r=await api().post({action:'uploadWeeklySessionReceipt',registrationId:registration.id,receiptUploadToken:uploadToken,receiptBase64:data,receiptMimeType:file.type});
+  uploadToken='';btn.textContent='رسید ارسال شد';status('رسید با موفقیت ارسال شد و در انتظار بررسی مسئول است.');
+ }catch(err){btn.disabled=false;btn.textContent='ارسال رسید پرداخت';status(err.message||'ارسال رسید انجام نشد',true)}
+});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
+})();
+</script>
+</body>
+</html>
