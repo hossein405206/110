@@ -99,7 +99,7 @@ function load(){
  $('firstName').value=member.firstName||'';
  $('lastName').value=member.lastName||'';
  $('phone').value=member.phone||'';
- api().post({action:'listWeeklySessions',token:member.token}).then(function(r){sessions=r.items||[];render()}).catch(function(e){$('sessionList').innerHTML='<div class="empty-sessions">فهرست سانس‌ها دریافت نشد.<br>'+esc(e.message||'پس از به‌روزرسانی سرور دوباره تلاش کن')+'</div>'});
+ api().post({action:'listWeeklySessions',token:member.token}).then(function(r){sessions=r.items||[];render()}).catch(function(e){var msg=String(e.message||'');if(/عملیات ناشناخته|unknown action|listWeeklySessions/i.test(msg))msg='قابلیت سانس هفتگی هنوز روی سرور منتشر نشده است؛ مدیر باید نسخه جدید Google Apps Script را منتشر کند.';$('sessionList').innerHTML='<div class="empty-sessions">فهرست سانس‌ها دریافت نشد.<br>'+esc(msg||'اتصال به سرور را بررسی کن')+'</div>'});
 }
 $('bookingForm').addEventListener('submit',async function(e){
  e.preventDefault();if(!selected||!member||!member.token)return;
