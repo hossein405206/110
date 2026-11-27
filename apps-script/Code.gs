@@ -206,7 +206,7 @@ function listWeeklySessionsPublic_(){
   return {ok:true,items:getSheetObjects('سانس‌ها').filter(function(r){
     if(!truthy(r.active))return false;
     var deadline=String(r.registrationDeadline||'').trim();
-    return !deadline||!isValidIsoDate_(deadline)||deadline>=today;
+    return !deadline||(isValidIsoDate_(deadline)&&deadline>=today);
   }).map(function(r){
     var id=String(r.id||''),capacity=Number(r.capacity||0),count=Number(counts[id]||0);
     return {id:id,title:String(r.title||''),day:String(r.day||''),time:String(r.time||''),
@@ -219,16 +219,16 @@ function saveWeeklySession_(p){
   requireCoachPermission(p.token,'registrations');
   var title=String(p.title||'').trim(),day=String(p.day||'').trim(),time=String(p.time||'').trim();
   var location=String(p.location||'').trim();
-  var costText=normalizeIranDigits(String(p.cost==null?'':p.cost)).replace(/[\\s,،٬]/g,'');
-  var cost=Number(costText||0),card=normalizeIranDigits(String(p.cardNumber||'')).replace(/[\\s-]/g,'');
-  var capText=normalizeIranDigits(String(p.capacity==null?'':p.capacity)).replace(/[\\s,،٬]/g,'');
+  var costText=normalizeIranDigits(String(p.cost==null?'':p.cost)).replace(/[\s,،٬]/g,'');
+  var cost=Number(costText||0),card=normalizeIranDigits(String(p.cardNumber||'')).replace(/[\s-]/g,'');
+  var capText=normalizeIranDigits(String(p.capacity==null?'':p.capacity)).replace(/[\s,،٬]/g,'');
   var capacity=Number(capText||0),deadline=String(p.registrationDeadline||'').trim(),id=String(p.id||'').trim();
   if(!title||title.length>120)throw new Error('عنوان سانس را وارد کن (حداکثر ۱۲۰ نویسه)');
   if(!day||day.length>30)throw new Error('روز سانس را وارد کن');
   if(!time||!/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))throw new Error('ساعت سانس را به شکل ۱۸:۳۰ وارد کن');
   if(location.length>160)throw new Error('مکان سانس بیش از حد طولانی است');
   if(!isFinite(cost)||cost<0||cost>10000000000)throw new Error('هزینه سانس معتبر نیست');
-  if(cost>0&&!/^\\d{16,26}$/.test(card))throw new Error('شماره کارت یا شبای مقصد را درست وارد کن');
+  if(cost>0&&!/^\d{16,26}$/.test(card))throw new Error('شماره کارت یا شبای مقصد را درست وارد کن');
   if(!Number.isInteger(capacity)||capacity<1||capacity>100000)throw new Error('ظرفیت باید عددی بین ۱ تا ۱۰۰٬۰۰۰ نفر باشد');
   if(deadline&&!isValidIsoDate_(deadline))throw new Error('مهلت ثبت‌نام معتبر نیست');
   if(deadline&&deadline<currentDate())throw new Error('مهلت ثبت‌نام نمی‌تواند در گذشته باشد');
@@ -257,7 +257,7 @@ function registerWeeklySession_(p){
   var auth=requireToken(p.token,['member']),phone=normalizeIranMobile_(auth.subject);
   var first=String(p.firstName||'').trim(),last=String(p.lastName||'').trim(),sessionId=String(p.sessionId||'').trim();
   if(!first||first.length>60||!last||last.length>80)throw new Error('نام و نام خانوادگی را کامل وارد کن');
-  if(!/^09\\d{9}$/.test(phone))throw new Error('شماره همراه حساب معتبر نیست');
+  if(!/^09\d{9}$/.test(phone))throw new Error('شماره همراه حساب معتبر نیست');
   if(!sessionId)throw new Error('سانس موردنظر را انتخاب کن');
   var lock=LockService.getScriptLock();lock.waitLock(30000);
   try{
@@ -3504,7 +3504,7 @@ function setSetting(key, value) {
 /* -------------------------------------------------------------------------- */
 
 function uploadConsentPhotoPrivate(base64, mime, name) {
-  var data = String(base64 || '').replace(/\\s+/g, '');
+  var data = String(base64 || '').replace(/\s+/g, '');
   if (data.indexOf(',') >= 0) data = data.slice(data.lastIndexOf(',') + 1);
   if (!data || data.length > 7100000) throw new Error('حجم عکس رضایت‌نامه باید حداکثر ۵ مگابایت باشد');
   var type = String(mime || 'image/jpeg').toLowerCase();
