@@ -376,10 +376,8 @@ function setup() {
   var generatedOfficialCodes = ensureOfficialRoles();
   generatedOfficialCodes = generatedOfficialCodes.concat(rotateUnsafeDefaultOfficialCodes_());
 
-  var camps = getSheet('اردوها');
-  if (camps.getLastRow() < 2) {
-    camps.appendRow(rowToArray('اردوها', {id:uid('CAMP'), title:'اردوی مشهد', status:'active', createdAt:nowIso(), cardNumber:'', cost:0, registrationDeadline:''}));
-  }
+  // Keep empty operational lists empty; do not seed public-facing demo camps.
+  getSheet('اردوها');
 
   ensureLifetimeGameRecords();
   ensureSecret();
