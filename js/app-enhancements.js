@@ -33,7 +33,7 @@ async function checkUpdate(){
   const native=window.HalqehNative&&typeof window.HalqehNative.getAppVersion==='function';
   const current=native?String(window.HalqehNative.getAppVersion()||'1.0.0'):'0.0.0';
   if(native&&compareVersions(latest,current)<=0){toast('حلقه‌یار به‌روز است · نسخه '+latest);return}
-  const apk=(d.assets||[]).find(x=>/\.apk$/i.test(String(x.name||''))&&x.browser_download_url);
+  const apk=(d.assets||[]).find(x=>String(x.name||'').toLowerCase().endsWith('.apk')&&x.browser_download_url);
   if(native&&apk&&typeof window.HalqehNative.downloadAndInstall==='function'){
    if(confirm('نسخه '+latest+' آماده است. دانلود و نصب به‌روزرسانی انجام شود؟')){
     window.HalqehNative.downloadAndInstall(apk.browser_download_url);
